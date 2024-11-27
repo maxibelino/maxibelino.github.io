@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cybersecurity Research</title>
-    <link>http://localhost:1313/en/</link>
+    <link>https://maxibelino.github.io/en/</link>
     <description>Recent content on Cybersecurity Research</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 26 Nov 2024 14:45:35 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maxibelino.github.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-</title>
-      <link>http://localhost:1313/en/research/cves/cve1/</link>
+      <link>https://maxibelino.github.io/en/research/cves/cve1/</link>
       <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
-      <guid>http://localhost:1313/en/research/cves/cve1/</guid>
+      <guid>https://maxibelino.github.io/en/research/cves/cve1/</guid>
       <description>CVE #1&#xA;Definition The term RCE stands for Remote Command Execution. Info. will be available as soon as the software gets patched.</description>
     </item>
     <item>
       <title>Services</title>
-      <link>http://localhost:1313/en/services/</link>
+      <link>https://maxibelino.github.io/en/services/</link>
       <pubDate>Tue, 26 Nov 2024 11:07:23 -0300</pubDate>
-      <guid>http://localhost:1313/en/services/</guid>
+      <guid>https://maxibelino.github.io/en/services/</guid>
       <description>Cybersecurity Services Red Team services&#xA;OSINT - Open Source Intelligence&#xA;Pentesting</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/en/about-me/</link>
+      <link>https://maxibelino.github.io/en/about-me/</link>
       <pubDate>Mon, 25 Nov 2024 12:40:35 -0300</pubDate>
-      <guid>http://localhost:1313/en/about-me/</guid>
+      <guid>https://maxibelino.github.io/en/about-me/</guid>
       <description>My name is Maximiliano, I&amp;rsquo;m an Engineer and cybersecurity specialist.&#xA;Learn more and contribute on GitHub.</description>
     </item>
     <item>
       <title>Firstpost</title>
-      <link>http://localhost:1313/en/posts/firstpost/</link>
+      <link>https://maxibelino.github.io/en/posts/firstpost/</link>
       <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
-      <guid>http://localhost:1313/en/posts/firstpost/</guid>
+      <guid>https://maxibelino.github.io/en/posts/firstpost/</guid>
       <description>This is just a test Thanks</description>
     </item>
   </channel>
