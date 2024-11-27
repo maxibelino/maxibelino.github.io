@@ -2,22 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://maxibelino.github.io/en/about-me/</loc>
+    <loc>http://localhost:1313/en/tags/cve/</loc>
+    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/research/cves/cve1/</loc>
+    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/</loc>
+    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/research/</loc>
+    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/</loc>
+    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/services/</loc>
+    <lastmod>2024-11-26T11:07:23-03:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/about-me/</loc>
     <lastmod>2024-11-25T12:40:35-03:00</lastmod>
   </url><url>
-    <loc>https://maxibelino.github.io/en/</loc>
-    <lastmod>2024-11-25T12:40:35-03:00</lastmod>
-  </url><url>
-    <loc>https://maxibelino.github.io/en/posts/firstpost/</loc>
+    <loc>http://localhost:1313/en/posts/firstpost/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://maxibelino.github.io/en/posts/</loc>
+    <loc>http://localhost:1313/en/posts/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://maxibelino.github.io/en/tags/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://maxibelino.github.io/en/tags/testing/</loc>
+    <loc>http://localhost:1313/en/tags/testing/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url>
 </urlset>
