@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dominando la Ciberseguridad</title>
-    <link>http://localhost:1313/es/</link>
+    <link>https://maxibelino.github.io/es/</link>
     <description>Recent content on Dominando la Ciberseguridad</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 16:14:02 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/es/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maxibelino.github.io/es/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Acerca de</title>
-      <link>http://localhost:1313/es/about/</link>
+      <link>https://maxibelino.github.io/es/about/</link>
       <pubDate>Wed, 27 Nov 2024 16:14:02 -0300</pubDate>
-      <guid>http://localhost:1313/es/about/</guid>
+      <guid>https://maxibelino.github.io/es/about/</guid>
       <description>Mi nombre es Maximiliano, soy Ingeniero en Telecomunicaciones de la Universidad de la República (UDELAR) de Uruguay.&#xA;Tengo un Máster en Seguridad Ofensiva del Campusciberseguridad (España) avalado por la Universidad Católica de Murcia (UCAM) de España y soy certificado OSCP (OffSec) desde Febrero 2023.&#xA;Mis trabajos más recientes en ciberseguridad han sido 5 CVE que podré divulgar en el mes de Diciembre de 2024.&#xA;Mi pasión es la ciberseguridad y los nuevos desafíos.</description>
     </item>
     <item>
       <title>Secondpost</title>
-      <link>http://localhost:1313/es/posts/secondpost/</link>
+      <link>https://maxibelino.github.io/es/posts/secondpost/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>http://localhost:1313/es/posts/secondpost/</guid>
+      <guid>https://maxibelino.github.io/es/posts/secondpost/</guid>
       <description>Este post es en español</description>
     </item>
     <item>
       <title>CVE-2024-</title>
-      <link>http://localhost:1313/es/research/cves/cve1/</link>
+      <link>https://maxibelino.github.io/es/research/cves/cve1/</link>
       <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
-      <guid>http://localhost:1313/es/research/cves/cve1/</guid>
+      <guid>https://maxibelino.github.io/es/research/cves/cve1/</guid>
       <description>CVE #1&#xA;Definition El término RCE se refiere a Remote Command Execution, es decir, Ejecución Remota de Comandos. Info. en cuanto se publique el parche del software</description>
     </item>
     <item>
       <title>Servicios</title>
-      <link>http://localhost:1313/es/services/</link>
+      <link>https://maxibelino.github.io/es/services/</link>
       <pubDate>Tue, 26 Nov 2024 11:07:23 -0300</pubDate>
-      <guid>http://localhost:1313/es/services/</guid>
+      <guid>https://maxibelino.github.io/es/services/</guid>
       <description>Ciberseguridad Servicios de Red Team&#xA;Inteligencia de fuente de datos abiertos / OSINT - Open Source Intelligence&#xA;Auditorías de seguridad de redes</description>
     </item>
   </channel>

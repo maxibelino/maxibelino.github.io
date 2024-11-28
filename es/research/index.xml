@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Investigaciones on Dominando la Ciberseguridad</title>
-    <link>http://localhost:1313/es/research/</link>
+    <link>https://maxibelino.github.io/es/research/</link>
     <description>Recent content in Investigaciones on Dominando la Ciberseguridad</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Tue, 26 Nov 2024 14:45:35 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/es/research/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maxibelino.github.io/es/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-</title>
-      <link>http://localhost:1313/es/research/cves/cve1/</link>
+      <link>https://maxibelino.github.io/es/research/cves/cve1/</link>
       <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
-      <guid>http://localhost:1313/es/research/cves/cve1/</guid>
+      <guid>https://maxibelino.github.io/es/research/cves/cve1/</guid>
       <description>CVE #1&#xA;Definition El término RCE se refiere a Remote Command Execution, es decir, Ejecución Remota de Comandos. Info. en cuanto se publique el parche del software</description>
     </item>
   </channel>

@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dominando la Ciberseguridad</title>
-    <link>http://localhost:1313/es/tags/</link>
+    <link>https://maxibelino.github.io/es/tags/</link>
     <description>Recent content in Tags on Dominando la Ciberseguridad</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://maxibelino.github.io/es/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test</title>
-      <link>http://localhost:1313/es/tags/test/</link>
+      <link>https://maxibelino.github.io/es/tags/test/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>http://localhost:1313/es/tags/test/</guid>
+      <guid>https://maxibelino.github.io/es/tags/test/</guid>
       <description></description>
     </item>
     <item>
       <title>CVE</title>
-      <link>http://localhost:1313/es/tags/cve/</link>
+      <link>https://maxibelino.github.io/es/tags/cve/</link>
       <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
-      <guid>http://localhost:1313/es/tags/cve/</guid>
+      <guid>https://maxibelino.github.io/es/tags/cve/</guid>
       <description></description>
     </item>
   </channel>
