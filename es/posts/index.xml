@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Publicaciones on Ciberseguridad</title>
+		<link>https://maxibelino.github.io/es/posts/</link>
+		<description>Recent content in Publicaciones on Ciberseguridad</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>es</language>
+		<copyright>Maximiliano Belino</copyright>
+		<lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
+		<atom:link href="https://maxibelino.github.io/es/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Secondpost</title>
+			<link>https://maxibelino.github.io/es/posts/secondpost/</link>
+			<pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+			
+			<guid>https://maxibelino.github.io/es/posts/secondpost/</guid>
+			<description><![CDATA[%!s(<nil>)]]></description>
+			<content type="html"><![CDATA[<p>Este post es en español</p>
+]]></content>
+		</item>
+		
+	</channel>
+</rss>

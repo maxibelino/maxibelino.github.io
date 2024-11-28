@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Cybersecurity Research</title>
+    <title>Tags on Cybersecurity</title>
     <link>https://maxibelino.github.io/en/tags/</link>
-    <description>Recent content in Tags on Cybersecurity Research</description>
+    <description>Recent content in Tags on Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Tue, 26 Nov 2024 14:45:35 -0300</lastBuildDate>
     <atom:link href="https://maxibelino.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>

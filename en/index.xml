@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cybersecurity Research</title>
+    <title>Cybersecurity</title>
     <link>https://maxibelino.github.io/en/</link>
-    <description>Recent content on Cybersecurity Research</description>
+    <description>Recent content on Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Tue, 26 Nov 2024 14:45:35 -0300</lastBuildDate>
     <atom:link href="https://maxibelino.github.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -27,7 +28,7 @@
       <link>https://maxibelino.github.io/en/about-me/</link>
       <pubDate>Mon, 25 Nov 2024 12:40:35 -0300</pubDate>
       <guid>https://maxibelino.github.io/en/about-me/</guid>
-      <description>My name is Maximiliano, I&amp;rsquo;m an Engineer and cybersecurity specialist.&#xA;Learn more and contribute on GitHub.</description>
+      <description>My name is Maximiliano, I&amp;rsquo;m an Engineer and cybersecurity specialist.&#xA;Contact me on LinkedIn.</description>
     </item>
     <item>
       <title>Firstpost</title>

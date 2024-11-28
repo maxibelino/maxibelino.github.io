@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Investigaciones en Ciberseguridad</title>
+    <title>Tags on Ciberseguridad</title>
     <link>https://maxibelino.github.io/es/tags/</link>
-    <description>Recent content in Tags on Investigaciones en Ciberseguridad</description>
+    <description>Recent content in Tags on Ciberseguridad</description>
     <generator>Hugo</generator>
     <language>es</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
     <atom:link href="https://maxibelino.github.io/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>https://maxibelino.github.io/es/tags/test/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/tags/test/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CVE</title>
+      <link>https://maxibelino.github.io/es/tags/cve/</link>
+      <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/tags/cve/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

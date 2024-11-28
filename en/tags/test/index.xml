@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Untagged on Cybersecurity Research</title>
-    <link>http://localhost:1313/en/tags/untagged/</link>
-    <description>Recent content in Untagged on Cybersecurity Research</description>
+    <title>Test on Cybersecurity Research</title>
+    <link>http://localhost:1313/en/tags/test/</link>
+    <description>Recent content in Test on Cybersecurity Research</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/untagged/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secondpost</title>
       <link>http://localhost:1313/en/posts/secondpost/</link>
