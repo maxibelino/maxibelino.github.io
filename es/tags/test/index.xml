@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on Ciberseguridad</title>
-    <link>https://maxibelino.github.io/es/tags/test/</link>
-    <description>Recent content in Test on Ciberseguridad</description>
+    <title>Test on Dominando la Ciberseguridad</title>
+    <link>http://localhost:1313/es/tags/test/</link>
+    <description>Recent content in Test on Dominando la Ciberseguridad</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="https://maxibelino.github.io/es/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/es/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secondpost</title>
-      <link>https://maxibelino.github.io/es/posts/secondpost/</link>
+      <link>http://localhost:1313/es/posts/secondpost/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/es/posts/secondpost/</guid>
+      <guid>http://localhost:1313/es/posts/secondpost/</guid>
       <description>Este post es en español</description>
     </item>
   </channel>
