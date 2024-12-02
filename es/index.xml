@@ -18,24 +18,10 @@
     </item>
     <item>
       <title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
-      <link>https://maxibelino.github.io/es/posts/phplfi2rce/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/es/posts/phplfi2rce/</guid>
-      <description>John Hammond Youtube video [^1]&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en Youtube.&#xA;1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen que cuente con PHP y con esta crearemos un contenedor Docker que contenga una página con un LFI.</description>
-    </item>
-    <item>
-      <title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
       <link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
       <guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
       <description>John Hammond YouTube video 1&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en YouTube.&#xA;1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen Docker que cuente con PHP.</description>
-    </item>
-    <item>
-      <title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
-      <link>https://maxibelino.github.io/es/posts/secondpost/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/es/posts/secondpost/</guid>
-      <description>John Hammond Youtube video 1&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en Youtube.&#xA;1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen que cuente con PHP, con esta crearemos un contenedor Docker que contenga una página con un LFI.</description>
     </item>
     <item>
       <title>CVE-2024-</title>
