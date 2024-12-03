@@ -7,21 +7,6 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Tue, 26 Nov 2024 14:45:35 -0300</lastBuildDate>
     <atom:link href="https://maxibelino.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CVE</title>
-      <link>https://maxibelino.github.io/en/tags/cve/</link>
-      <pubDate>Tue, 26 Nov 2024 14:45:35 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/cve/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Testing</title>
-      <link>https://maxibelino.github.io/en/tags/testing/</link>
-      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/testing/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>

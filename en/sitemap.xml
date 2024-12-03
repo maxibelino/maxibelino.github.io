@@ -2,34 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://maxibelino.github.io/en/tags/cve/</loc>
-    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/tags/cve/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/tags/cve/"
-                />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/research/cves/cve1/</loc>
-    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/research/cves/cve1/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/research/cves/cve1/"
-                />
-  </url><url>
     <loc>https://maxibelino.github.io/en/</loc>
-    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
+    <lastmod>2024-12-03T15:02:03-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -41,21 +15,7 @@
                 href="https://maxibelino.github.io/en/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/research/</loc>
-    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/research/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/research/"
-                />
-  </url><url>
     <loc>https://maxibelino.github.io/en/tags/</loc>
-    <lastmod>2024-11-26T14:45:35-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -66,50 +26,5 @@
                 hreflang="en"
                 href="https://maxibelino.github.io/en/tags/"
                 />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/services/</loc>
-    <lastmod>2024-11-26T11:07:23-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/services/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/services/"
-                />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/about/</loc>
-    <lastmod>2024-11-25T12:40:35-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/about/"
-                />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/posts/firstpost/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://maxibelino.github.io/en/posts/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/posts/"
-                />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/tags/testing/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url>
 </urlset>
