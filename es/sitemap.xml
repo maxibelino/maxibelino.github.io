@@ -131,5 +131,17 @@
                 hreflang="es"
                 href="https://maxibelino.github.io/es/services/"
                 />
+  </url><url>
+    <loc>https://maxibelino.github.io/es/research/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maxibelino.github.io/en/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://maxibelino.github.io/es/research/"
+                />
   </url>
 </urlset>

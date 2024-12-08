@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Investigaciones on Trusted Cibersecurity</title>
+    <link>https://maxibelino.github.io/es/research/</link>
+    <description>Recent content in Investigaciones on Trusted Cibersecurity</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <copyright>Maximiliano Belino</copyright>
+    <atom:link href="https://maxibelino.github.io/es/research/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
