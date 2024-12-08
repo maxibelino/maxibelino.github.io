@@ -21,7 +21,7 @@
       <link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
       <guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
-      <description>John Hammond YouTube video 1&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;Obs La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en YouTube. 1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen Docker que cuente con PHP.</description>
+      <description>John Hammond YouTube video 1&#xA;1. Objetivo 2. Creando nuestro Laboratorio Local 3. Variables argc y argv 4. Acerca del archivo pearcmd.php 5. Ejecución de pearcmd.php 6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos 7. Repetimos y creamos el archivo ahora haciendo uso del LFI 8. Usemos un script python (en vez de curl) para crear el archivo (.php) 1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.</description>
     </item>
     <item>
       <title>Servicios</title>

