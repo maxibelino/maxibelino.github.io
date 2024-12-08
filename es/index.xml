@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>m4xth0r ~ Aliados en Ciberseguridad</title>
+    <link>https://maxibelino.github.io/es/</link>
+    <description>Recent content on m4xth0r ~ Aliados en Ciberseguridad</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Wed, 27 Nov 2024 16:14:02 -0300</lastBuildDate>
+    <atom:link href="https://maxibelino.github.io/es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Acerca de</title>
+      <link>https://maxibelino.github.io/es/about/</link>
+      <pubDate>Wed, 27 Nov 2024 16:14:02 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/about/</guid>
+      <description>Mi nombre es Maximiliano, soy Ingeniero en Telecomunicaciones de la Universidad de la República (UDELAR) de Uruguay.&#xA;Tengo un Máster en Seguridad Ofensiva del Campusciberseguridad (España) avalado por la Universidad Católica de Murcia (UCAM) de España y soy certificado OSCP (OffSec) desde Febrero 2023.&#xA;Mis trabajos más recientes en ciberseguridad han sido 5 CVE que podré divulgar en el mes de Diciembre de 2024.&#xA;Mi pasión es la ciberseguridad y los nuevos desafíos.</description>
+    </item>
+    <item>
+      <title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
+      <link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
+      <description>John Hammond YouTube video 1&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;Obs La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en YouTube. 1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen Docker que cuente con PHP.</description>
+    </item>
+    <item>
+      <title>Servicios</title>
+      <link>https://maxibelino.github.io/es/services/</link>
+      <pubDate>Tue, 26 Nov 2024 11:07:23 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/services/</guid>
+      <description>Ciberseguridad Servicios de Red Team&#xA;Inteligencia de fuente de datos abiertos / OSINT - Open Source Intelligence&#xA;Auditorías de seguridad de redes</description>
+    </item>
+  </channel>
+</rss>

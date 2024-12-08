@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on m4xth0r ~ Allies in Cybersecurity</title>
+    <link>https://maxibelino.github.io/en/tags/</link>
+    <description>Recent content in Tags on m4xth0r ~ Allies in Cybersecurity</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
+    <atom:link href="https://maxibelino.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFI</title>
+      <link>https://maxibelino.github.io/en/tags/lfi/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/tags/lfi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>https://maxibelino.github.io/en/tags/php/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>https://maxibelino.github.io/en/tags/rce/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability</title>
+      <link>https://maxibelino.github.io/en/tags/vulnerability/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/tags/vulnerability/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on m4xth0r ~ Allies in Cybersecurity</title>
+		<link>https://maxibelino.github.io/en/posts/</link>
+		<description>Recent content in Posts on m4xth0r ~ Allies in Cybersecurity</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en</language>
+		<copyright>Maximiliano Belino</copyright>
+		<lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
+		<atom:link href="https://maxibelino.github.io/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
+			<link>https://maxibelino.github.io/en/posts/phplfitorce/</link>
+			<pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+			
+			<guid>https://maxibelino.github.io/en/posts/phplfitorce/</guid>
+			<description><![CDATA[LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.]]></description>
+			<content type="html"><![CDATA[<p>This post is only in spanish.</p>
+]]></content>
+		</item>
+		
+	</channel>
+</rss>

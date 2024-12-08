@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LFI on m4xth0r ~ Aliados en Ciberseguridad</title>
+    <link>https://maxibelino.github.io/es/tags/lfi/</link>
+    <description>Recent content in LFI on m4xth0r ~ Aliados en Ciberseguridad</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
+    <atom:link href="https://maxibelino.github.io/es/tags/lfi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
+      <link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
+      <description>John Hammond YouTube video 1&#xA;1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.&#xA;El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.&#xA;Obs La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en YouTube. 1.1. Laboratorio local Para hacer las pruebas nos vamos a crear una imagen Docker que cuente con PHP.</description>
+    </item>
+  </channel>
+</rss>

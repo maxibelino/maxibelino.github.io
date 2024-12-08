@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>m4xth0r ~ Allies in Cybersecurity</title>
+    <link>https://maxibelino.github.io/en/</link>
+    <description>Recent content on m4xth0r ~ Allies in Cybersecurity</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
+    <atom:link href="https://maxibelino.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
+      <link>https://maxibelino.github.io/en/posts/phplfitorce/</link>
+      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/posts/phplfitorce/</guid>
+      <description>This post is only in spanish.</description>
+    </item>
+    <item>
+      <title>Services</title>
+      <link>https://maxibelino.github.io/en/services/</link>
+      <pubDate>Tue, 26 Nov 2024 11:07:23 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/services/</guid>
+      <description>Cybersecurity Services Red Team services&#xA;OSINT - Open Source Intelligence&#xA;Pentesting</description>
+    </item>
+    <item>
+      <title>About Me</title>
+      <link>https://maxibelino.github.io/en/about/</link>
+      <pubDate>Mon, 25 Nov 2024 12:40:35 -0300</pubDate>
+      <guid>https://maxibelino.github.io/en/about/</guid>
+      <description>My name is Maximiliano, I&amp;rsquo;m an Engineer and cybersecurity specialist.&#xA;Contact me on LinkedIn.</description>
+    </item>
+  </channel>
+</rss>
