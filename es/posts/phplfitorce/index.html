@@ -672,14 +672,51 @@ Prueba con un &lsquo;+&rsquo; para evitar el espacio en blanco pero tampoco func
 			<div class="toc-title"></div>
 			<nav id="TableOfContents">
   <ul>
-    <li><a href="#1-objetivo">1. Objetivo</a></li>
-    <li><a href="#2-creando-nuestro-laboratorio-local">2. Creando nuestro Laboratorio Local</a></li>
-    <li><a href="#3-variables-argc-y-argv">3. Variables argc y argv</a></li>
-    <li><a href="#4-acerca-del-archivo-pearcmdphp">4. Acerca del archivo pearcmd.php</a></li>
-    <li><a href="#5-ejecución-de-pearcmdphp">5. Ejecución de pearcmd.php</a></li>
-    <li><a href="#6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos">6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos</a></li>
-    <li><a href="#7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI</a></li>
-    <li><a href="#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un <em>script python</em> (en vez de <em>curl</em>) para crear el archivo (<em>.php</em>)</a></li>
+    <li><a href="#1-objetivo">1. Objetivo</a>
+      <ul>
+        <li><a href="#11-laboratorio-local">1.1. Laboratorio local</a></li>
+        <li><a href="#12-blog-de-origen">1.2. Blog de origen</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-creando-nuestro-laboratorio-local">2. Creando nuestro Laboratorio Local</a>
+      <ul>
+        <li><a href="#21-archivos-y-contenedores">2.1. Archivos y contenedores</a></li>
+        <li><a href="#22-contenedor">2.2. Contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-variables-argc-y-argv">3. Variables argc y argv</a>
+      <ul>
+        <li><a href="#31-qué-ha-sucedido">3.1. Qué ha sucedido</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-acerca-del-archivo-pearcmdphp">4. Acerca del archivo pearcmd.php</a>
+      <ul>
+        <li><a href="#41-cuál-es-la-idea">4.1. Cuál es la idea</a></li>
+        <li><a href="#42-veamos-el-archivo-desde-dentro-del-contenedor">4.2. Veamos el archivo desde dentro del contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ejecución-de-pearcmdphp">5. Ejecución de pearcmd.php</a>
+      <ul>
+        <li><a href="#51-opción-1---utilizar-el-navegador-para-hacer-el-request-y-crear-un-archivo-dentro-del-contenedor">5.1. Opción 1 - Utilizar el navegador para hacer el request y crear un archivo dentro del contenedor</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-hacer-un-archivo-de-prueba-php-sin-usar-config-create-que-nos-dé-ejecución-de-comandos">6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos</a>
+      <ul>
+        <li><a href="#61-comandos-de-sistema">6.1. Comandos de sistema</a></li>
+        <li><a href="#62-reverse-shell">6.2. Reverse shell</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI</a>
+      <ul>
+        <li><a href="#71-usaremos-curl-para-crear-el-archivo">7.1. Usaremos curl para crear el archivo</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un <em>script python</em> (en vez de <em>curl</em>) para crear el archivo (<em>.php</em>)</a>
+      <ul>
+        <li><a href="#81-testing-usando-nuestro-hackpy">8.1. Testing usando nuestro <em>hack.py</em></a></li>
+        <li><a href="#82-ejecución-remota-de-comandos">8.2. Ejecución remota de comandos</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 		</aside>
