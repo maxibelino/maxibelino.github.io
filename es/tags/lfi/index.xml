@@ -14,7 +14,7 @@
       <link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
       <guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
-      <description>John Hammond YouTube video 1&#xA;1. Objetivo 2. Creando nuestro Laboratorio Local 3. Variables argc y argv 4. Acerca del archivo pearcmd.php 5. Ejecución de pearcmd.php 6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos 7. Repetimos y creamos el archivo ahora haciendo uso del LFI 8. Usemos un script python (en vez de curl) para crear el archivo (.php) 1. Objetivo Vamos a probar como un LFI nos llevará a un RCE vía una vulnerabilidad de PHP.</description>
+      <description>John Hammond YouTube video 1&#xA;1. Objetivo 2. Creando nuestro Laboratorio Local 3. Variables argc y argv 4. Acerca del archivo pearcmd.php 5. Ejecución de pearcmd.php 6. Hacer un archivo de prueba .php (sin usar config-create) que nos dé ejecución de comandos 7. Repetimos y creamos el archivo ahora haciendo uso del LFI 8. Usemos un script python (en vez de curl) para crear el archivo (.php) 1. Objetivo Vamos a probar como un LFI (Local File Inclusion) nos llevará a un RCE (Remote Command Execution) vía una vulnerabilidad de PHP.</description>
     </item>
   </channel>
 </rss>
