@@ -133,6 +133,7 @@
                 />
   </url><url>
     <loc>https://maxibelino.github.io/es/research/</loc>
+    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -142,6 +143,19 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://maxibelino.github.io/es/research/"
+                />
+  </url><url>
+    <loc>https://maxibelino.github.io/es/research/cves/</loc>
+    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maxibelino.github.io/en/research/cves/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://maxibelino.github.io/es/research/cves/"
                 />
   </url>
 </urlset>

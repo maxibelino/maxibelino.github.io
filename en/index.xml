@@ -17,18 +17,18 @@
       <description>This post is only in spanish.</description>
     </item>
     <item>
-      <title>Services</title>
+      <title>Cybersecurity Services</title>
       <link>https://maxibelino.github.io/en/services/</link>
       <pubDate>Tue, 26 Nov 2024 11:07:23 -0300</pubDate>
       <guid>https://maxibelino.github.io/en/services/</guid>
-      <description>Cybersecurity Services Red Team services&#xA;OSINT - Open Source Intelligence&#xA;Pentesting</description>
+      <description>Red Team Services A proactive approach to testing your organization&amp;rsquo;s resilience against advanced attacks. Our team simulates real-world threat scenarios to identify critical vulnerabilities and strengthen your systems&amp;rsquo; defenses.&#xA;Open Source Intelligence (OSINT) Harness the power of publicly available information. Our OSINT service collects, analyzes, and transforms online data into actionable intelligence to anticipate threats and protect your interests.&#xA;Network Security Audits Ensure the integrity of your network infrastructures with a comprehensive audit.</description>
     </item>
     <item>
       <title>About Me</title>
       <link>https://maxibelino.github.io/en/about/</link>
       <pubDate>Mon, 25 Nov 2024 12:40:35 -0300</pubDate>
       <guid>https://maxibelino.github.io/en/about/</guid>
-      <description>My name is Maximiliano, I&amp;rsquo;m an Engineer and cybersecurity specialist.&#xA;Contact me on LinkedIn.</description>
+      <description>Hi there! I’m Maximiliano, a cybersecurity enthusiast driven by the exciting challenges this field brings every day. I hold a degree in Telecommunications Engineering from the University of the Republic (UDELAR) in Uruguay, along with a Master’s in Offensive Security from Campusciberseguridad (Spain), endorsed by the Catholic University of Murcia (UCAM).&#xA;Since February 2023, I’ve been an OSCP (OffSec) certified professional, a milestone that showcases my commitment to continuous learning and tackling complex security problems.</description>
     </item>
   </channel>
 </rss>

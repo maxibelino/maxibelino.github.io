@@ -2,32 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://maxibelino.github.io/en/research/</loc>
-    <lastmod>2024-12-08T14:26:00-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/research/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/research/"
-                />
-  </url><url>
-    <loc>https://maxibelino.github.io/en/</loc>
-    <lastmod>2024-12-08T14:26:00-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://maxibelino.github.io/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://maxibelino.github.io/en/"
-                />
-  </url><url>
     <loc>https://maxibelino.github.io/en/tags/lfi/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
@@ -106,6 +80,19 @@
                 href="https://maxibelino.github.io/en/tags/"
                 />
   </url><url>
+    <loc>https://maxibelino.github.io/en/</loc>
+    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://maxibelino.github.io/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maxibelino.github.io/en/"
+                />
+  </url><url>
     <loc>https://maxibelino.github.io/en/tags/vulnerability/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
@@ -143,6 +130,32 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://maxibelino.github.io/en/about/"
+                />
+  </url><url>
+    <loc>https://maxibelino.github.io/en/research/cves/</loc>
+    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://maxibelino.github.io/es/research/cves/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maxibelino.github.io/en/research/cves/"
+                />
+  </url><url>
+    <loc>https://maxibelino.github.io/en/research/</loc>
+    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://maxibelino.github.io/es/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://maxibelino.github.io/en/research/"
                 />
   </url>
 </urlset>
