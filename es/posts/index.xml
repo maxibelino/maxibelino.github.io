@@ -1,20 +1,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Publicaciones on Trusted Cybersecurity</title>
-		<link>https://maxibelino.github.io/es/posts/</link>
+		<link>https://belino.com/es/posts/</link>
 		<description>Recent content in Publicaciones on Trusted Cybersecurity</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>es</language>
 		<copyright>Maximiliano Belino</copyright>
-		<lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-		<atom:link href="https://maxibelino.github.io/es/posts/index.xml" rel="self" type="application/rss+xml" />
+		<lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+		<atom:link href="https://belino.com/es/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Hack the Box - Informes técnicos</title>
+			<link>https://belino.com/es/posts/htb/</link>
+			<pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+			
+			<guid>https://belino.com/es/posts/htb/</guid>
+			<description><![CDATA[Esta página contendrá los Informes que he realizado de las máquinas de HTB]]></description>
+			<content type="html"><![CDATA[
+Próximamente iré publicando los informes (writeups) de las máquinas ya retiradas de HTB.
+]]></content>
+		</item>
 		
 		<item>
 			<title>Vulnerabilidad en PHP hasta 7.3. LFI to RCE</title>
-			<link>https://maxibelino.github.io/es/posts/phplfitorce/</link>
+			<link>https://belino.com/es/posts/phplfitorce/</link>
 			<pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
 			
-			<guid>https://maxibelino.github.io/es/posts/phplfitorce/</guid>
+			<guid>https://belino.com/es/posts/phplfitorce/</guid>
 			<description><![CDATA[LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.]]></description>
 			<content type="html"><![CDATA[<p><em>John Hammond YouTube video <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></em></p>
 <ul>

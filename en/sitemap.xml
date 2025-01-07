@@ -2,160 +2,212 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://maxibelino.github.io/en/tags/lfi/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/posts/htb/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/tags/lfi/"
+                href="https://belino.com/es/posts/htb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/tags/lfi/"
+                href="https://belino.com/en/posts/htb/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/tags/php/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/tags/htb/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/tags/php/"
+                href="https://belino.com/es/tags/htb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/tags/php/"
+                href="https://belino.com/en/tags/htb/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/posts/phplfitorce/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/posts/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/posts/phplfitorce/"
+                href="https://belino.com/es/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/posts/phplfitorce/"
+                href="https://belino.com/en/posts/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/posts/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/tags/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/posts/"
+                href="https://belino.com/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/posts/"
+                href="https://belino.com/en/tags/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/tags/rce/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/tags/rce/"
+                href="https://belino.com/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/tags/rce/"
+                href="https://belino.com/en/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/tags/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/tags/walkthrough/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/tags/"
+                href="https://belino.com/es/tags/walkthrough/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/tags/"
+                href="https://belino.com/en/tags/walkthrough/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <loc>https://belino.com/en/tags/writeups/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/"
+                href="https://belino.com/es/tags/writeups/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/"
+                href="https://belino.com/en/tags/writeups/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/tags/vulnerability/</loc>
+    <loc>https://belino.com/en/tags/lfi/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/tags/vulnerability/"
+                href="https://belino.com/es/tags/lfi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/tags/vulnerability/"
+                href="https://belino.com/en/tags/lfi/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/services/</loc>
+    <loc>https://belino.com/en/tags/php/</loc>
+    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/php/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/php/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/posts/phplfitorce/</loc>
+    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/posts/phplfitorce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/posts/phplfitorce/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/rce/</loc>
+    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/rce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/rce/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/vulnerability/</loc>
+    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/vulnerability/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/vulnerability/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/services/</loc>
     <lastmod>2024-11-26T11:07:23-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/services/"
+                href="https://belino.com/es/services/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/services/"
+                href="https://belino.com/en/services/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/about/</loc>
+    <loc>https://belino.com/en/about/</loc>
     <lastmod>2024-11-25T12:40:35-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/about/"
+                href="https://belino.com/es/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/about/"
+                href="https://belino.com/en/about/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/research/cves/</loc>
+    <loc>https://belino.com/en/research/cves/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/research/cves/"
+                href="https://belino.com/es/research/cves/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/research/cves/"
+                href="https://belino.com/en/research/cves/"
                 />
   </url><url>
-    <loc>https://maxibelino.github.io/en/research/</loc>
+    <loc>https://belino.com/en/research/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://maxibelino.github.io/es/research/"
+                href="https://belino.com/es/research/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://maxibelino.github.io/en/research/"
+                href="https://belino.com/en/research/"
                 />
   </url>
 </urlset>

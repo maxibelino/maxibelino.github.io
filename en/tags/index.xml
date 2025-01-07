@@ -2,39 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Trusted Cybersecurity</title>
-    <link>https://maxibelino.github.io/en/tags/</link>
+    <link>https://belino.com/en/tags/</link>
     <description>Recent content in Tags on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="https://maxibelino.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://belino.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTB</title>
+      <link>https://belino.com/en/tags/htb/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/en/tags/htb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Walkthrough</title>
+      <link>https://belino.com/en/tags/walkthrough/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/en/tags/walkthrough/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Writeups</title>
+      <link>https://belino.com/en/tags/writeups/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/en/tags/writeups/</guid>
+      <description></description>
+    </item>
     <item>
       <title>LFI</title>
-      <link>https://maxibelino.github.io/en/tags/lfi/</link>
+      <link>https://belino.com/en/tags/lfi/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/lfi/</guid>
+      <guid>https://belino.com/en/tags/lfi/</guid>
       <description></description>
     </item>
     <item>
       <title>Php</title>
-      <link>https://maxibelino.github.io/en/tags/php/</link>
+      <link>https://belino.com/en/tags/php/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/php/</guid>
+      <guid>https://belino.com/en/tags/php/</guid>
       <description></description>
     </item>
     <item>
       <title>RCE</title>
-      <link>https://maxibelino.github.io/en/tags/rce/</link>
+      <link>https://belino.com/en/tags/rce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/rce/</guid>
+      <guid>https://belino.com/en/tags/rce/</guid>
       <description></description>
     </item>
     <item>
       <title>Vulnerability</title>
-      <link>https://maxibelino.github.io/en/tags/vulnerability/</link>
+      <link>https://belino.com/en/tags/vulnerability/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://maxibelino.github.io/en/tags/vulnerability/</guid>
+      <guid>https://belino.com/en/tags/vulnerability/</guid>
       <description></description>
     </item>
   </channel>
