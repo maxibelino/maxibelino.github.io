@@ -2,268 +2,268 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://belino.com/en/posts/htb/</loc>
+    <loc>http://localhost:1313/en/posts/htb/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/posts/htb/"
+                href="http://localhost:1313/es/posts/htb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/posts/htb/"
+                href="http://localhost:1313/en/posts/htb/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/htb/</loc>
+    <loc>http://localhost:1313/en/tags/htb/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/htb/"
+                href="http://localhost:1313/es/tags/htb/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/htb/"
+                href="http://localhost:1313/en/tags/htb/"
                 />
   </url><url>
-    <loc>https://belino.com/en/posts/</loc>
+    <loc>http://localhost:1313/en/posts/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/posts/"
+                href="http://localhost:1313/es/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/posts/"
+                href="http://localhost:1313/en/posts/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/pwned/</loc>
+    <loc>http://localhost:1313/en/tags/pwned/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/pwned/"
+                href="http://localhost:1313/es/tags/pwned/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/pwned/"
+                href="http://localhost:1313/en/tags/pwned/"
                 />
   </url><url>
-    <loc>https://belino.com/en/posts/pwnedlabs/</loc>
+    <loc>http://localhost:1313/en/posts/pwnedlabs/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/posts/pwnedlabs/"
+                href="http://localhost:1313/es/posts/pwnedlabs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/posts/pwnedlabs/"
+                href="http://localhost:1313/en/posts/pwnedlabs/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/</loc>
+    <loc>http://localhost:1313/en/tags/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/"
+                href="http://localhost:1313/es/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/"
+                href="http://localhost:1313/en/tags/"
                 />
   </url><url>
-    <loc>https://belino.com/en/</loc>
+    <loc>http://localhost:1313/en/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/"
+                href="http://localhost:1313/es/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/"
+                href="http://localhost:1313/en/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/walkthrough/</loc>
+    <loc>http://localhost:1313/en/tags/walkthrough/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/walkthrough/"
+                href="http://localhost:1313/es/tags/walkthrough/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/walkthrough/"
+                href="http://localhost:1313/en/tags/walkthrough/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/writeups/</loc>
+    <loc>http://localhost:1313/en/tags/writeups/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/writeups/"
+                href="http://localhost:1313/es/tags/writeups/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/writeups/"
+                href="http://localhost:1313/en/tags/writeups/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/lfi/</loc>
+    <loc>http://localhost:1313/en/tags/lfi/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/lfi/"
+                href="http://localhost:1313/es/tags/lfi/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/lfi/"
+                href="http://localhost:1313/en/tags/lfi/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/php/</loc>
+    <loc>http://localhost:1313/en/tags/php/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/php/"
+                href="http://localhost:1313/es/tags/php/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/php/"
+                href="http://localhost:1313/en/tags/php/"
                 />
   </url><url>
-    <loc>https://belino.com/en/posts/phplfitorce/</loc>
+    <loc>http://localhost:1313/en/posts/phplfitorce/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/posts/phplfitorce/"
+                href="http://localhost:1313/es/posts/phplfitorce/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/posts/phplfitorce/"
+                href="http://localhost:1313/en/posts/phplfitorce/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/rce/</loc>
+    <loc>http://localhost:1313/en/tags/rce/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/rce/"
+                href="http://localhost:1313/es/tags/rce/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/rce/"
+                href="http://localhost:1313/en/tags/rce/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/vulnerability/</loc>
+    <loc>http://localhost:1313/en/tags/vulnerability/</loc>
     <lastmod>2024-11-27T15:23:13-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/tags/vulnerability/"
+                href="http://localhost:1313/es/tags/vulnerability/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/tags/vulnerability/"
+                href="http://localhost:1313/en/tags/vulnerability/"
                 />
   </url><url>
-    <loc>https://belino.com/en/services/</loc>
+    <loc>http://localhost:1313/en/services/</loc>
     <lastmod>2024-11-26T11:07:23-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/services/"
+                href="http://localhost:1313/es/services/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/services/"
+                href="http://localhost:1313/en/services/"
                 />
   </url><url>
-    <loc>https://belino.com/en/about/</loc>
+    <loc>http://localhost:1313/en/about/</loc>
     <lastmod>2024-11-25T12:40:35-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/about/"
+                href="http://localhost:1313/es/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/about/"
+                href="http://localhost:1313/en/about/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/csrf/</loc>
+    <loc>http://localhost:1313/en/tags/csrf/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/tags/cve/</loc>
+    <loc>http://localhost:1313/en/tags/cve/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50857/</loc>
+    <loc>http://localhost:1313/en/research/cves/cve-2024-50857/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50858/</loc>
+    <loc>http://localhost:1313/en/research/cves/cve-2024-50858/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50859/</loc>
+    <loc>http://localhost:1313/en/research/cves/cve-2024-50859/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50861/</loc>
+    <loc>http://localhost:1313/en/research/cves/cve-2024-50861/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/</loc>
+    <loc>http://localhost:1313/en/research/cves/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/research/cves/"
+                href="http://localhost:1313/es/research/cves/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/research/cves/"
+                href="http://localhost:1313/en/research/cves/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/refelected-xss/</loc>
+    <loc>http://localhost:1313/en/tags/refelected-xss/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/</loc>
+    <loc>http://localhost:1313/en/research/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://belino.com/es/research/"
+                href="http://localhost:1313/es/research/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://belino.com/en/research/"
+                href="http://localhost:1313/en/research/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/stored-xss/</loc>
+    <loc>http://localhost:1313/en/tags/stored-xss/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/tags/xss/</loc>
+    <loc>http://localhost:1313/en/tags/xss/</loc>
     <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-48760/</loc>
+    <loc>http://localhost:1313/en/research/cves/cve-2024-48760/</loc>
     <lastmod>2024-10-04T12:28:27-03:00</lastmod>
   </url>
 </urlset>

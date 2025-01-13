@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stored XSS on Trusted Cybersecurity</title>
-    <link>https://belino.com/en/tags/stored-xss/</link>
+    <link>http://localhost:1313/en/tags/stored-xss/</link>
     <description>Recent content in Stored XSS on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Mon, 25 Nov 2024 12:28:27 -0300</lastBuildDate>
-    <atom:link href="https://belino.com/en/tags/stored-xss/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/stored-xss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-50861. GestioIP Vulnerability: Stored XSS</title>
-      <link>https://belino.com/en/research/cves/cve-2024-50861/</link>
+      <link>http://localhost:1313/en/research/cves/cve-2024-50861/</link>
       <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/research/cves/cve-2024-50861/</guid>
+      <guid>http://localhost:1313/en/research/cves/cve-2024-50861/</guid>
       <description>Information Description Proof-of-Concept Exploit Description Steps to Reproduce Information Description The ip_mod_dns_key_form.cgi request is vulnerable to Stored XSS (Stored Cross-Site Scripting). An attacker can save malicious content in the &amp;ldquo;TSIG Key&amp;rdquo; (tsig_key) field, which could allow for data exfiltration and enable CSRF (Cross-Site Request Forgery) attacks.&#xA;Versions Affected: 3.5.7&#xA;Proof-of-Concept Exploit Description The http://localhost/gestioip/res/ip_mod_dns_key_form.cgi feature of GestioIP 3.5.7 is vulnerable to Stored XSS. An authenticated attacker with appropriate permissions can inject malicious code into the tsig_key form field and save it to the database.</description>
     </item>
   </channel>
