@@ -44,6 +44,32 @@
                 href="https://belino.com/es/posts/"
                 />
   </url><url>
+    <loc>https://belino.com/es/tags/pwned/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/pwned/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/pwned/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/posts/pwnedlabs/</loc>
+    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/posts/pwnedlabs/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/posts/pwnedlabs/"
+                />
+  </url><url>
     <loc>https://belino.com/es/tags/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link

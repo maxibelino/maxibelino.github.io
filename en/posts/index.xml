@@ -22,6 +22,18 @@ HTB retired machines writeups. Coming soon!
 		</item>
 		
 		<item>
+			<title>Pwned Labs - Writeups</title>
+			<link>https://belino.com/en/posts/pwnedlabs/</link>
+			<pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+			
+			<guid>https://belino.com/en/posts/pwnedlabs/</guid>
+			<description><![CDATA[This page will list all the writeups I have done from Pwned Labs.]]></description>
+			<content type="html"><![CDATA[
+Pwned Labs writeups. Coming soon!
+]]></content>
+		</item>
+		
+		<item>
 			<title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
 			<link>https://belino.com/en/posts/phplfitorce/</link>
 			<pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>

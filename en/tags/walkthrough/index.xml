@@ -16,5 +16,12 @@
       <guid>https://belino.com/en/posts/htb/</guid>
       <description>HTB retired machines writeups. Coming soon!</description>
     </item>
+    <item>
+      <title>Pwned Labs - Writeups</title>
+      <link>https://belino.com/en/posts/pwnedlabs/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/en/posts/pwnedlabs/</guid>
+      <description>Pwned Labs writeups. Coming soon!</description>
+    </item>
   </channel>
 </rss>

@@ -16,5 +16,12 @@
       <guid>https://belino.com/es/posts/htb/</guid>
       <description>Próximamente iré publicando los informes (writeups) de las máquinas ya retiradas de HTB.</description>
     </item>
+    <item>
+      <title>Pwned Labs - Informes técnicos</title>
+      <link>https://belino.com/es/posts/pwnedlabs/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/es/posts/pwnedlabs/</guid>
+      <description>Próximamente!</description>
+    </item>
   </channel>
 </rss>

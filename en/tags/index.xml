@@ -17,6 +17,13 @@
       <description></description>
     </item>
     <item>
+      <title>Pwned</title>
+      <link>https://belino.com/en/tags/pwned/</link>
+      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://belino.com/en/tags/pwned/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Walkthrough</title>
       <link>https://belino.com/en/tags/walkthrough/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
@@ -56,6 +63,20 @@
       <link>https://belino.com/en/tags/vulnerability/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
       <guid>https://belino.com/en/tags/vulnerability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CSRF</title>
+      <link>https://belino.com/en/tags/csrf/</link>
+      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/csrf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CVE</title>
+      <link>https://belino.com/en/tags/cve/</link>
+      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/cve/</guid>
       <description></description>
     </item>
   </channel>
