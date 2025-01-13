@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Mon, 25 Nov 2024 12:28:27 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/en/tags/csrf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-50858. GestioIP Vulnerability: CSRF</title>
       <link>https://belino.com/en/research/cves/cve-2024-50858/</link>
-      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
+      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
       <guid>https://belino.com/en/research/cves/cve-2024-50858/</guid>
       <description>Information Example 1 - Leading to Privilege Escalation Information Proof-of-Concept Exploit Description Prerequisite Usage/Exploitation Example 2 - Reset database Information Proof-of-Concept Exploit Description Usage/Exploitation Payloads Information Description: The GestioIP application has many endpoints and they are vulnerable to CSRF. This allows an attacker to execute actions through the admin&amp;rsquo;s browser on the application if the admin visits a malicious URL hosted by the attacker. These actions can modify, delete, or exfiltrate data from the application.</description>
     </item>

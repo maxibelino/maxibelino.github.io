@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Mon, 25 Nov 2024 12:28:27 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/en/tags/xss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-50857. GestioIP Vulnerability: XSS</title>
       <link>https://belino.com/en/research/cves/cve-2024-50857/</link>
-      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
+      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
       <guid>https://belino.com/en/research/cves/cve-2024-50857/</guid>
       <description>Information Proof-of-Concept Exploit Description Prerequisites Case 1: Data exfiltration Usage/Exploitation Case 2: XSS and CSRF chained Usage/Exploitation OBS Payloads Flask server Information Description: The &amp;quot;ip_do_job&amp;quot; request is vulnerable to XSS (Cross-Site Scripting), allowing data exfiltration and enabling CSRF (Cross-Site Request Forgery) attacks.&#xA;Versions Affected: 3.5.7 Proof-of-Concept Exploit Description The &amp;quot;ip_do_job&amp;quot; feature of GestioIP 3.5.7 is vulnerable to XSS, leading to data exfiltration and CSRF attacks. Two examples (Case 1 and Case 2) are described below.</description>
     </item>

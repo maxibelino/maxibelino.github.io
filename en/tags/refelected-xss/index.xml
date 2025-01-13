@@ -7,12 +7,12 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Mon, 25 Nov 2024 12:28:27 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/en/tags/refelected-xss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2024-50859. GestioIP Vulnerability: Reflected XSS</title>
       <link>https://belino.com/en/research/cves/cve-2024-50859/</link>
-      <pubDate>Mon, 25 Nov 2024 12:28:27 -0300</pubDate>
+      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
       <guid>https://belino.com/en/research/cves/cve-2024-50859/</guid>
       <description>Information Description Proof-of-Concept Exploit Description Steps to Reproduce Case: Basic test &amp;ldquo;hello world!&amp;rdquo; Usage/Exploitation Case: Data exfiltration Usage/Exploitation Files Information Description The ip_import_acl_csv request is vulnerable to Reflected XSS (Reflected Cross-Site Scripting); the user can upload a file and the file content is reflected in the HTML response without being sanitized. If the file uploaded by the user has an incorrect format and an error occurs during its processing, part of the file&amp;rsquo;s content may be displayed in the browser.</description>
     </item>

@@ -2,6 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://belino.com/en/tags/csrf/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/tags/cve/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/cves/cve-2024-50857/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/cves/cve-2024-50858/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/cves/cve-2024-50859/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/cves/cve-2024-50861/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/cves/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/research/cves/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/research/cves/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/refelected-xss/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/research/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/research/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/stored-xss/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/tags/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/vulnerability/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/vulnerability/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/vulnerability/"
+                />
+  </url><url>
+    <loc>https://belino.com/en/tags/xss/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+  </url><url>
     <loc>https://belino.com/en/posts/htb/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -65,32 +157,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://belino.com/en/posts/pwnedlabs/"
-                />
-  </url><url>
-    <loc>https://belino.com/en/tags/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/tags/"
-                />
-  </url><url>
-    <loc>https://belino.com/en/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/"
                 />
   </url><url>
     <loc>https://belino.com/en/tags/walkthrough/</loc>
@@ -171,19 +237,6 @@
                 href="https://belino.com/en/tags/rce/"
                 />
   </url><url>
-    <loc>https://belino.com/en/tags/vulnerability/</loc>
-    <lastmod>2024-11-27T15:23:13-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/tags/vulnerability/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/tags/vulnerability/"
-                />
-  </url><url>
     <loc>https://belino.com/en/services/</loc>
     <lastmod>2024-11-26T11:07:23-03:00</lastmod>
     <xhtml:link
@@ -209,59 +262,6 @@
                 hreflang="en"
                 href="https://belino.com/en/about/"
                 />
-  </url><url>
-    <loc>https://belino.com/en/tags/csrf/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/tags/cve/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50857/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50858/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50859/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/cves/cve-2024-50861/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/cves/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/research/cves/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/research/cves/"
-                />
-  </url><url>
-    <loc>https://belino.com/en/tags/refelected-xss/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/research/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/research/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/research/"
-                />
-  </url><url>
-    <loc>https://belino.com/en/tags/stored-xss/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-  </url><url>
-    <loc>https://belino.com/en/tags/xss/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
   </url><url>
     <loc>https://belino.com/en/research/cves/cve-2024-48760/</loc>
     <lastmod>2024-10-04T12:28:27-03:00</lastmod>

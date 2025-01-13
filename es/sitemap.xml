@@ -2,6 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://belino.com/es/research/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/research/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/research/cves/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/research/cves/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/research/cves/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/</loc>
+    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/"
+                />
+  </url><url>
     <loc>https://belino.com/es/posts/htb/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -81,19 +120,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://belino.com/es/tags/"
-                />
-  </url><url>
-    <loc>https://belino.com/es/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/"
                 />
   </url><url>
     <loc>https://belino.com/es/tags/walkthrough/</loc>
@@ -211,32 +237,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://belino.com/es/services/"
-                />
-  </url><url>
-    <loc>https://belino.com/es/research/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/research/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/research/"
-                />
-  </url><url>
-    <loc>https://belino.com/es/research/cves/</loc>
-    <lastmod>2024-11-25T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/research/cves/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/research/cves/"
                 />
   </url>
 </urlset>
