@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Pwned Labs - Writeups on Trusted Cybersecurity</title>
-		<link>http://localhost:1313/en/posts/pwnedlabs/</link>
+		<link>https://belino.com/en/posts/pwnedlabs/</link>
 		<description>Recent content in Pwned Labs - Writeups on Trusted Cybersecurity</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en</language>
 		<copyright>Maximiliano Belino</copyright>
 		<lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-		<atom:link href="http://localhost:1313/en/posts/pwnedlabs/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="https://belino.com/en/posts/pwnedlabs/index.xml" rel="self" type="application/rss+xml" />
 		
 	</channel>
 </rss>

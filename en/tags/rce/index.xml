@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RCE on Trusted Cybersecurity</title>
-    <link>http://localhost:1313/en/tags/rce/</link>
+    <link>https://belino.com/en/tags/rce/</link>
     <description>Recent content in RCE on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/rce/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://belino.com/en/tags/rce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
-      <link>http://localhost:1313/en/posts/phplfitorce/</link>
+      <link>https://belino.com/en/posts/phplfitorce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>http://localhost:1313/en/posts/phplfitorce/</guid>
+      <guid>https://belino.com/en/posts/phplfitorce/</guid>
       <description>This post is only in spanish.</description>
     </item>
     <item>
       <title>CVE-2024-48760. GestioIP Vulnerability: RCE</title>
-      <link>http://localhost:1313/en/research/cves/cve-2024-48760/</link>
+      <link>https://belino.com/en/research/cves/cve-2024-48760/</link>
       <pubDate>Fri, 04 Oct 2024 12:28:27 -0300</pubDate>
-      <guid>http://localhost:1313/en/research/cves/cve-2024-48760/</guid>
+      <guid>https://belino.com/en/research/cves/cve-2024-48760/</guid>
       <description>Information Description Attack Vector Upload a test file &amp;ldquo;README.txt&amp;rdquo; Upload a backdoor Reverse Shell Option 1: using the python script Option 2: using base64 and bash to execute the reverse shell Single Encode base64 or: double encode your payload (to avoid &amp;lsquo;+&amp;rsquo; signs) Option 3: hosting a file and then calling for it Files Python script Server upload.cgi (backup file) Backdoor code Information Description An issue in GestiolP v.3.5.7 allows a remote attacker to execute arbitrary code via the upload function.</description>
     </item>
   </channel>

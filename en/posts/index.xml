@@ -1,20 +1,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Posts on Trusted Cybersecurity</title>
-		<link>http://localhost:1313/en/posts/</link>
+		<link>https://belino.com/en/posts/</link>
 		<description>Recent content in Posts on Trusted Cybersecurity</description>
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en</language>
 		<copyright>Maximiliano Belino</copyright>
 		<lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-		<atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="https://belino.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
 			<title>Hack the box - Writeups</title>
-			<link>http://localhost:1313/en/posts/htb/</link>
+			<link>https://belino.com/en/posts/htb/</link>
 			<pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
 			
-			<guid>http://localhost:1313/en/posts/htb/</guid>
+			<guid>https://belino.com/en/posts/htb/</guid>
 			<description><![CDATA[This page will list all the writeups I have of retired machines from HTB.]]></description>
 			<content type="html"><![CDATA[
 HTB retired machines writeups. Coming soon!
@@ -23,10 +23,10 @@ HTB retired machines writeups. Coming soon!
 		
 		<item>
 			<title>Pwned Labs - Writeups</title>
-			<link>http://localhost:1313/en/posts/pwnedlabs/</link>
+			<link>https://belino.com/en/posts/pwnedlabs/</link>
 			<pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
 			
-			<guid>http://localhost:1313/en/posts/pwnedlabs/</guid>
+			<guid>https://belino.com/en/posts/pwnedlabs/</guid>
 			<description><![CDATA[This page will list all the writeups I have done from Pwned Labs.]]></description>
 			<content type="html"><![CDATA[
 Pwned Labs writeups. Coming soon!
@@ -35,10 +35,10 @@ Pwned Labs writeups. Coming soon!
 		
 		<item>
 			<title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
-			<link>http://localhost:1313/en/posts/phplfitorce/</link>
+			<link>https://belino.com/en/posts/phplfitorce/</link>
 			<pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
 			
-			<guid>http://localhost:1313/en/posts/phplfitorce/</guid>
+			<guid>https://belino.com/en/posts/phplfitorce/</guid>
 			<description><![CDATA[LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.]]></description>
 			<content type="html"><![CDATA[<p>This post is only in <a href="../../../es/posts/phplfitorce/">spanish</a>.</p>
 ]]></content>

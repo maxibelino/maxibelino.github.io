@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Php on Trusted Cybersecurity</title>
-    <link>http://localhost:1313/en/tags/php/</link>
+    <link>https://belino.com/en/tags/php/</link>
     <description>Recent content in Php on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 27 Nov 2024 15:23:13 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://belino.com/en/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
-      <link>http://localhost:1313/en/posts/phplfitorce/</link>
+      <link>https://belino.com/en/posts/phplfitorce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>http://localhost:1313/en/posts/phplfitorce/</guid>
+      <guid>https://belino.com/en/posts/phplfitorce/</guid>
       <description>This post is only in spanish.</description>
     </item>
   </channel>
