@@ -24,6 +24,13 @@
       <description></description>
     </item>
     <item>
+      <title>RCE</title>
+      <link>https://belino.com/en/tags/rce/</link>
+      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Refelected XSS</title>
       <link>https://belino.com/en/tags/refelected-xss/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
@@ -70,13 +77,6 @@
       <link>https://belino.com/en/tags/walkthrough/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://belino.com/en/tags/walkthrough/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Writeups</title>
-      <link>https://belino.com/en/tags/writeups/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/writeups/</guid>
       <description></description>
     </item>
   </channel>
