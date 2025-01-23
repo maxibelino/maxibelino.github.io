@@ -2,74 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Trusted Cybersecurity</title>
-    <link>https://belino.com/es/tags/</link>
+    <link>http://localhost:1313/es/tags/</link>
     <description>Recent content in Tags on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://belino.com/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/es/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTB</title>
-      <link>https://belino.com/es/tags/htb/</link>
+      <link>http://localhost:1313/es/tags/htb/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/htb/</guid>
+      <guid>http://localhost:1313/es/tags/htb/</guid>
       <description></description>
     </item>
     <item>
       <title>Informes</title>
-      <link>https://belino.com/es/tags/informes/</link>
+      <link>http://localhost:1313/es/tags/informes/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/informes/</guid>
+      <guid>http://localhost:1313/es/tags/informes/</guid>
       <description></description>
     </item>
     <item>
       <title>Pwned</title>
-      <link>https://belino.com/es/tags/pwned/</link>
+      <link>http://localhost:1313/es/tags/pwned/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/pwned/</guid>
+      <guid>http://localhost:1313/es/tags/pwned/</guid>
       <description></description>
     </item>
     <item>
       <title>Walkthrough</title>
-      <link>https://belino.com/es/tags/walkthrough/</link>
+      <link>http://localhost:1313/es/tags/walkthrough/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/walkthrough/</guid>
+      <guid>http://localhost:1313/es/tags/walkthrough/</guid>
       <description></description>
     </item>
     <item>
       <title>Writeups</title>
-      <link>https://belino.com/es/tags/writeups/</link>
+      <link>http://localhost:1313/es/tags/writeups/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/writeups/</guid>
+      <guid>http://localhost:1313/es/tags/writeups/</guid>
       <description></description>
     </item>
     <item>
       <title>LFI</title>
-      <link>https://belino.com/es/tags/lfi/</link>
+      <link>http://localhost:1313/es/tags/lfi/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/lfi/</guid>
+      <guid>http://localhost:1313/es/tags/lfi/</guid>
       <description></description>
     </item>
     <item>
       <title>Php</title>
-      <link>https://belino.com/es/tags/php/</link>
+      <link>http://localhost:1313/es/tags/php/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/php/</guid>
+      <guid>http://localhost:1313/es/tags/php/</guid>
       <description></description>
     </item>
     <item>
       <title>RCE</title>
-      <link>https://belino.com/es/tags/rce/</link>
+      <link>http://localhost:1313/es/tags/rce/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/rce/</guid>
+      <guid>http://localhost:1313/es/tags/rce/</guid>
       <description></description>
     </item>
     <item>
       <title>Vulnerability</title>
-      <link>https://belino.com/es/tags/vulnerability/</link>
+      <link>http://localhost:1313/es/tags/vulnerability/</link>
       <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/vulnerability/</guid>
+      <guid>http://localhost:1313/es/tags/vulnerability/</guid>
       <description></description>
     </item>
   </channel>

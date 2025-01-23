@@ -2,81 +2,81 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Trusted Cybersecurity</title>
-    <link>https://belino.com/en/tags/</link>
+    <link>http://localhost:1313/en/tags/</link>
     <description>Recent content in Tags on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Mon, 13 Jan 2025 12:28:27 -0300</lastBuildDate>
-    <atom:link href="https://belino.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CSRF</title>
-      <link>https://belino.com/en/tags/csrf/</link>
+      <link>http://localhost:1313/en/tags/csrf/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/csrf/</guid>
+      <guid>http://localhost:1313/en/tags/csrf/</guid>
       <description></description>
     </item>
     <item>
       <title>CVE</title>
-      <link>https://belino.com/en/tags/cve/</link>
+      <link>http://localhost:1313/en/tags/cve/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/cve/</guid>
+      <guid>http://localhost:1313/en/tags/cve/</guid>
       <description></description>
     </item>
     <item>
       <title>RCE</title>
-      <link>https://belino.com/en/tags/rce/</link>
+      <link>http://localhost:1313/en/tags/rce/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/rce/</guid>
+      <guid>http://localhost:1313/en/tags/rce/</guid>
       <description></description>
     </item>
     <item>
       <title>Refelected XSS</title>
-      <link>https://belino.com/en/tags/refelected-xss/</link>
+      <link>http://localhost:1313/en/tags/refelected-xss/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/refelected-xss/</guid>
+      <guid>http://localhost:1313/en/tags/refelected-xss/</guid>
       <description></description>
     </item>
     <item>
       <title>Stored XSS</title>
-      <link>https://belino.com/en/tags/stored-xss/</link>
+      <link>http://localhost:1313/en/tags/stored-xss/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/stored-xss/</guid>
+      <guid>http://localhost:1313/en/tags/stored-xss/</guid>
       <description></description>
     </item>
     <item>
       <title>Vulnerability</title>
-      <link>https://belino.com/en/tags/vulnerability/</link>
+      <link>http://localhost:1313/en/tags/vulnerability/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/vulnerability/</guid>
+      <guid>http://localhost:1313/en/tags/vulnerability/</guid>
       <description></description>
     </item>
     <item>
       <title>XSS</title>
-      <link>https://belino.com/en/tags/xss/</link>
+      <link>http://localhost:1313/en/tags/xss/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/xss/</guid>
+      <guid>http://localhost:1313/en/tags/xss/</guid>
       <description></description>
     </item>
     <item>
       <title>HTB</title>
-      <link>https://belino.com/en/tags/htb/</link>
+      <link>http://localhost:1313/en/tags/htb/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/htb/</guid>
+      <guid>http://localhost:1313/en/tags/htb/</guid>
       <description></description>
     </item>
     <item>
       <title>Pwned</title>
-      <link>https://belino.com/en/tags/pwned/</link>
+      <link>http://localhost:1313/en/tags/pwned/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/pwned/</guid>
+      <guid>http://localhost:1313/en/tags/pwned/</guid>
       <description></description>
     </item>
     <item>
       <title>Walkthrough</title>
-      <link>https://belino.com/en/tags/walkthrough/</link>
+      <link>http://localhost:1313/en/tags/walkthrough/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/walkthrough/</guid>
+      <guid>http://localhost:1313/en/tags/walkthrough/</guid>
       <description></description>
     </item>
   </channel>

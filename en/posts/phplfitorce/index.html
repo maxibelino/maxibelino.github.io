@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
     
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-0TJZ3HFG6H"></script>
@@ -54,7 +54,7 @@
   <meta itemprop="datePublished" content="2024-11-27T15:23:13-03:00">
   <meta itemprop="dateModified" content="2024-11-27T15:23:13-03:00">
   <meta itemprop="wordCount" content="6">
-  <meta itemprop="keywords" content="LFI,Php,RCE,Vulnerability"><meta property="og:url" content="https://belino.com/en/posts/phplfitorce/">
+  <meta itemprop="keywords" content="LFI,Php,RCE,Vulnerability"><meta property="og:url" content="http://localhost:1313/en/posts/phplfitorce/">
   <meta property="og:site_name" content="Trusted Cybersecurity">
   <meta property="og:title" content="PHP up to 7.3 Vulnerability. LFI to RCE">
   <meta property="og:description" content="LFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.">
@@ -88,11 +88,11 @@
     "author":{
         "@type": "Person",
         "name": "Maximiliano Belino",
-        "url": "https://belino.com/en/about/"
+        "url": "http://localhost:1313/en/about/"
         },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://belino.com/en/posts/phplfitorce/"
+      "@id": "http://localhost:1313/en/posts/phplfitorce/"
     },
     "publisher": {
       "@type": "Organization",
@@ -100,15 +100,15 @@
       "description": "Cybersecurity expert,Cloud, AD, VMs",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://belino.com/favicon.ico"
+        "url": "http://localhost:1313/favicon.ico"
       }
     }
 }
 </script><title>PHP up to 7.3 Vulnerability. LFI to RCE</title>
-<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="https://belino.com/css/style.min.25c88b6154c306fe460b1ed752089bbd1b40ee9caceb5739c309a147f9b647f4.css" integrity="sha256-JciLYVTDBv5GCx7XUgibvRtA7pys61c5wwmhR/m2R/Q=" crossorigin="anonymous">
+<link rel="stylesheet dns-prefetch preconnect preload prefetch" as="style" href="http://localhost:1313/css/style.min.25c88b6154c306fe460b1ed752089bbd1b40ee9caceb5739c309a147f9b647f4.css" integrity="sha256-JciLYVTDBv5GCx7XUgibvRtA7pys61c5wwmhR/m2R/Q=" crossorigin="anonymous">
 	<nav class="LangNav" style="text-align:right;">
 	
-		<a href="https://belino.com/es/posts/phplfitorce/">Español</a>
+		<a href="http://localhost:1313/es/posts/phplfitorce/">Español</a>
 		 🇪🇸 
 		
 	
@@ -120,7 +120,7 @@
 				<div class="site-branding">
 					<a href="/en/">Trusted Cybersecurity</a>
 				</div>
-				<nav class="site-nav hide-in-mobile"><a href="https://belino.com/en/services/">Services</a><a href="https://belino.com/en/research/">Research</a><a href="https://belino.com/en/posts/">Posts</a><a href="https://belino.com/en/about/">About</a></nav>
+				<nav class="site-nav hide-in-mobile"><a href="http://localhost:1313/en/services/">Services</a><a href="http://localhost:1313/en/research/">Research</a><a href="http://localhost:1313/en/posts/">Posts</a><a href="http://localhost:1313/en/about/">About</a></nav>
 			</div>
 			<div class="hdr-right hdr-icons" style="font-size: 18px;">
 				<span class="hdr-links hide-in-mobile"><a href="mailto:max.cybersecurity@belino.com" target="_blank" rel="noopener me" title="Mail"><svg xmlns="http://www.w3.org/2000/svg" class="feather feather-link" width="24" height="24" viewBox="0 0 24 24"
@@ -156,26 +156,26 @@
     
     <ul>
         <li>
-            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=https%3a%2f%2fbelino.com%2fen%2fposts%2fphplfitorce%2f&amp;text=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://twitter.com/intent/tweet?hashtags=hermit2&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fphplfitorce%2f&amp;text=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE" target="_blank" rel="noopener" aria-label="Share on X"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path class="st0" d="m21.3 21.1 -11.4 -18.2h-7.2l11.4 18.2zm-18.6 0 7.2 -6.6m4.2 -5 7.2 -6.6" />
 </svg></a>
         </li>
         <li>
-            <a href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fbelino.com%2fen%2fposts%2fphplfitorce%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fphplfitorce%2f" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
 </svg></a>
         </li>
         <li>
-            <a href="mailto:?subject=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE&amp;body=https%3a%2f%2fbelino.com%2fen%2fposts%2fphplfitorce%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="mailto:?subject=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE&amp;body=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fphplfitorce%2f" target="_self" rel="noopener" aria-label="Share on Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
    <polyline points="22,6 12,13 2,6"></polyline>
 </svg></a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbelino.com%2fen%2fposts%2fphplfitorce%2f&amp;source=https%3a%2f%2fbelino.com%2f&amp;title=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE&amp;summary=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE%2c%20by%20Maximiliano%20Belino%0a%0aLFI%20to%20RCE%20%3d%20Local%20File%20Inclusion%20to%20Remote%20Command%20Execution.%20Based%20on%20John%20Hammond%20Youtube%20video.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fphplfitorce%2f&amp;source=http%3a%2f%2flocalhost%3a1313%2f&amp;title=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE&amp;summary=PHP%20up%20to%207.3%20Vulnerability.%20LFI%20to%20RCE%2c%20by%20Maximiliano%20Belino%0a%0aLFI%20to%20RCE%20%3d%20Local%20File%20Inclusion%20to%20Remote%20Command%20Execution.%20Based%20on%20John%20Hammond%20Youtube%20video.%0a" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none"
    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
    <rect x="2" y="9" width="4" height="12"></rect>
@@ -183,7 +183,7 @@
 </svg></a>
         </li>
         <li>
-            <a href="#" onclick="linkShare(&#34;PHP up to 7.3 Vulnerability. LFI to RCE&#34;,&#34;https://belino.com/en/posts/phplfitorce/&#34;,&#34;PHP up to 7.3 Vulnerability. LFI to RCE, by Maximiliano Belino\n\nLFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <a href="#" onclick="linkShare(&#34;PHP up to 7.3 Vulnerability. LFI to RCE&#34;,&#34;http://localhost:1313/en/posts/phplfitorce/&#34;,&#34;PHP up to 7.3 Vulnerability. LFI to RCE, by Maximiliano Belino\n\nLFI to RCE = Local File Inclusion to Remote Command Execution. Based on John Hammond Youtube video.\n&#34;); return false;" target="_self" rel="noopener" aria-label="Copy Link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
       <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -201,10 +201,10 @@
 	</header>
 	<div id="mobile-menu" class="animated fast">
 		<ul>
-			<li><a href="https://belino.com/en/services/">Services</a></li>
-			<li><a href="https://belino.com/en/research/">Research</a></li>
-			<li><a href="https://belino.com/en/posts/">Posts</a></li>
-			<li><a href="https://belino.com/en/about/">About</a></li>
+			<li><a href="http://localhost:1313/en/services/">Services</a></li>
+			<li><a href="http://localhost:1313/en/research/">Research</a></li>
+			<li><a href="http://localhost:1313/en/posts/">Posts</a></li>
+			<li><a href="http://localhost:1313/en/about/">About</a></li>
 		</ul>
 	</div>
 
@@ -224,7 +224,7 @@
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon">
       <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
       <line x1="7" y1="7" x2="7" y2="7"></line>
-   </svg><span class="tag"><a href="https://belino.com/en/tags/lfi">LFI</a></span><span class="tag"><a href="https://belino.com/en/tags/php">php</a></span><span class="tag"><a href="https://belino.com/en/tags/rce">RCE</a></span><span class="tag"><a href="https://belino.com/en/tags/vulnerability">vulnerability</a></span></p>
+   </svg><span class="tag"><a href="http://localhost:1313/en/tags/lfi">LFI</a></span><span class="tag"><a href="http://localhost:1313/en/tags/php">php</a></span><span class="tag"><a href="http://localhost:1313/en/tags/rce">RCE</a></span><span class="tag"><a href="http://localhost:1313/en/tags/vulnerability">vulnerability</a></span></p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -265,14 +265,20 @@
 
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>
-		&copy; 2025 <a href="https://belino.com/">m4xth0r</a>
-		&#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		&copy; 2025 <a href="http://localhost:1313/">m4xth0r</a>
+		&#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+		&#183; <a href="http://localhost:1313/en/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss">
+   <path d="M4 11a9 9 0 0 1 9 9"></path>
+   <path d="M4 4a16 16 0 0 1 16 16"></path>
+   <circle cx="5" cy="19" r="1"></circle>
+</svg></a></p>
 
 </footer>
 
-<script async src="https://belino.com/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="https://belino.com/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script><nav class="LangNav" style="text-align: center;">
+<script async src="http://localhost:1313/js/bundle.min.c7c384e4d29d192bbac6811ae4660bb01767194a5bea56baca77e8260f93ea16.js" integrity="sha256-x8OE5NKdGSu6xoEa5GYLsBdnGUpb6la6ynfoJg+T6hY=" crossorigin="anonymous"></script><script async src="http://localhost:1313/js/link-share.min.24409a4f6e5537d70ffc55ec8f9192208d718678cb8638585342423020b37f39.js" integrity="sha256-JECaT25VN9cP/FXsj5GSII1xhnjLhjhYU0JCMCCzfzk=" crossorigin="anonymous"></script><nav class="LangNav" style="text-align: center;">
         
-            <a href="https://belino.com/es/posts/phplfitorce/">Español</a>
+            <a href="http://localhost:1313/es/posts/phplfitorce/">Español</a>
              🇪🇸 
             
         
