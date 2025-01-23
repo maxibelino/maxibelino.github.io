@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Informes on Trusted Cybersecurity</title>
-    <link>http://localhost:1313/es/tags/informes/</link>
+    <link>https://belino.com/es/tags/informes/</link>
     <description>Recent content in Informes on Trusted Cybersecurity</description>
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
     <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/es/tags/informes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://belino.com/es/tags/informes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hack the Box - Informes técnicos</title>
-      <link>http://localhost:1313/es/posts/htb/</link>
+      <link>https://belino.com/es/posts/htb/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/es/posts/htb/</guid>
+      <guid>https://belino.com/es/posts/htb/</guid>
       <description>Próximamente iré publicando los informes (writeups) de las máquinas ya retiradas de HTB.</description>
     </item>
     <item>
       <title>Pwned Labs - Informes técnicos</title>
-      <link>http://localhost:1313/es/posts/pwnedlabs/</link>
+      <link>https://belino.com/es/posts/pwnedlabs/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/es/posts/pwnedlabs/</guid>
+      <guid>https://belino.com/es/posts/pwnedlabs/</guid>
       <description>Próximamente!</description>
     </item>
   </channel>
