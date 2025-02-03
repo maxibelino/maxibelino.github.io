@@ -265,5 +265,20 @@
                 hreflang="en"
                 href="https://belino.com/en/about/"
                 />
+  </url><url>
+    <loc>https://belino.com/en/tags/azure/</loc>
+    <lastmod>2024-11-02T15:23:13-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/tags/graphrunner/</loc>
+    <lastmod>2024-11-02T15:23:13-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/tags/labs/</loc>
+    <lastmod>2024-11-02T15:23:13-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/posts/pwnedlabs/loot-exchange-teams-and-sharepoint-with-graphrunner/</loc>
+    <lastmod>2024-11-02T15:23:13-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/en/tags/microsoft/</loc>
+    <lastmod>2024-11-02T15:23:13-03:00</lastmod>
   </url>
 </urlset>

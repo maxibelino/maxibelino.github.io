@@ -28,8 +28,7 @@ Próximamente iré publicando los informes (writeups) de las máquinas ya retira
 			
 			<guid>https://belino.com/es/posts/pwnedlabs/</guid>
 			<description><![CDATA[Esta página contendrá los Informes que he realizado de los labs de Pwned Labs]]></description>
-			<content type="html"><![CDATA[
-Próximamente!
+			<content type="html"><![CDATA[<p>Please check the <a href="../../../../en/posts/pwnedlabs/">English</a> page.</p>
 ]]></content>
 		</item>
 		

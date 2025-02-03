@@ -28,8 +28,7 @@ HTB retired machines writeups. Coming soon!
 			
 			<guid>https://belino.com/en/posts/pwnedlabs/</guid>
 			<description><![CDATA[This page will list all the writeups I have done from Pwned Labs.]]></description>
-			<content type="html"><![CDATA[
-Pwned Labs writeups. Coming soon!
+			<content type="html"><![CDATA[<p>Pwned Labs writeups.</p>
 ]]></content>
 		</item>
 		
