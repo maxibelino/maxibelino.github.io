@@ -105,7 +105,7 @@ dkms status
 </code></pre><h1 id="verificar-el-powermanagement-del-wifi">Verificar el PowerManagement del wifi</h1>
 <p>Previo: asegurarnos de que hemos conectado el dispositivo TP-link USB y que está disponible (conectado) a la Virtual Machine.</p>
 <p>Antes, por las dudas, verificar que el screensaver <strong>no haga</strong> el bloqueo de la pantalla:</p>
-<p><img src="../../../images/Rogue%20AP.png"></p>
+<p><img src="../../../images/RogueAP.es.png"></p>
 <p>Esto es por recomendación, a mi me daba problemas cuando se bloqueaba.</p>
 <p>En cuanto al <strong>PowerManagement</strong> del dispositivo Wifi USB:</p>
 <pre><code>Si el &quot;power save&quot; está en On lo pondremos en Off
