@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Access on Trusted Cybersecurity</title>
+    <link>https://belino.com/en/tags/access/</link>
+    <description>Recent content in Access on Trusted Cybersecurity</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Maximiliano Belino</copyright>
+    <lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
+    <atom:link href="https://belino.com/en/tags/access/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rogue Access Point (AP)</title>
+      <link>https://belino.com/en/posts/rogueap/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/posts/rogueap/</guid>
+      <description>This post is only in spanish.</description>
+    </item>
+  </channel>
+</rss>

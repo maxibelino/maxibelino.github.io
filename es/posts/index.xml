@@ -6,8 +6,244 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>es</language>
 		<copyright>Maximiliano Belino</copyright>
-		<lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
 		<atom:link href="https://belino.com/es/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Rogue Access Point (AP)</title>
+			<link>https://belino.com/es/posts/rogueap/</link>
+			<pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+			
+			<guid>https://belino.com/es/posts/rogueap/</guid>
+			<description><![CDATA[Punto de Acceso Wifi (Rogue AP) usando una antena WiFi TP-Link]]></description>
+			<content type="html"><![CDATA[<ul>
+<li><a href="/es/posts/rogueap/#dispositivo">Dispositivo</a></li>
+<li><a href="/es/posts/rogueap/#driver">Driver</a>
+<ul>
+<li><a href="/es/posts/rogueap/#instalando-desde-el-repo-de-github">Instalando desde el repo de GitHub</a></li>
+</ul>
+</li>
+<li><a href="/es/posts/rogueap/#verificar-el-powermanagement-del-wifi">Verificar el PowerManagement del wifi</a></li>
+<li><a href="/es/posts/rogueap/#verificaciones">Verificaciones</a>
+<ul>
+<li><a href="/es/posts/rogueap/#verificamos-mensajes-de-log-en-dmesg">Verificamos mensajes de log en dmesg</a></li>
+<li><a href="/es/posts/rogueap/#verificar-los-equipos-conectados-al-rogue-ap">Verificar los equipos conectados al rogue AP</a></li>
+</ul>
+</li>
+<li><a href="/es/posts/rogueap/#ejecutando-el-script">Ejecutando el script</a></li>
+<li><a href="/es/posts/rogueap/#script-para-levantar-el-ap">Script para levantar el AP</a></li>
+</ul>
+<h1 id="dispositivo">Dispositivo</h1>
+<p>TP-Link Archer T3U Plus (chipset RTL88x2BU) en modo Access Point (AP) tipo Rogue</p>
+<h1 id="driver">Driver</h1>
+<p>Para el driver voy a usar esta source en GitHub: <a href="https://github.com/lwfinger/rtw88">https://github.com/lwfinger/rtw88</a></p>
+<ul>
+<li>Este repo es para drivers Realtek</li>
+<li>Estaré usando el driver RTL8822BU</li>
+</ul>
+<p>Como adelanto, una vez que quede instalado el Driver del dispositivo, vamos a ver estos resultados:</p>
+<pre tabindex="0"><code>┌──(kali㉿kali)-[~]
+└─$ readlink /sys/class/net/wlan0/device/driver
+../../../../../../../bus/usb/drivers/rtw_8822bu
+
+┌──(kali㉿kali)-[~]
+└─$ dkms status
+rtw88/0.6, 6.12.20-amd64, x86_64: installed
+
+┌──(kali㉿kali)-[~]
+└─$ lsmod | grep rtw
+rtw_8822bu             12288  0
+rtw_usb                32768  1 rtw_8822bu
+rtw_8822b             233472  1 rtw_8822bu
+rtw_core              315392  2 rtw_usb,rtw_8822b
+mac80211             1445888  2 rtw_usb,rtw_core
+cfg80211             1392640  2 rtw_core,mac80211
+usbcore               409600  8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd
+
+┌──(kali㉿kali)-[~]
+└─$ lsmod | grep rtw
+rtw_8822bu 12288 0
+rtw_usb 32768 1 rtw_8822bu
+rtw_8822b 233472 1 rtw_8822bu
+rtw_core 315392 2 rtw_usb,rtw_8822b
+mac80211 1445888 2 rtw_usb,rtw_core
+cfg80211 1392640 2 rtw_core,mac80211
+usbcore 409600 8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd
+</code></pre><h2 id="instalando-desde-el-repo-de-github">Instalando desde el repo de GitHub</h2>
+<h3 id="prerequisitos">Prerequisitos</h3>
+<p>Actualizar e instalar:</p>
+<pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt upgrade
+sudo apt install linux-headers-$(uname -r) build-essential git
+</code></pre><p>Seguimos con los pasos recomendados en el GitHub.</p>
+<p>Paso 1: Instalamos <strong>dkms</strong></p>
+<ul>
+<li>
+<p><strong>DKMS (Dynamic Kernel Module Support)</strong> permite que el módulo se <strong>recompile automáticamente</strong> cada vez que se actualiza el kernel.</p>
+</li>
+<li>
+<p>Sin <code>dkms</code>, tendría que recompilar el módulo <strong>manualmente</strong> tras cada actualización del kernel.</p>
+</li>
+</ul>
+<p>Instalamos:</p>
+<pre tabindex="0"><code>sudo apt install -y dkms
+</code></pre><p>Paso 2: no es necesario en mi caso, se puede omitir pues:</p>
+<p>⚠️ <strong>Nota sobre UEFI y Secure Boot:</strong>
+Los pasos 2.1 a 2.4 (generar llave, certificado y registrarlo con <code>mokutil</code>) <strong>solo son necesarios si estás instalando el driver en un sistema con UEFI + Secure Boot habilitado</strong>., una característica de seguridad que <strong>impide cargar módulos del kernel no firmados</strong>.</p>
+<p>Esto aplica principalmente a <strong>sistemas físicos modernos</strong> con <strong>UEFI y Secure Boot habilitado</strong>, como laptops o PCs que vienen con <strong>Windows preinstalado de fábrica</strong>.</p>
+<p>🖥️ <strong>En máquinas virtuales (VMs)</strong>, como las que se usan en <strong>VMware o VirtualBox</strong>, <strong>Secure Boot generalmente está deshabilitado o no disponible por defecto</strong>, por lo que <strong>no es necesario realizar estos pasos</strong>, normalmente usan arranque BIOS (Legacy) sin Secure Boot.<br>
+Puedes verificar si tu sistema usa UEFI ejecutando:</p>
+<pre tabindex="0"><code>[ -d /sys/firmware/efi ] &amp;&amp; echo &#34;Modo UEFI&#34; || echo &#34;Modo BIOS (Legacy)&#34;
+</code></pre><p>En mi caso estoy en Modo BIOS, por lo que si ejecuto lo que indica el Paso 2.4 veré:</p>
+<pre tabindex="0"><code>└─$ mokutil --list-enrolled
+EFI variables are not supported on this system
+</code></pre><p>Paso 3 al 7: Clonamos el repo en /usr/src y agregamos e instalamos el rtw88 al dkms</p>
+<pre tabindex="0"><code>cd /usr/src &amp;&amp; sudo git clone [https://github.com/lwfinger/rtw88.git](https://github.com/lwfinger/rtw88.git) rtw88-0.6
+sudo dkms add -m rtw88 -v 0.6
+sudo dkms build -m rtw88 -v 0.6
+sudo dkms install -m rtw88 -v 0.6
+dkms status
+</code></pre><h1 id="verificar-el-powermanagement-del-wifi">Verificar el PowerManagement del wifi</h1>
+<p>Previo: asegurarnos de que hemos conectado el dispositivo TP-link USB y que está disponible (conectado) a la Virtual Machine.</p>
+<p>Antes, por las dudas, verificar que el screensaver <strong>no haga</strong> el bloqueo de la pantalla:</p>
+<p><img src="../../../images/Rogue%20AP.png"></p>
+<p>Esto es por recomendación, a mi me daba problemas cuando se bloqueaba.</p>
+<p>En cuanto al <strong>PowerManagement</strong> del dispositivo Wifi USB:</p>
+<pre><code>Si el &quot;power save&quot; está en On lo pondremos en Off
+</code></pre>
+<p>La siguiente configuración no va a funcionar, y debajo dejo el por qué:</p>
+<pre tabindex="0"><code>sudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+</code></pre><p>Contenido del archivo</p>
+<pre tabindex="0"><code>[connection]
+wifi.powersave = 2
+</code></pre><p>Lo verificamos desde consola:</p>
+<pre tabindex="0"><code>└─$ iw dev wlan0 get power_save
+Power save: on
+</code></pre><p>&ldquo;El archivo <code>/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf</code> <strong>solo afecta conexiones gestionadas por NetworkManager</strong> (como perfiles de red que levantás con <code>nmcli</code> o la interfaz gráfica). Pero si estás montando un <strong>Rogue AP</strong> o usando <code>hostapd</code>, <code>airbase-ng</code>, o <code>iw</code> directamente, <strong>no pasa por NetworkManager</strong>, y entonces ese ajuste no tiene efecto.&rdquo;</p>
+<p>Este sí hace efecto:</p>
+<pre tabindex="0"><code>iw dev wlan0 set power_save off
+</code></pre><p>Esto funciona de inmediato porque estás hablando directamente con el kernel y la interfaz; pero es temporal: se resetea al reiniciar o reiniciar la interfaz, por lo que lo voy a poner en el script que tengo que levanta lo necesario para el Rogue AP.</p>
+<p>Editamos entonces el script del Rogue AP</p>
+<pre tabindex="0"><code>sudo nano rogue_hostapd3.sh
+</code></pre><p>Agregamos estas lineas:</p>
+<pre tabindex="0"><code># Desactivar el PowerManagement / Disable WiFi Power Save
+iw dev wlan0 set power_save off
+</code></pre><p>En un .conf también seteamos que el NetworkManager no &ldquo;toque&rdquo; este dispositivo wlan0</p>
+<pre tabindex="0"><code>sudo nano /etc/NetworkManager/conf.d/unmanaged.conf
+</code></pre><p>Contenido del archivo:</p>
+<pre tabindex="0"><code>[keyfile]
+unmanaged-devices=interface-name:wlan0
+</code></pre><h1 id="verificaciones">Verificaciones</h1>
+<p>Estas son verificaciones que podemos hacer cuando el AP está en funcionamiento.</p>
+<h2 id="verificamos-mensajes-de-log-en-dmesg">Verificamos mensajes de log en dmesg</h2>
+<p>Ejecutamos en una terminal:</p>
+<pre tabindex="0"><code>dmesg -w
+</code></pre><h2 id="verificar-los-equipos-conectados-al-rogue-ap">Verificar los equipos conectados al rogue AP</h2>
+<p>Ejecutamos en una terminal:</p>
+<pre tabindex="0"><code>iw dev wlan0 station dump
+</code></pre><h1 id="ejecutando-el-script">Ejecutando el script</h1>
+<p>Ejecutamos el script (que ya le dí previamente los permisos de ejecución con <em>chmod</em>)</p>
+<pre tabindex="0"><code>└─$ sudo ./rogue_hostapd3.sh
+[*] Cerrando instancia previa de dnsmasq si existe...
+[*] Activando IP forwarding...
+[*] Configurando wlan0 con IP 192.168.69.1...
+[*] Limpiando reglas iptables previas...
+[*] Configurando iptables para NAT...
+[*] Generando configuración de hostapd...
+[*] Generando configuración de dnsmasq...
+[*] Iniciando dnsmasq...
+[*] Iniciando hostapd...
+wlan0: interface state UNINITIALIZED-&gt;ENABLED
+wlan0: AP-ENABLED
+</code></pre><p>y al conectarse el móvil vemos algo así:</p>
+<pre tabindex="0"><code>wlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: authenticated
+wlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: associated (aid 1)
+wlan0: AP-STA-CONNECTED 4a:d6:01:b5:f2:ff
+wlan0: STA 4a:d6:01:b5:f2:ff RADIUS: starting accounting session A10F5F2FFA3CB549
+</code></pre><h1 id="script-para-levantar-el-ap">Script para levantar el AP</h1>
+<pre tabindex="0"><code>#!/bin/bash
+
+# Rogue AP. Version 3
+# Author: Maximiliano Belino (m4xth0r)
+# Author website: https://belino.com
+# Date: 11 de Abril 2025
+
+# Variables
+IFACE=&#34;wlan0&#34;
+ESSID=&#34;superv4&#34;
+CHANNEL=6
+NETPREFIX=&#34;192.168.69&#34;
+GATEWAY=&#34;$NETPREFIX.1&#34;
+RANGE_START=&#34;$NETPREFIX.2&#34;
+RANGE_END=&#34;$NETPREFIX.30&#34;
+NETMASK=&#34;255.255.255.0&#34;
+CONF_DIR=&#34;/tmp/rogue_ap&#34;
+mkdir -p &#34;$CONF_DIR&#34;
+
+# Desactivar el PowerManagement
+# Disable WiFi Power Save
+iw dev wlan0 set power_save off
+
+# Matamos dnsmasq solo si ya corre (evitamos matar la shell)
+echo &#34;[*] Cerrando instancia previa de dnsmasq si existe...&#34;
+pgrep dnsmasq &amp;&amp; sudo killall dnsmasq
+
+# Activamos IP forwarding
+echo &#34;[*] Activando IP forwarding...&#34;
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+
+# Configurar interfaz
+echo &#34;[*] Configurando $IFACE con IP $GATEWAY...&#34;
+ip addr flush dev &#34;$IFACE&#34;
+ip link set &#34;$IFACE&#34; up
+ip addr add &#34;$GATEWAY/24&#34; dev &#34;$IFACE&#34;
+
+# Limpiamos reglas iptables previas
+echo &#34;[*] Limpiando reglas iptables previas...&#34;
+iptables --flush
+iptables --table nat --flush
+iptables --delete-chain
+iptables --table nat --delete-chain
+
+# Configurar NAT
+echo &#34;[*] Configurando iptables para NAT...&#34;
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -A FORWARD -i eth0 -o &#34;$IFACE&#34; -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i &#34;$IFACE&#34; -o eth0 -j ACCEPT
+
+# Archivo hostapd.conf
+echo &#34;[*] Generando configuración de hostapd...&#34;
+cat &lt;&lt;EOF &gt; &#34;$CONF_DIR/hostapd.conf&#34;
+interface=$IFACE
+driver=nl80211
+ssid=$ESSID
+hw_mode=g
+channel=$CHANNEL
+auth_algs=1
+ignore_broadcast_ssid=0
+EOF
+
+# Archivo dnsmasq.conf
+echo &#34;[*] Generando configuración de dnsmasq...&#34;
+cat &lt;&lt;EOF &gt; &#34;$CONF_DIR/dnsmasq.conf&#34;
+interface=$IFACE
+dhcp-range=$RANGE_START,$RANGE_END,12h
+dhcp-option=3,$GATEWAY
+dhcp-option=6,$GATEWAY
+log-queries
+log-dhcp
+EOF
+
+# Iniciamos dnsmasq (en background)
+echo &#34;[*] Iniciando dnsmasq...&#34;
+dnsmasq -C &#34;$CONF_DIR/dnsmasq.conf&#34; &amp;
+
+# Iniciamos hostapd
+echo &#34;[*] Iniciando hostapd...&#34;
+hostapd &#34;$CONF_DIR/hostapd.conf&#34;
+
+echo &#34;[+] Rogue AP &#39;$ESSID&#39; operativo.&#34;
+</code></pre>]]></content>
+		</item>
 		
 		<item>
 			<title>Hack the Box - Informes técnicos</title>

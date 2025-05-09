@@ -7,8 +7,50 @@
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Mon, 13 Jan 2025 12:28:27 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access</title>
+      <link>https://belino.com/en/tags/access/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/access/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AP</title>
+      <link>https://belino.com/en/tags/ap/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/ap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Capture</title>
+      <link>https://belino.com/en/tags/capture/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/capture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Packets</title>
+      <link>https://belino.com/en/tags/packets/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/packets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rogue</title>
+      <link>https://belino.com/en/tags/rogue/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/rogue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WiFi</title>
+      <link>https://belino.com/en/tags/wifi/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/en/tags/wifi/</guid>
+      <description></description>
+    </item>
     <item>
       <title>CSRF</title>
       <link>https://belino.com/en/tags/csrf/</link>
@@ -35,48 +77,6 @@
       <link>https://belino.com/en/tags/refelected-xss/</link>
       <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
       <guid>https://belino.com/en/tags/refelected-xss/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Stored XSS</title>
-      <link>https://belino.com/en/tags/stored-xss/</link>
-      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/stored-xss/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vulnerability</title>
-      <link>https://belino.com/en/tags/vulnerability/</link>
-      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/vulnerability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>XSS</title>
-      <link>https://belino.com/en/tags/xss/</link>
-      <pubDate>Mon, 13 Jan 2025 12:28:27 -0300</pubDate>
-      <guid>https://belino.com/en/tags/xss/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>HTB</title>
-      <link>https://belino.com/en/tags/htb/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/htb/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pwned</title>
-      <link>https://belino.com/en/tags/pwned/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/pwned/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Walkthrough</title>
-      <link>https://belino.com/en/tags/walkthrough/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/en/tags/walkthrough/</guid>
       <description></description>
     </item>
   </channel>

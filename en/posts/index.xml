@@ -6,8 +6,19 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en</language>
 		<copyright>Maximiliano Belino</copyright>
-		<lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
 		<atom:link href="https://belino.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Rogue Access Point (AP)</title>
+			<link>https://belino.com/en/posts/rogueap/</link>
+			<pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+			
+			<guid>https://belino.com/en/posts/rogueap/</guid>
+			<description><![CDATA[WiFi Access Point (Rogue AP) using a WiFi TP-Link]]></description>
+			<content type="html"><![CDATA[<p>This post is only in <a href="../../../es/posts/RogueAP/">spanish</a>.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Hack the box - Writeups</title>

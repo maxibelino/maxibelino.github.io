@@ -2,6 +2,106 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://belino.com/es/tags/acceso/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/es/tags/ap/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/ap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/ap/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/tags/captura/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/es/tags/paquetes/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+  </url><url>
+    <loc>https://belino.com/es/posts/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/posts/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/tags/rogue/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/rogue/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/rogue/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/posts/rogueap/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/posts/rogueap/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/posts/rogueap/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/tags/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/"
+                />
+  </url><url>
+    <loc>https://belino.com/es/tags/wifi/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/tags/wifi/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/tags/wifi/"
+                />
+  </url><url>
     <loc>https://belino.com/es/research/</loc>
     <lastmod>2025-01-13T12:28:27-03:00</lastmod>
     <xhtml:link
@@ -26,19 +126,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://belino.com/es/research/cves/"
-                />
-  </url><url>
-    <loc>https://belino.com/es/</loc>
-    <lastmod>2025-01-13T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/"
                 />
   </url><url>
     <loc>https://belino.com/es/posts/htb/</loc>
@@ -70,19 +157,6 @@
     <loc>https://belino.com/es/tags/informes/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://belino.com/es/posts/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/posts/"
-                />
-  </url><url>
     <loc>https://belino.com/es/tags/pwned/</loc>
     <lastmod>2025-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -107,19 +181,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://belino.com/es/posts/pwnedlabs/"
-                />
-  </url><url>
-    <loc>https://belino.com/es/tags/</loc>
-    <lastmod>2025-01-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/tags/"
                 />
   </url><url>
     <loc>https://belino.com/es/tags/walkthrough/</loc>

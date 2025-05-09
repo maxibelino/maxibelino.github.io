@@ -7,8 +7,15 @@
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Wed, 27 Nov 2024 16:14:02 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rogue Access Point (AP)</title>
+      <link>https://belino.com/es/posts/rogueap/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/posts/rogueap/</guid>
+      <description>Dispositivo Driver Instalando desde el repo de GitHub Verificar el PowerManagement del wifi Verificaciones Verificamos mensajes de log en dmesg Verificar los equipos conectados al rogue AP Ejecutando el script Script para levantar el AP Dispositivo TP-Link Archer T3U Plus (chipset RTL88x2BU) en modo Access Point (AP) tipo Rogue&#xA;Driver Para el driver voy a usar esta source en GitHub: https://github.com/lwfinger/rtw88&#xA;Este repo es para drivers Realtek Estaré usando el driver RTL8822BU Como adelanto, una vez que quede instalado el Driver del dispositivo, vamos a ver estos resultados:</description>
+    </item>
     <item>
       <title>Acerca de mí</title>
       <link>https://belino.com/es/about/</link>

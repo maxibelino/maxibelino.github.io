@@ -7,8 +7,50 @@
     <generator>Hugo</generator>
     <language>es</language>
     <copyright>Maximiliano Belino</copyright>
-    <lastBuildDate>Wed, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 May 2025 12:28:27 -0300</lastBuildDate>
     <atom:link href="https://belino.com/es/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Acceso</title>
+      <link>https://belino.com/es/tags/acceso/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/acceso/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AP</title>
+      <link>https://belino.com/es/tags/ap/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/ap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Captura</title>
+      <link>https://belino.com/es/tags/captura/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/captura/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Paquetes</title>
+      <link>https://belino.com/es/tags/paquetes/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/paquetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rogue</title>
+      <link>https://belino.com/es/tags/rogue/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/rogue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WiFi</title>
+      <link>https://belino.com/es/tags/wifi/</link>
+      <pubDate>Fri, 09 May 2025 12:28:27 -0300</pubDate>
+      <guid>https://belino.com/es/tags/wifi/</guid>
+      <description></description>
+    </item>
     <item>
       <title>HTB</title>
       <link>https://belino.com/es/tags/htb/</link>
@@ -35,41 +77,6 @@
       <link>https://belino.com/es/tags/walkthrough/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://belino.com/es/tags/walkthrough/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Writeups</title>
-      <link>https://belino.com/es/tags/writeups/</link>
-      <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://belino.com/es/tags/writeups/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LFI</title>
-      <link>https://belino.com/es/tags/lfi/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/lfi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Php</title>
-      <link>https://belino.com/es/tags/php/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/php/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RCE</title>
-      <link>https://belino.com/es/tags/rce/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vulnerability</title>
-      <link>https://belino.com/es/tags/vulnerability/</link>
-      <pubDate>Wed, 27 Nov 2024 15:23:13 -0300</pubDate>
-      <guid>https://belino.com/es/tags/vulnerability/</guid>
       <description></description>
     </item>
   </channel>
