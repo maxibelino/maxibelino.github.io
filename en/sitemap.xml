@@ -37,6 +37,19 @@
                 href="https://belino.com/en/posts/"
                 />
   </url><url>
+    <loc>https://belino.com/en/</loc>
+    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://belino.com/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://belino.com/en/"
+                />
+  </url><url>
     <loc>https://belino.com/en/tags/rogue/</loc>
     <lastmod>2025-05-09T12:28:27-03:00</lastmod>
     <xhtml:link
@@ -74,19 +87,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://belino.com/en/tags/"
-                />
-  </url><url>
-    <loc>https://belino.com/en/</loc>
-    <lastmod>2025-05-09T12:28:27-03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://belino.com/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://belino.com/en/"
                 />
   </url><url>
     <loc>https://belino.com/en/tags/wifi/</loc>
