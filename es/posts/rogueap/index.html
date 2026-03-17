@@ -53,7 +53,7 @@
   <meta itemprop="description" content="Punto de Acceso Wifi (Rogue AP) usando una antena WiFi TP-Link">
   <meta itemprop="datePublished" content="2025-05-09T12:28:27-03:00">
   <meta itemprop="dateModified" content="2025-05-09T12:28:27-03:00">
-  <meta itemprop="wordCount" content="1117">
+  <meta itemprop="wordCount" content="1628">
   <meta itemprop="keywords" content="Rogue,AP,Acceso,WiFi,Paquetes,Captura"><meta property="og:url" content="https://belino.com/es/posts/rogueap/">
   <meta property="og:site_name" content="Trusted Cybersecurity">
   <meta property="og:title" content="Rogue Access Point (AP)">
@@ -82,8 +82,8 @@
     "name": "Rogue Access Point (AP)",
     "description": "Punto de Acceso Wifi (Rogue AP) usando una antena WiFi TP-Link",
     "keywords": ["Rogue", "AP", "Acceso", "WiFi", "Paquetes", "Captura"],
-    "articleBody": " Dispositivo Driver Instalando desde el repo de GitHub Verificar el PowerManagement del wifi Verificaciones Verificamos mensajes de log en dmesg Verificar los equipos conectados al rogue AP Ejecutando el script Script para levantar el AP Dispositivo TP-Link Archer T3U Plus (chipset RTL88x2BU) en modo Access Point (AP) tipo Rogue\nDriver Para el driver voy a usar esta source en GitHub: https://github.com/lwfinger/rtw88\nEste repo es para drivers Realtek Estaré usando el driver RTL8822BU Como adelanto, una vez que quede instalado el Driver del dispositivo, vamos a ver estos resultados:\n┌──(kali㉿kali)-[~] └─$ readlink /sys/class/net/wlan0/device/driver ../../../../../../../bus/usb/drivers/rtw_8822bu ┌──(kali㉿kali)-[~] └─$ dkms status rtw88/0.6, 6.12.20-amd64, x86_64: installed ┌──(kali㉿kali)-[~] └─$ lsmod | grep rtw rtw_8822bu 12288 0 rtw_usb 32768 1 rtw_8822bu rtw_8822b 233472 1 rtw_8822bu rtw_core 315392 2 rtw_usb,rtw_8822b mac80211 1445888 2 rtw_usb,rtw_core cfg80211 1392640 2 rtw_core,mac80211 usbcore 409600 8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd ┌──(kali㉿kali)-[~] └─$ lsmod | grep rtw rtw_8822bu 12288 0 rtw_usb 32768 1 rtw_8822bu rtw_8822b 233472 1 rtw_8822bu rtw_core 315392 2 rtw_usb,rtw_8822b mac80211 1445888 2 rtw_usb,rtw_core cfg80211 1392640 2 rtw_core,mac80211 usbcore 409600 8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd Instalando desde el repo de GitHub Prerequisitos Actualizar e instalar:\nsudo apt update \u0026\u0026 sudo apt upgrade sudo apt install linux-headers-$(uname -r) build-essential git Seguimos con los pasos recomendados en el GitHub.\nPaso 1: Instalamos dkms\nDKMS (Dynamic Kernel Module Support) permite que el módulo se recompile automáticamente cada vez que se actualiza el kernel.\nSin dkms, tendría que recompilar el módulo manualmente tras cada actualización del kernel.\nInstalamos:\nsudo apt install -y dkms Paso 2: no es necesario en mi caso, se puede omitir pues:\n⚠️ Nota sobre UEFI y Secure Boot: Los pasos 2.1 a 2.4 (generar llave, certificado y registrarlo con mokutil) solo son necesarios si estás instalando el driver en un sistema con UEFI + Secure Boot habilitado., una característica de seguridad que impide cargar módulos del kernel no firmados.\nEsto aplica principalmente a sistemas físicos modernos con UEFI y Secure Boot habilitado, como laptops o PCs que vienen con Windows preinstalado de fábrica.\n🖥️ En máquinas virtuales (VMs), como las que se usan en VMware o VirtualBox, Secure Boot generalmente está deshabilitado o no disponible por defecto, por lo que no es necesario realizar estos pasos, normalmente usan arranque BIOS (Legacy) sin Secure Boot.\nPuedes verificar si tu sistema usa UEFI ejecutando:\n[ -d /sys/firmware/efi ] \u0026\u0026 echo \"Modo UEFI\" || echo \"Modo BIOS (Legacy)\" En mi caso estoy en Modo BIOS, por lo que si ejecuto lo que indica el Paso 2.4 veré:\n└─$ mokutil --list-enrolled EFI variables are not supported on this system Paso 3 al 7: Clonamos el repo en /usr/src y agregamos e instalamos el rtw88 al dkms\ncd /usr/src \u0026\u0026 sudo git clone [https://github.com/lwfinger/rtw88.git](https://github.com/lwfinger/rtw88.git) rtw88-0.6 sudo dkms add -m rtw88 -v 0.6 sudo dkms build -m rtw88 -v 0.6 sudo dkms install -m rtw88 -v 0.6 dkms status Verificar el PowerManagement del wifi Previo: asegurarnos de que hemos conectado el dispositivo TP-link USB y que está disponible (conectado) a la Virtual Machine.\nAntes, por las dudas, verificar que el screensaver no haga el bloqueo de la pantalla:\nEsto es por recomendación, a mi me daba problemas cuando se bloqueaba.\nEn cuanto al PowerManagement del dispositivo Wifi USB:\nSi el \"power save\" está en On lo pondremos en Off La siguiente configuración no va a funcionar, y debajo dejo el por qué:\nsudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf Contenido del archivo\n[connection] wifi.powersave = 2 Lo verificamos desde consola:\n└─$ iw dev wlan0 get power_save Power save: on “El archivo /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf solo afecta conexiones gestionadas por NetworkManager (como perfiles de red que levantás con nmcli o la interfaz gráfica). Pero si estás montando un Rogue AP o usando hostapd, airbase-ng, o iw directamente, no pasa por NetworkManager, y entonces ese ajuste no tiene efecto.”\nEste sí hace efecto:\niw dev wlan0 set power_save off Esto funciona de inmediato porque estás hablando directamente con el kernel y la interfaz; pero es temporal: se resetea al reiniciar o reiniciar la interfaz, por lo que lo voy a poner en el script que tengo que levanta lo necesario para el Rogue AP.\nEditamos entonces el script del Rogue AP\nsudo nano rogue_hostapd3.sh Agregamos estas lineas:\n# Desactivar el PowerManagement / Disable WiFi Power Save iw dev wlan0 set power_save off En un .conf también seteamos que el NetworkManager no “toque” este dispositivo wlan0\nsudo nano /etc/NetworkManager/conf.d/unmanaged.conf Contenido del archivo:\n[keyfile] unmanaged-devices=interface-name:wlan0 Verificaciones Estas son verificaciones que podemos hacer cuando el AP está en funcionamiento.\nVerificamos mensajes de log en dmesg Ejecutamos en una terminal:\ndmesg -w Verificar los equipos conectados al rogue AP Ejecutamos en una terminal:\niw dev wlan0 station dump Ejecutando el script Ejecutamos el script (que ya le dí previamente los permisos de ejecución con chmod)\n└─$ sudo ./rogue_hostapd3.sh [*] Cerrando instancia previa de dnsmasq si existe... [*] Activando IP forwarding... [*] Configurando wlan0 con IP 192.168.69.1... [*] Limpiando reglas iptables previas... [*] Configurando iptables para NAT... [*] Generando configuración de hostapd... [*] Generando configuración de dnsmasq... [*] Iniciando dnsmasq... [*] Iniciando hostapd... wlan0: interface state UNINITIALIZED-\u003eENABLED wlan0: AP-ENABLED y al conectarse el móvil vemos algo así:\nwlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: authenticated wlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: associated (aid 1) wlan0: AP-STA-CONNECTED 4a:d6:01:b5:f2:ff wlan0: STA 4a:d6:01:b5:f2:ff RADIUS: starting accounting session A10F5F2FFA3CB549 Script para levantar el AP #!/bin/bash # Rogue AP. Version 3 # Author: Maximiliano Belino (m4xth0r) # Author website: https://belino.com # Date: 11 de Abril 2025 # Variables IFACE=\"wlan0\" ESSID=\"superv4\" CHANNEL=6 NETPREFIX=\"192.168.69\" GATEWAY=\"$NETPREFIX.1\" RANGE_START=\"$NETPREFIX.2\" RANGE_END=\"$NETPREFIX.30\" NETMASK=\"255.255.255.0\" CONF_DIR=\"/tmp/rogue_ap\" mkdir -p \"$CONF_DIR\" # Desactivar el PowerManagement # Disable WiFi Power Save iw dev wlan0 set power_save off # Matamos dnsmasq solo si ya corre (evitamos matar la shell) echo \"[*] Cerrando instancia previa de dnsmasq si existe...\" pgrep dnsmasq \u0026\u0026 sudo killall dnsmasq # Activamos IP forwarding echo \"[*] Activando IP forwarding...\" echo 1 \u003e /proc/sys/net/ipv4/ip_forward # Configurar interfaz echo \"[*] Configurando $IFACE con IP $GATEWAY...\" ip addr flush dev \"$IFACE\" ip link set \"$IFACE\" up ip addr add \"$GATEWAY/24\" dev \"$IFACE\" # Limpiamos reglas iptables previas echo \"[*] Limpiando reglas iptables previas...\" iptables --flush iptables --table nat --flush iptables --delete-chain iptables --table nat --delete-chain # Configurar NAT echo \"[*] Configurando iptables para NAT...\" iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE iptables -A FORWARD -i eth0 -o \"$IFACE\" -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -i \"$IFACE\" -o eth0 -j ACCEPT # Archivo hostapd.conf echo \"[*] Generando configuración de hostapd...\" cat \u003c \"$CONF_DIR/hostapd.conf\" interface=$IFACE driver=nl80211 ssid=$ESSID hw_mode=g channel=$CHANNEL auth_algs=1 ignore_broadcast_ssid=0 EOF # Archivo dnsmasq.conf echo \"[*] Generando configuración de dnsmasq...\" cat \u003c \"$CONF_DIR/dnsmasq.conf\" interface=$IFACE dhcp-range=$RANGE_START,$RANGE_END,12h dhcp-option=3,$GATEWAY dhcp-option=6,$GATEWAY log-queries log-dhcp EOF # Iniciamos dnsmasq (en background) echo \"[*] Iniciando dnsmasq...\" dnsmasq -C \"$CONF_DIR/dnsmasq.conf\" \u0026 # Iniciamos hostapd echo \"[*] Iniciando hostapd...\" hostapd \"$CONF_DIR/hostapd.conf\" echo \"[+] Rogue AP '$ESSID' operativo.\" ",
-    "wordCount" : "1117",
+    "articleBody": " Dispositivo Driver Instalando desde el repo de GitHub Verificar el PowerManagement del wifi Verificaciones Verificamos mensajes de log en dmesg Verificar los equipos conectados al rogue AP Ejecutando el script Script para levantar el AP Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U) Contexto Síntomas Análisis Técnico Causa Raíz Diagnóstico Solución Recomendada Dispositivo El dispositivo/antena a usar para hacer nuestro AP es el siguiente:\nTP-Link Archer T3U Plus (chipset RTL88x2BU)\nen modo Access Point (AP) tipo Rogue.\nEs una antena que conectamos en el puerto USB de nuestro PC.\nDriver Para el driver voy a usar esta source en GitHub: https://github.com/lwfinger/rtw88\nEste repo es para drivers Realtek Estaré usando el driver RTL8822BU Este AP lo vamos a hacer funcionar con el Kernel 6.12; luego de una actualización de Kali, el kernel es 6.18 y el ya no funciona bien. Si lo tenías funcionando en 6.12 e hiciste un upgrade de Kali, te va a tocar hacer unos cambios para que funcione. Esto lo detallo más abajo en: Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U).\nComo adelanto, una vez que quede instalado el Driver del dispositivo, vamos a ver estos resultados:\n┌──(kali㉿kali)-[~] └─$ readlink /sys/class/net/wlan0/device/driver ../../../../../../../bus/usb/drivers/rtw_8822bu ┌──(kali㉿kali)-[~] └─$ dkms status rtw88/0.6, 6.12.20-amd64, x86_64: installed ┌──(kali㉿kali)-[~] └─$ lsmod | grep rtw rtw_8822bu 12288 0 rtw_usb 32768 1 rtw_8822bu rtw_8822b 233472 1 rtw_8822bu rtw_core 315392 2 rtw_usb,rtw_8822b mac80211 1445888 2 rtw_usb,rtw_core cfg80211 1392640 2 rtw_core,mac80211 usbcore 409600 8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd ┌──(kali㉿kali)-[~] └─$ lsmod | grep rtw rtw_8822bu 12288 0 rtw_usb 32768 1 rtw_8822bu rtw_8822b 233472 1 rtw_8822bu rtw_core 315392 2 rtw_usb,rtw_8822b mac80211 1445888 2 rtw_usb,rtw_core cfg80211 1392640 2 rtw_core,mac80211 usbcore 409600 8 rtw_usb,ehci_pci,usbhid,btmtk,rtw_8822bu,ehci_hcd,btusb,uhci_hcd Instalando desde el repo de GitHub Prerequisitos Actualizar e instalar:\nsudo apt update \u0026\u0026 sudo apt upgrade sudo apt install linux-headers-$(uname -r) build-essential git Seguimos con los pasos recomendados en el GitHub.\nPaso 1: Instalamos dkms\nDKMS (Dynamic Kernel Module Support) permite que el módulo se recompile automáticamente cada vez que se actualiza el kernel.\nSin dkms, tendría que recompilar el módulo manualmente tras cada actualización del kernel.\nInstalamos:\nsudo apt install -y dkms Paso 2: no es necesario en mi caso, se puede omitir pues:\n⚠️ Nota sobre UEFI y Secure Boot: Los pasos 2.1 a 2.4 (generar llave, certificado y registrarlo con mokutil) solo son necesarios si estás instalando el driver en un sistema con UEFI + Secure Boot habilitado., una característica de seguridad que impide cargar módulos del kernel no firmados.\nEsto aplica principalmente a sistemas físicos modernos con UEFI y Secure Boot habilitado, como laptops o PCs que vienen con Windows preinstalado de fábrica.\n🖥️ En máquinas virtuales (VMs), como las que se usan en VMware o VirtualBox, Secure Boot generalmente está deshabilitado o no disponible por defecto, por lo que no es necesario realizar estos pasos, normalmente usan arranque BIOS (Legacy) sin Secure Boot.\nPuedes verificar si tu sistema usa UEFI ejecutando:\n[ -d /sys/firmware/efi ] \u0026\u0026 echo \"Modo UEFI\" || echo \"Modo BIOS (Legacy)\" En mi caso estoy en Modo BIOS, por lo que si ejecuto lo que indica el Paso 2.4 veré:\n└─$ mokutil --list-enrolled EFI variables are not supported on this system Paso 3 al 7: Clonamos el repo en /usr/src y agregamos e instalamos el rtw88 al dkms\ncd /usr/src \u0026\u0026 sudo git clone [https://github.com/lwfinger/rtw88.git](https://github.com/lwfinger/rtw88.git) rtw88-0.6 sudo dkms add -m rtw88 -v 0.6 sudo dkms build -m rtw88 -v 0.6 sudo dkms install -m rtw88 -v 0.6 dkms status Verificar el PowerManagement del wifi Previo: asegurarnos de que hemos conectado el dispositivo TP-link USB y que está disponible (conectado) a la Virtual Machine.\nAntes, por las dudas, verificar que el screensaver no haga el bloqueo de la pantalla:\nEsto es por recomendación, a mi me daba problemas cuando se bloqueaba.\nEn cuanto al PowerManagement del dispositivo Wifi USB:\nSi el \"power save\" está en On lo pondremos en Off La siguiente configuración no va a funcionar, y debajo dejo el por qué:\nsudo nano /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf Contenido del archivo\n[connection] wifi.powersave = 2 Lo verificamos desde consola:\n└─$ iw dev wlan0 get power_save Power save: on “El archivo /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf solo afecta conexiones gestionadas por NetworkManager (como perfiles de red que levantás con nmcli o la interfaz gráfica). Pero si estás montando un Rogue AP o usando hostapd, airbase-ng, o iw directamente, no pasa por NetworkManager, y entonces ese ajuste no tiene efecto.”\nEste sí hace efecto:\niw dev wlan0 set power_save off Esto funciona de inmediato porque estás hablando directamente con el kernel y la interfaz; pero es temporal: se resetea al reiniciar o reiniciar la interfaz, por lo que lo voy a poner en el script que tengo que levanta lo necesario para el Rogue AP.\nEditamos entonces el script del Rogue AP\nsudo nano rogue_hostapd3.sh Agregamos estas lineas:\n# Desactivar el PowerManagement / Disable WiFi Power Save iw dev wlan0 set power_save off En un .conf también seteamos que el NetworkManager no “toque” este dispositivo wlan0\nsudo nano /etc/NetworkManager/conf.d/unmanaged.conf Contenido del archivo:\n[keyfile] unmanaged-devices=interface-name:wlan0 Verificaciones Estas son verificaciones que podemos hacer cuando el AP está en funcionamiento.\nVerificamos mensajes de log en dmesg Ejecutamos en una terminal:\ndmesg -w Verificar los equipos conectados al rogue AP Ejecutamos en una terminal:\niw dev wlan0 station dump Ejecutando el script Ejecutamos el script (que ya le dí previamente los permisos de ejecución con chmod)\n└─$ sudo ./rogue_hostapd3.sh [*] Cerrando instancia previa de dnsmasq si existe... [*] Activando IP forwarding... [*] Configurando wlan0 con IP 192.168.69.1... [*] Limpiando reglas iptables previas... [*] Configurando iptables para NAT... [*] Generando configuración de hostapd... [*] Generando configuración de dnsmasq... [*] Iniciando dnsmasq... [*] Iniciando hostapd... wlan0: interface state UNINITIALIZED-\u003eENABLED wlan0: AP-ENABLED y al conectarse el móvil vemos algo así:\nwlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: authenticated wlan0: STA 4a:d6:01:b5:f2:ff IEEE 802.11: associated (aid 1) wlan0: AP-STA-CONNECTED 4a:d6:01:b5:f2:ff wlan0: STA 4a:d6:01:b5:f2:ff RADIUS: starting accounting session A10F5F2FFA3CB549 Script para levantar el AP #!/bin/bash # Rogue AP. Version 3 # Author: Maximiliano Belino (m4xth0r) # Author website: https://belino.com # Date: 11 de Abril 2025 # Variables IFACE=\"wlan0\" ESSID=\"superv4\" CHANNEL=6 NETPREFIX=\"192.168.69\" GATEWAY=\"$NETPREFIX.1\" RANGE_START=\"$NETPREFIX.2\" RANGE_END=\"$NETPREFIX.30\" NETMASK=\"255.255.255.0\" CONF_DIR=\"/tmp/rogue_ap\" mkdir -p \"$CONF_DIR\" # Desactivar el PowerManagement # Disable WiFi Power Save iw dev wlan0 set power_save off # Matamos dnsmasq solo si ya corre (evitamos matar la shell) echo \"[*] Cerrando instancia previa de dnsmasq si existe...\" pgrep dnsmasq \u0026\u0026 sudo killall dnsmasq # Activamos IP forwarding echo \"[*] Activando IP forwarding...\" echo 1 \u003e /proc/sys/net/ipv4/ip_forward # Configurar interfaz echo \"[*] Configurando $IFACE con IP $GATEWAY...\" ip addr flush dev \"$IFACE\" ip link set \"$IFACE\" up ip addr add \"$GATEWAY/24\" dev \"$IFACE\" # Limpiamos reglas iptables previas echo \"[*] Limpiando reglas iptables previas...\" iptables --flush iptables --table nat --flush iptables --delete-chain iptables --table nat --delete-chain # Configurar NAT echo \"[*] Configurando iptables para NAT...\" iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE iptables -A FORWARD -i eth0 -o \"$IFACE\" -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -i \"$IFACE\" -o eth0 -j ACCEPT # Archivo hostapd.conf echo \"[*] Generando configuración de hostapd...\" cat \u003c \"$CONF_DIR/hostapd.conf\" interface=$IFACE driver=nl80211 ssid=$ESSID hw_mode=g channel=$CHANNEL auth_algs=1 ignore_broadcast_ssid=0 EOF # Archivo dnsmasq.conf echo \"[*] Generando configuración de dnsmasq...\" cat \u003c \"$CONF_DIR/dnsmasq.conf\" interface=$IFACE dhcp-range=$RANGE_START,$RANGE_END,12h dhcp-option=3,$GATEWAY dhcp-option=6,$GATEWAY log-queries log-dhcp EOF # Iniciamos dnsmasq (en background) echo \"[*] Iniciando dnsmasq...\" dnsmasq -C \"$CONF_DIR/dnsmasq.conf\" \u0026 # Iniciamos hostapd echo \"[*] Iniciando hostapd...\" hostapd \"$CONF_DIR/hostapd.conf\" echo \"[+] Rogue AP '$ESSID' operativo.\" Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U) Contexto Después de ejecutar un sudo apt upgrade en Kali Linux Rolling, el adaptador WiFi USB dejó de funcionar.\nDispositivo afectado:\nTP-Link Archer T3U Chipset: Realtek RTL8822BU (USB 2.0) Driver funcional previo: rtw_8822bu (DKMS) Kernel estable: 6.12.x Kernel problemático: 6.18.x Síntomas Tras la actualización del kernel:\nLa interfaz WiFi desaparece o se desconecta constantemente. En dmesg aparecen errores como: Invalid ep0 maxpacket: 9 rtw_usb_reg_sec: usb write fail, status: -110 USB disconnect\nEl dispositivo se conecta, intenta inicializar firmware y luego el kernel lo desconecta.\nAnálisis Técnico Cambio de driver En kernel 6.12 se cargaba el módulo DKMS:\nrtw_8822bu rtw_core rtw_usb\nEn kernel 6.18 se prioriza el driver mainline:\nrtw88_8822bu rtw88_usb rtw88_core\nEl stack rtw88 fue diseñado originalmente para PCIe. El soporte USB es más reciente y presenta inestabilidades con ciertos controladores EHCI.\nEl error:\nrtw88_8822bu: disagrees about version of symbol\nConfirma que el módulo DKMS (rtw_8822bu) y el mainline (rtw88) están compitiendo.\nEn 6.12 gana el DKMS → funciona.\nEn 6.18 gana el rtw88 → falla USB.\nError crítico: Invalid ep0 maxpacket Durante la enumeración USB:\nEl host solicita el descriptor del endpoint 0. El dispositivo responde con un tamaño inválido. El controlador EHCI rechaza la negociación. Se produce un reset del puerto. Este error ocurre antes de que la capa WiFi esté operativa.\nTimeout -110 (ETIMEDOUT) El driver intenta escribir en un registro interno:\nreg 0x4e0\nPero la transacción USB no responde → timeout → el kernel desconecta el dispositivo.\nNo es fallo de firmware ni de hardware físico. Es un problema de interacción entre:\nStack USB EHCI del kernel 6.18 Gestión de energía Driver rtw88 en modo USB Chipset RTL8822BU (muy sensible a timing) Causa Raíz Regresión en el kernel 6.18 en el stack USB (EHCI), que afecta la enumeración y estabilidad de dispositivos Realtek RTL8822BU.\nEl hardware está sano. El problema es puramente de software.\nDiagnóstico Arranquemos con el kernel anterior, 6.12\nEn el momento de arranque de Kali, usamos la opción del menú para elegir el kernel 6.12. Una vez que ya arrancó Kali, podemos ejecutar estos comandos en consola para saber si soluciona el problema:\niw dev sudo iw dev wlan0 scan\nSi escanea redes correctamente → el problema era el kernel nuevo.\nSolución Recomendada Congelar el kernel estable:\nsudo apt-mark hold linux-image-amd64 linux-headers-amd64\nVerificamos:\napt-mark showhold\n",
+    "wordCount" : "1628",
     "inLanguage": "es",
     "datePublished": "2025-05-09T12:28:27-03:00",
     "dateModified": "2025-05-09T12:28:27-03:00",
@@ -243,12 +243,12 @@
       <line x1="16" y1="13" x2="8" y2="13"></line>
       <line x1="16" y1="17" x2="8" y2="17"></line>
       <polyline points="10 9 9 9 8 9"></polyline>
-   </svg>1117 
+   </svg>1628 
     … ⏲ Reading Time:
     
     
     
-    5 Minutes, 4 Seconds</p>
+    7 Minutes, 24 Seconds</p>
 <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
@@ -274,15 +274,29 @@
 </li>
 <li><a href="/es/posts/rogueap/#ejecutando-el-script">Ejecutando el script</a></li>
 <li><a href="/es/posts/rogueap/#script-para-levantar-el-ap">Script para levantar el AP</a></li>
+<li><a href="/es/posts/rogueap/#regresión-del-kernel-618-en-kali-fallo-usb-con-realtek-rtl8822bu-tp-link-archer-t3u">Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U)</a>
+<ul>
+<li><a href="/es/posts/rogueap/#contexto">Contexto</a></li>
+<li><a href="/es/posts/rogueap/#síntomas">Síntomas</a></li>
+<li><a href="/es/posts/rogueap/#análisis-técnico">Análisis Técnico</a></li>
+<li><a href="/es/posts/rogueap/#causa-raíz">Causa Raíz</a></li>
+<li><a href="/es/posts/rogueap/#diagnóstico">Diagnóstico</a></li>
+<li><a href="/es/posts/rogueap/#solución-recomendada">Solución Recomendada</a></li>
+</ul>
+</li>
 </ul>
 <h1 id="dispositivo">Dispositivo<a href="#dispositivo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
-<p>TP-Link Archer T3U Plus (chipset RTL88x2BU) en modo Access Point (AP) tipo Rogue</p>
+<p>El dispositivo/antena a usar para hacer nuestro AP es el siguiente:</p>
+<p><em>TP-Link Archer T3U Plus (chipset RTL88x2BU)</em></p>
+<p>en modo Access Point (AP) tipo Rogue.</p>
+<p>Es una antena que conectamos en el puerto USB de nuestro PC.</p>
 <h1 id="driver">Driver<a href="#driver" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 <p>Para el driver voy a usar esta source en GitHub: <a href="https://github.com/lwfinger/rtw88">https://github.com/lwfinger/rtw88</a></p>
 <ul>
 <li>Este repo es para drivers Realtek</li>
 <li>Estaré usando el driver RTL8822BU</li>
 </ul>
+<p>Este AP lo vamos a hacer funcionar con el Kernel 6.12; luego de una actualización de Kali, el kernel es 6.18 y el ya no funciona bien. Si lo tenías funcionando en 6.12 e hiciste un upgrade de Kali, te va a tocar hacer unos cambios para que funcione. Esto lo detallo más abajo en: <a href="/es/posts/rogueap/#Regresión del Kernel 6.18 en Kali Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U)">Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U)</a>.</p>
 <p>Como adelanto, una vez que quede instalado el Driver del dispositivo, vamos a ver estos resultados:</p>
 <pre tabindex="0"><code>┌──(kali㉿kali)-[~]
 └─$ readlink /sys/class/net/wlan0/device/driver
@@ -484,7 +498,82 @@ echo &#34;[*] Iniciando hostapd...&#34;
 hostapd &#34;$CONF_DIR/hostapd.conf&#34;
 
 echo &#34;[+] Rogue AP &#39;$ESSID&#39; operativo.&#34;
-</code></pre>
+</code></pre><h1 id="regresión-del-kernel-618-en-kali-fallo-usb-con-realtek-rtl8822bu-tp-link-archer-t3u">Regresión del Kernel 6.18 en Kali: Fallo USB con Realtek RTL8822BU (TP-Link Archer T3U)<a href="#regresión-del-kernel-618-en-kali-fallo-usb-con-realtek-rtl8822bu-tp-link-archer-t3u" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+<h2 id="contexto">Contexto<a href="#contexto" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Después de ejecutar un <code>sudo apt upgrade</code> en Kali Linux Rolling, el adaptador WiFi USB dejó de funcionar.</p>
+<p>Dispositivo afectado:</p>
+<ul>
+<li><strong>TP-Link Archer T3U</strong></li>
+<li>Chipset: Realtek RTL8822BU (USB 2.0)</li>
+<li>Driver funcional previo: <code>rtw_8822bu</code> (DKMS)</li>
+<li>Kernel estable: 6.12.x</li>
+<li>Kernel problemático: 6.18.x</li>
+</ul>
+<h2 id="síntomas">Síntomas<a href="#síntomas" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Tras la actualización del kernel:</p>
+<ul>
+<li>La interfaz WiFi desaparece o se desconecta constantemente.</li>
+<li>En <code>dmesg</code> aparecen errores como:</li>
+</ul>
+<p><code>Invalid ep0 maxpacket: 9</code>
+<code>rtw_usb_reg_sec: usb write fail, status: -110</code>
+<code>USB disconnect</code></p>
+<p>El dispositivo se conecta, intenta inicializar firmware y luego el kernel lo desconecta.</p>
+<h2 id="análisis-técnico">Análisis Técnico<a href="#análisis-técnico" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="cambio-de-driver">Cambio de driver<a href="#cambio-de-driver" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>En kernel 6.12 se cargaba el módulo DKMS:</p>
+<p><code>rtw_8822bu</code>
+<code>rtw_core</code>
+<code>rtw_usb</code></p>
+<p>En kernel 6.18 se prioriza el driver mainline:</p>
+<p><code>rtw88_8822bu</code>
+<code>rtw88_usb</code>
+<code>rtw88_core</code></p>
+<p>El stack <strong>rtw88</strong> fue diseñado originalmente para PCIe.
+El soporte USB es más reciente y presenta inestabilidades con ciertos controladores EHCI.</p>
+<p>El error:</p>
+<p><code>rtw88_8822bu: disagrees about version of symbol</code></p>
+<p>Confirma que el módulo DKMS (<code>rtw_8822bu</code>) y el mainline (<code>rtw88</code>) están compitiendo.</p>
+<p>En 6.12 gana el DKMS → funciona.<br>
+En 6.18 gana el rtw88 → falla USB.</p>
+<h3 id="error-crítico-invalid-ep0-maxpacket">Error crítico: <em>Invalid ep0 maxpacket</em><a href="#error-crítico-invalid-ep0-maxpacket" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Durante la enumeración USB:</p>
+<ul>
+<li>El host solicita el descriptor del endpoint 0.</li>
+<li>El dispositivo responde con un tamaño inválido.</li>
+<li>El controlador EHCI rechaza la negociación.</li>
+<li>Se produce un reset del puerto.</li>
+</ul>
+<p>Este error ocurre antes de que la capa WiFi esté operativa.</p>
+<h3 id="timeout--110-etimedout">Timeout -110 (ETIMEDOUT)<a href="#timeout--110-etimedout" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>El driver intenta escribir en un registro interno:</p>
+<p><code>reg 0x4e0</code></p>
+<p>Pero la transacción USB no responde → timeout → el kernel desconecta el dispositivo.</p>
+<p>No es fallo de firmware ni de hardware físico.
+Es un problema de interacción entre:</p>
+<ul>
+<li>Stack USB EHCI del kernel 6.18</li>
+<li>Gestión de energía</li>
+<li>Driver rtw88 en modo USB</li>
+<li>Chipset RTL8822BU (muy sensible a timing)</li>
+</ul>
+<h2 id="causa-raíz">Causa Raíz<a href="#causa-raíz" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Regresión en el kernel 6.18 en el stack USB (EHCI), que afecta la enumeración y estabilidad de dispositivos Realtek RTL8822BU.</p>
+<p>El hardware está sano.
+El problema es puramente de software.</p>
+<h2 id="diagnóstico">Diagnóstico<a href="#diagnóstico" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Arranquemos con el kernel anterior, 6.12</p>
+<p>En el momento de arranque de Kali, usamos la opción del menú para elegir el kernel 6.12.
+Una vez que ya arrancó Kali, podemos ejecutar estos comandos en consola para saber si soluciona el problema:</p>
+<p><code>iw dev</code>
+<code>sudo iw dev wlan0 scan</code></p>
+<p>Si escanea redes correctamente → el problema era el kernel nuevo.</p>
+<h2 id="solución-recomendada">Solución Recomendada<a href="#solución-recomendada" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Congelar el kernel estable:</p>
+<p><code>sudo apt-mark hold linux-image-amd64 linux-headers-amd64</code></p>
+<p>Verificamos:</p>
+<p><code>apt-mark showhold</code></p>
+
 			</div>
 			<div class="human posts"><a href="https://brainmade.org/" target="_blank" rel="external noreferrer noopener"><abbr title=""><svg fill="#fff" width="128" height="40" viewBox="0 0 128 40" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -509,6 +598,21 @@ echo &#34;[+] Rogue AP &#39;$ESSID&#39; operativo.&#34;
     <li><a href="#verificamos-mensajes-de-log-en-dmesg">Verificamos mensajes de log en dmesg</a></li>
     <li><a href="#verificar-los-equipos-conectados-al-rogue-ap">Verificar los equipos conectados al rogue AP</a></li>
   </ul>
+
+  <ul>
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#síntomas">Síntomas</a></li>
+    <li><a href="#análisis-técnico">Análisis Técnico</a>
+      <ul>
+        <li><a href="#cambio-de-driver">Cambio de driver</a></li>
+        <li><a href="#error-crítico-invalid-ep0-maxpacket">Error crítico: <em>Invalid ep0 maxpacket</em></a></li>
+        <li><a href="#timeout--110-etimedout">Timeout -110 (ETIMEDOUT)</a></li>
+      </ul>
+    </li>
+    <li><a href="#causa-raíz">Causa Raíz</a></li>
+    <li><a href="#diagnóstico">Diagnóstico</a></li>
+    <li><a href="#solución-recomendada">Solución Recomendada</a></li>
+  </ul>
 </nav>
 		</aside>
 		<div class="post-nav thin">
@@ -525,7 +629,7 @@ echo &#34;[+] Rogue AP &#39;$ESSID&#39; operativo.&#34;
 
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>
-		&copy; 2025 <a href="https://belino.com/">m4xth0r</a>
+		&copy; 2026 <a href="https://belino.com/">m4xth0r</a>
 		&#183;  <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
 
 </footer>
